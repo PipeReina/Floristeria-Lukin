@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="body">
+        <section class="section">
+          <h1>Editar</h1>
+          <div class="formu1">
+              <div class="formu2">
+                <form th:action="@{/cargo/add}" method="post" th:object="${cargo}">
+                    <div class="mb-3">
+                    <label class="rol">Nombre Cargo</label><br>
+                    <input class="roltext1" name="NombreCargo" id="NombreCargo" th:field="*{NombreCargo}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Descripcion Cargo</label><br>
+                        <input class="roltext1" name="DescripcionCargo" id="DescripcionCargo" th:field="*{DescripcionCargo}">
+                        </div>
+                  <label class="rol">Estado Cargo</label><br>
+                  <select class="roltext1" name="EstadoCargo" id="EstadoCargo">
+                    <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="true">Activar</option>
+                    <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="false">Inactivar</option>
+                  </select>
+                <div>
+                  <button type="submit" class="enviar" value="crear" name="accion">Enviar</button>
+                </form>
+              </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

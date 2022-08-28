@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>inicio</title>
+</head>
+<body>
+<div class="body">
+        <section class="section">
+            <nav>
+                <div class="nav">
+                    <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{crear}">   Creacion  </button></a>
+                    <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
+                  </div>
+            </nav>
+            <table id="datat">
+                <thead>
+               <th>Id</th>
+               <th>Nombre</th>
+               <th>Descripcion</th>
+               <th>Estado</th>
+               <th>Acciones</th>
+               </thead>
+               <tbody>
+                <tr th:if="${cargo.size>0}" th:each="c:${cargo}">
+                <td th:text="${c.idCargo}"></td>
+                <td th:text="${c.nombreCargo}"></td>
+                <td th:text="${c.DescripcionCargo}"></td>
+                <td th:if="${c.estadoCargo==true}" id="activo">
+                <span class="badge bg-success active">Activo</span>
+                </td>
+                <td th:if="${c.estadoCargo==false}" id="inactivo">
+                <span class="badge bg-danger active">Inactivo</span>
+                </td>
+                <td th:if="${c.estadoCargo==true}" id="estadoboton">
+                <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/cargo/estado/}+${c.idCargo}"><button>Inactivar</button></a>
+                <a role="button" class="btn btn-warning btn-sm" th:href="@{/cargo/edit/}+${c.idCargo}"> 
+                    <button onclick="return confirm('¿Estas seguro de Editar el Cargo?');"><i class="fi fi-rr-edit"></i></button></a>
+                <a role="button" class="btn btn-danger btn-sm"th:href="@{/cargo/eliminar/}+${c.idCargo}" > 
+                    <button onclick="return confirm('¿Estas seguro de Eliminar el Cargo?');"><i class="fi fi-rr-trash"></i></button>
+                    </a>
+                </td>
+                <td th:if="${c.estadoCargo==false}" id="estadoboton">
+                <a rol="button" class="btn btn-success btn-sm"  th:href="@{/cargo/estado/}+${c.idCargo}"><button>Activar</button></a>
+                <a role="button" class="btn btn-warning btn-sm" th:href="@{/cargo/edit/}+${c.idCargo}"> 
+                    <button onclick="return confirm('¿Estas seguro de Editar el Cargo?');"><i class="fi fi-rr-edit"></i></button></a>
+                <a role="button" class="btn btn-danger btn-sm"th:href="@{/cargo/eliminar/}+${c.idCargo}" > 
+                    <button onclick="return confirm('¿Estas seguro de Eliminar el Cargo?');"><i class="fi fi-rr-trash"></i></button>
+                    </a>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>Crear Empleado</title>
+</head>
+<body>
+    <div class="body">
+        <section class="section">
+          <h1>Crear</h1>
+          <div class="formu1">
+              <div class="formu2">
+                <form th:action="@{/empleado/add}" method="post" th:object="${empleado}">
+                    <div class="mb-3">
+                    <label class="rol">Nombre Empleado</label><br>
+                    <input class="roltext1" name="NombreEmpleado" id="NombreEmpleado" th:field="*{NombreEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Apellido Empleado</label><br>
+                        <input class="roltext1" name="ApellidoEmpleado" id="ApellidoEmpleado" th:field="*{ApellidoEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Documento Empleado</label><br>
+                        <input class="roltext1" name="DocEmpleado" id="DocEmpleado" th:field="*{DocEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Eps Empleado</label><br>
+                        <input class="roltext1" name="EpsEmpleado" id="EpsEmpleado" th:field="*{EpsEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Direccion Empleado</label><br>
+                        <input class="roltext1" name="DireccEmpleado" id="DireccEmpleado" th:field="*{DireccEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Genero Empleado</label><br>
+                        <select class="roltext1" name="GeneroEmpleado" id="GeneroEmpleado">
+                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Masculino">Masculino</option>
+                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Femenino">Femenino</option>
+                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Telefono Empleado</label><br>
+                        <input class="roltext1" name="TelEmpleado" id="TelEmpleado" th:field="*{TelEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Email Empleado</label><br>
+                        <input class="roltext1" name="EmailEmpleado" id="EmailEmpleado" th:field="*{EmailEmpleado}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Rh Empleado</label><br>
+                        <select class="roltext1" name="RhEmpleado" id="RhEmpleado">
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="A+">A+</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="A-">A-</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="B+">B+</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="B-">B-</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="AB+">AB+</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="AB-">AB-</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="O+">O+</option>
+                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="O-">O-</option>
+                        </select>                    </div>
+                    <div class="mb-3">
+                        <label class="rol">Especialidad Empleado</label><br>
+                        <input class="roltext1" name="EspecialidadEmpleado" id="EspecialidadEmpleado" th:field="*{EspecialidadEmpleado}">
+                    </div>
+                    <label class="rol" th:for="cargo">Cargo FK</label><br>
+			<select  class="roltext"  th:field="*{FKcargo}">
+				<option value="">Seleccione el Cargo...</option>
+					<th:block th:each="c:${cargo}">
+						<option th:text="${c.NombreCargo}" th:value="${c.IdCargo}"></option>
+					</th:block>
+			</select><br>
+                <label class="rol">Foto Empleado</label><br>
+                <input type="file" accept="image/*,.pdf" name="fotoEmpleado" id="fotoEmpleado" th:field="*{fotoEmpleado}">
+                  <br><label class="rol">Estado Empleado</label><br>
+                  <select class="roltext1" name="EstadoEmpleado" id="EstadoEmpleado">
+                    <option id="EstadoEmpleado" class="roltext1" name="EstadoEmpleado" value="true">Activar</option>
+                    <option id="EstadoEmpleado" class="roltext1" name="EstadoEmpleado" value="false">Inactivar</option>
+                  </select>
+                <div>
+                  <button type="submit" class="enviar" value="crear" name="accion">Enviar</button>
+                </form>
+              </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

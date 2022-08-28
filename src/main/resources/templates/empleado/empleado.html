@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>inicio</title>
+</head>
+<body>
+<div class="body">
+        <section class="section">
+            <nav>
+                <div class="nav">
+                    <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{crear}">   Creacion  </button></a>
+                    <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
+                  </div>
+            </nav>
+            <table id="datat">
+                <thead>
+               <th>Id</th>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>Documento</th>
+               <th>Eps</th>
+               <th>Direccion</th>
+               <th>Genero</th>
+               <th>Telefono</th>
+               <th>Email</th>
+               <th>Rh</th>
+               <th>Especialidad</th>
+               <th>Foto</th>
+               <th>CargoFK</th>
+               <th>Estado</th>
+               <th>Acciones</th>
+               </thead>
+               <tbody>
+                <tr th:if="${empleado.size>0}" th:each="c:${empleado}">
+                <td th:text="${c.idEmpleado}"></td>
+                <td th:text="${c.nombreEmpleado}"></td>
+                <td th:text="${c.apellidoEmpleado}"></td>
+                <td th:text="${c.docEmpleado}"></td>
+                <td th:text="${c.epsEmpleado}"></td>
+                <td th:text="${c.direccEmpleado}"></td>
+                <td th:text="${c.generoEmpleado}"></td>
+                <td th:text="${c.telEmpleado}"></td>
+                <td th:text="${c.emailEmpleado}"></td>
+                <td th:text="${c.rhEmpleado}"></td>
+                <td th:text="${c.especialidadEmpleado}"></td>
+                <td th:text="${c.fotoEmpleado}"></td>
+                <th:block th:each="ca:${cargos}">
+                    <td th:text="${ca.nombreCargo}"></td>
+                </th:block>
+                <td th:if="${c.estadoEmpleado==true}" id="activo">
+                <span class="badge bg-success active">Activo</span>
+                </td>
+                <td th:if="${c.estadoEmpleado==false}" id="inactivo">
+                <span class="badge bg-danger active">Inactivo</span>
+                </td>
+                <td th:if="${c.estadoEmpleado==true}" id="estadoboton">
+                <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/empleado/estado/}+${c.idEmpleado}"><button>Inactivar</button></a>
+                <a role="button" class="btn btn-warning btn-sm" th:href="@{/empleado/edit/}+${c.idEmpleado}"> 
+                    <button onclick="return confirm('¿Estas seguro de Editar el Empleado?');"><i class="fi fi-rr-edit"></i></button></a>
+                <a role="button" class="btn btn-danger btn-sm"th:href="@{/empleado/eliminar/}+${c.idEmpleado}" > 
+                    <button onclick="return confirm('¿Estas seguro de Eliminar el Empleado?');"><i class="fi fi-rr-trash"></i></button>
+                    </a>
+                </td>
+                <td th:if="${c.estadoEmpleado==false}" id="estadoboton">
+                <a rol="button" class="btn btn-success btn-sm"  th:href="@{/empleado/estado/}+${c.idEmpleado}"><button>Activar</button></a>
+                <a role="button" class="btn btn-warning btn-sm" th:href="@{/empleado/edit/}+${c.idEmpleado}"> 
+                    <button onclick="return confirm('¿Estas seguro de Editar el Empleado?');"><i class="fi fi-rr-edit"></i></button></a>
+                <a role="button" class="btn btn-danger btn-sm"th:href="@{/empleado/eliminar/}+${c.idEmpleado}" > 
+                    <button onclick="return confirm('¿Estas seguro de Eliminar el Empleado?');"><i class="fi fi-rr-trash"></i></button>
+                    </a>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>Cargo</title>
+</head>
+<body>
+    <div class="body">
+        <section class="section">
+          <h1>Crear</h1>
+          <div class="formu1">
+              <div class="formu2">
+                <form th:action="@{/cargo/add}" method="post" th:object="${cargo}" id="formulario">
+                    <!-- nombreCargo -->
+                    <div class="formulario_grupo" id="grupo_nombre">
+                      <label class="rol">Nombre Cargo</label><br>
+                        <div id="cargo_input">
+                          <input class="roltext1" name="NombreCargo" id="NombreCargo" th:field="*{NombreCargo}" placeholder="Contador">
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                      </div>
+                      <p class="formulario__input-error">El Nombre tiene que estar ingresado, solo puede contener Letras.</p>
+                    </div>
+                    <!-- DescripCargo -->
+                    <div class="formulario_grupo" id="grupo_descrip">
+                      <label class="rol">Descripcion Cargo</label><br>
+                        <div id="cargo_input">
+                          <input class="roltext1" name="DescripcionCargo" id="DescripcionCargo" th:field="*{DescripcionCargo}" placeholder="Realiza acciones de contabilidad interna">
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                      </div>
+                      <p class="formulario__input-error">La Descripcion tiene que estar ingresada, solo puede contener letras y signos (, . : ;).</p>
+                    </div>
+                    <!-- EstadoCargo -->
+                    <div class="formulario_grupo" id="grupo_estado">
+                      <label class="rol">Estado Cargo</label><br>
+                          <div id="cargo_select">
+                              <select class="roltext1" name="EstadoCargo" id="EstadoCargo">
+                                <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="true">Activar</option>
+                                <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="false">Inactivar</option>
+                              </select>
+                              <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>  
+                    </div>
+                    <div class="formulario__mensaje" id="formulario__mensaje">
+                      <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                  </div>
+                  <div class="formulario_grupo formulario_grupo-btn-enviar">
+                  <button type="submit" class="enviar" value="crear" name="accion">Enviar</button>
+                  <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+                </div> 
+                </form>
+              </div>
+            </div>
+        </section>
+    </div>
+    <script th:src="@{../js/cargo.js}"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>
