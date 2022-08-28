@@ -34,14 +34,14 @@
                     <option id="EstadoHE" class="roltext1" name="EstadoHE" value="true">Activar</option>
                     <option id="EstadoHE" class="roltext1" name="EstadoHE" value="false">Inactivar</option>
                 </select>
-               <!--<br>
+               <br>
                 <label class="rol" th:for="empleado">Empleado FK</label><br>
                 <select  class="roltext"   th:field="*{IdEmpleadoFK}">
                     <option value="">Seleccione el Empleado</option>
                     <th:block th:each="empleado: ${empleado}">
                             <option th:text="${empleado.NombreEmpleado}" th:value="${empleado.IdEmpleado}"></option>                     
                            </th:block>
-                </select><br>-->
+                </select><br>
 
                 <div>
                     <button type="submit" class="enviar" value="formhe" name="accion">Enviar</button>

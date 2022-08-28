@@ -33,7 +33,7 @@
                 <tr th:if="${hse.size()>0}" th:each="c:${hse}">
                     <td th:text="${c.idHorasExtra}"></td>
                     <td th:text="${c.fechaHE}"></td>
-                    <!--<td th:text="${c.idEmpleadoFK.NombreEmpleado}"></td>-->
+                    <td th:text="${c.idEmpleadoFK.NombreEmpleado}"></td>
                     <td th:if="${c.estadoHE==true}"> 
                         <span class="badge bg-success active">Activo</span> 
                     </td> 
