@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import com.nomina.nomina1.services.IEmpleadoService;
 
 
 @Controller
@@ -20,6 +21,9 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/he")
 public class Hecontroller {
     
+    @Autowired
+    private IEmpleadoService empleadod;
+
     @Autowired
     private Iheservice het;
 
@@ -54,6 +58,7 @@ public class Hecontroller {
     public String formhe(Model mo){
         he he = new he();
         mo.addAttribute("he", he);
+        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("accion", "Agregar horas extra");
         return "he/formhe";
     }

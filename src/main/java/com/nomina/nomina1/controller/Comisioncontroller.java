@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import com.nomina.nomina1.services.IEmpleadoService;
 
 
 @Controller
 @SessionAttributes("comision")
 @RequestMapping("/comision")
+
 public class Comisioncontroller {
-    
+
+    @Autowired
+    private IEmpleadoService empleadod;
+
     @Autowired
     private Icomisionservice com;
 
@@ -54,6 +59,7 @@ public class Comisioncontroller {
     public String formcom(Model mo){
         comision comision = new comision();
         mo.addAttribute("comision", comision);
+        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("accion");
         return "comision/formcom";
     }

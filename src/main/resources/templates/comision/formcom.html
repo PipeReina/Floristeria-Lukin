@@ -42,7 +42,7 @@
                     <option id="EstadoCom" class="roltext1" name="EstadoCom" value="false">Inactivar</option>
                 </select>
                 <br>
-               <label class="rol" th:for="empleado">Empleado FK</label><br>
+               <label class="rol" for="empleado">Empleado FK</label><br>
                 <select  class="roltext"   th:field="*{IdEmpleadoFK}">
                     <option value="">Seleccione el Empleado</option>
                     <th:block th:each="empleado: ${empleado}">
