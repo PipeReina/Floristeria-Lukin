@@ -39,10 +39,12 @@ public class EmpleadoController {
      public String ver(@PathVariable Integer idEmpleado,Model m){
          Empleado empleado=null;
          if(idEmpleado>0){
+            m.addAttribute("cargos", cargod.findAll());
             empleado=empleadod.findOne(idEmpleado);
          }else{
              return "redirect:empleado";
          }
+         m.addAttribute("cargos", cargod.findAll());
          m.addAttribute("empleado",empleado);
          return "empleado/edit";
      }
