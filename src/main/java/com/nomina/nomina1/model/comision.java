@@ -37,12 +37,12 @@ public class comision {
     }
 
 
-    public comision(Integer idComision, Integer costoVenta, String fechaCom, Boolean estadoCom/*, Empleado idEmpleadoFK*/) {
+    public comision(Integer idComision, Integer costoVenta, String fechaCom, Boolean estadoCom, Empleado idEmpleadoFK) {
         IdComision = idComision;
         CostoVenta = costoVenta;
         FechaCom = fechaCom;
         EstadoCom = estadoCom;
-       /*IdEmpleadoFK = idEmpleadoFK;*/
+       IdEmpleadoFK = idEmpleadoFK;
     }
 
 

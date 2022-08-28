@@ -36,11 +36,11 @@ public class he {
     }
 
 
-    public he(Integer idHorasExtra, @Size(min = 2, max = 50) String fechaHE, Boolean estadoHE/*, Empleado idEmpleadoFK*/) {
+    public he(Integer idHorasExtra, @Size(min = 2, max = 50) String fechaHE, Boolean estadoHE, Empleado idEmpleadoFK) {
         IdHorasExtra = idHorasExtra;
         FechaHE = fechaHE;
         EstadoHE = estadoHE;
-       /*IdEmpleadoFK = idEmpleadoFK;*/
+       IdEmpleadoFK = idEmpleadoFK;
     }
 
     public Integer getIdHorasExtra() {
