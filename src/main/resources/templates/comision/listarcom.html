@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
+    <title>Listar Comisiones</title>
+</head>
+
+<body>
+<div class="body">
+    <section class="section">
+        <nav>
+            <div class="nav">
+            <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{/comision/formcom}">   Creacion  </button></a>
+            <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
+            </div>
+        </nav>
+
+        <table id="datat">
+            <thead>
+                <th>Id Comision</th>
+                <th>Costo Venta</th>
+                <th>Fecha Comision</th>
+                <th>Estado</th>
+                <th colspan="2">Acciones</th>
+            </thead>
+            <tbody>
+                <tr th:if="${comisiones.size()>0}" th:each="c:${comisiones}">
+                    <td th:text="${c.idComision}"></td>
+                    <td th:text="${c.costoVenta}"></td>
+                    <td th:text="${c.fechaCom}"></td>
+                    <!--<td th:text="${c.idEmpleadoFK.NombreEmpleado}"></td>-->
+                    <td th:if="${c.estadoCom==true}"> 
+                        <span class="badge bg-success active">Activo</span> 
+                    </td> 
+                    
+                    <td th:if="${c.estadoCom==false}"> 
+                        <span class="badge bg-danger active">Inactivo</span> 
+                    </td> 
+                    <td th:if="${c.estadoCom==true}" id="estadoboton">
+                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/comision/estado/}+${c.idComision}"><button>Inactivar</button></a>
+                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/comision/buscarcom/}+${c.idComision}"> 
+                            <button onclick="return confirm('¿Estas seguro de editar las comision??');"><i class="fi fi-rr-edit"></i></button></a>
+                        <a role="button" class="btn btn-danger btn-sm" th:href="@{/comision/delete/}+${c.idComision}"> 
+                            <button onclick="return confirm('¿Estas seguro de Eliminar la comision?');"><i class="fi fi-rr-trash"></i></button>
+                        </a>
+                        </td>
+                        <td th:if="${c.estadoCom==false}" id="estadoboton">
+                        <a rol="button" class="btn btn-success btn-sm" th:href="@{/comision/estado/}+${c.idComision}"><button>Activar</button></a>
+                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/comision/buscarcom/}+${c.idComision}"> 
+                            <button onclick="return confirm('¿Estas seguro de editar las comision??');"><i class="fi fi-rr-edit"></i></button></a>
+                        <a role="button" class="btn btn-danger btn-sm" th:href="@{/comision/delete/}+${c.idComision}"> 
+                            <button onclick="return confirm('¿Estas seguro de Eliminar la comision?');"><i class="fi fi-rr-trash"></i></button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+</script>
+</body>
+</html>
