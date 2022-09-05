@@ -30,6 +30,7 @@ public class Comisioncontroller {
 
     @GetMapping(path={"/listarcom","","/"})
     public String listarcom(Model mo){
+        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("comisiones", com.findAll());
         return "comision/listarcom";
     }
@@ -45,13 +46,13 @@ public class Comisioncontroller {
     @GetMapping("/buscarcom/{idComision}")
     public String buscarcom(@PathVariable Integer idComision,Model mo){
         comision comision = null;
-        if(idComision>0){
-            comision = com.findOne(idComision);
+        if(idComision>0){   
+        comision = com.findOne(idComision);
         }else{
             return "redirect:listarcom";
         }
         mo.addAttribute("comision",comision);
-        mo.addAttribute("accion");
+        mo.addAttribute("accion","Actualizar Comision");
         return "comision/formcom";  
     }  
 
@@ -67,7 +68,9 @@ public class Comisioncontroller {
     @PostMapping("add")
     public String add(@Valid comision comision, BindingResult res, Model mo, SessionStatus status){
         if(res.hasErrors()){
-            return "comision/formcom";
+            
+        mo.addAttribute("empleado", empleadod.findAll());
+        return "comision/formcom";
         }
         com.save(comision);
         status.setComplete();
