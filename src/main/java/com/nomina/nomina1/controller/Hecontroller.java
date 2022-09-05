@@ -86,7 +86,6 @@ public class Hecontroller {
        return "redirect:../";
     }
 
-
     @GetMapping("delete/{idHorasExtra}")
     public String delete (@PathVariable Integer idHorasExtra){
         if(idHorasExtra > 0){
