@@ -35,8 +35,13 @@ public class EmpleadoServicelmps implements IEmpleadoService{
     }
     
     private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
-        Optional <Empleado> userFound = repository.findByEmailEmpleadoOrDocEmpleadoOrTelEmpleado(empleado.getEmailEmpleado(),empleado.getDocEmpleado(), empleado.getTelEmpleado());
-   
+        Optional <Empleado> userFound = repository.findByEmailEmpleado(empleado.getEmailEmpleado());
+   }
+    private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
+        Optional <Empleado> userFound = repository.findByDocEmpleado(empleado.getDocEmpleado());
+   }
+    private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
+        Optional <Empleado> userFound = repository.findByTelEmpleado(empleado.getTelEmpleado());
    }
 
 }
