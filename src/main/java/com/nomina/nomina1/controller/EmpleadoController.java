@@ -1,6 +1,14 @@
 package com.nomina.nomina1.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Optional;
+
 import javax.validation.Valid;
+
+import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -8,8 +16,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.ui.Model;
 
 import com.nomina.nomina1.model.Empleado;
@@ -58,10 +68,25 @@ public class EmpleadoController {
         return "empleado/creacion"; 
     }
     @PostMapping("/add")
-        public String add(@Valid Empleado empleado,BindingResult res, Model m,SessionStatus status){
+        public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
             if(res.hasErrors()){
                 m.addAttribute("cargos", cargod.findAll());
                 return "empleado/creacion";
+            }
+            if(!imagen.isEmpty()){
+                Path director=Paths.get("src//main//resources//static/img");
+                String rutaAbs=director.toFile().getAbsolutePath();
+
+                try {
+                    byte[] bytesImg = imagen.getBytes();
+                    Path rutaCompleta=Paths.get(rutaAbs + "//"+ imagen.getOriginalFilename());
+                    Files.write(rutaCompleta, bytesImg);
+
+                    empleado.setFotoEmpleado(imagen.getOriginalFilename());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
             }
             empleadod.save(empleado);
             status.setComplete();
