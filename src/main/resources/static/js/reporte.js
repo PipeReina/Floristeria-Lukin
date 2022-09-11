@@ -1,15 +1,15 @@
 
 
 //practica para que los documentos esten cargados 
-document.addEventListtener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
     //incluir boton
-    const $boton=document.querySelector('btncrearpdf')
+    const $boton=document.querySelector('#btncrearpdf');
 //click del boton 
 $boton.addEventListener("click",()=>{
     //captura del documento
     const $elementoaconvertir= document.body;
     //incluir el archivo 
-    htmlpdf2()
+    html2pdf()
     .set({
         margin: 1,
         //nombre del documento que se le sugiere al ususario
@@ -26,7 +26,7 @@ $boton.addEventListener("click",()=>{
             scale:3,
             letterRendering:true,
         },
-        jspdf:{
+        jsPDF:{
             unit:"in",
             format:"a3",
             //normal vertical lansdscape en horizontal
@@ -38,12 +38,7 @@ $boton.addEventListener("click",()=>{
     //se guarda
     .save()
     //error
-    .catch(error=>console.log(error))
-    .finally()
-    .then(()=>{
-        //dentro del metodo then y generar un guardar
-        console.log("Reporte Guardado")
-    })
-})
+    .catch(error=>console.log(error));
+});
 
-})
+});
