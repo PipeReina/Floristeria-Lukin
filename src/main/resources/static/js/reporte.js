@@ -29,8 +29,8 @@ $boton.addEventListener("click",()=>{
         jsPDF:{
             unit:"in",
             format:"a3",
-            //normal vertical lansdscape en horizontal
-            orientation: 'portrait'
+            //normal vertical landscape en horizontal
+            orientation: 'landscape'
         }
     })
     //enviar el elemento para convertir 
