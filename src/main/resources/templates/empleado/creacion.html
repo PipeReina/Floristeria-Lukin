@@ -20,8 +20,8 @@
                     <div class="formulario_grupo" id="grupo_nombre">
                     <label class="rol">Nombre Empleado</label><br>
                     <div id="cargo_input">
-                    <input class="roltext1" name="NombreEmpleado" id="NombreEmpleado" th:field="*{NombreEmpleado}" placeholder="Andrea">
-                    <div th:if="${#fields.hasErrors('NombreEmpleado')}" th:errors="*{NombreEmpleado}"></div>
+                    <input class="roltext1" name="nombreEmpleado" id="nombreEmpleado" th:field="*{nombreEmpleado}" placeholder="Andrea">
+                    <div th:if="${#fields.hasErrors('nombreEmpleado')}" th:errors="*{nombreEmpleado}"></div>
                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">El Nombre tiene que estar ingresado, solo puede contener Letras.</p>
@@ -30,8 +30,8 @@
                     <div class="formulario_grupo" id="grupo_apellido">
                     <label class="rol">Apellido Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="ApellidoEmpleado" id="ApellidoEmpleado" th:field="*{ApellidoEmpleado}" placeholder="Rodriguez">
-                        <div th:if="${#fields.hasErrors('ApellidoEmpleado')}" th:errors="*{ApellidoEmpleado}"></div>
+                        <input class="roltext1" name="apellidoEmpleado" id="apellidoEmpleado" th:field="*{apellidoEmpleado}" placeholder="Rodriguez">
+                        <div th:if="${#fields.hasErrors('apellidoEmpleado')}" th:errors="*{apellidoEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">El Apellido tiene que estar ingresado, solo puede contener Letras.</p>
@@ -40,8 +40,8 @@
                     <div class="formulario_grupo" id="grupo_documento">
                         <label class="rol">Documento Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="DocEmpleado" id="DocEmpleado" th:field="*{DocEmpleado}" placeholder="12487596">
-                        <div th:if="${#fields.hasErrors('DocEmpleado')}" th:errors="*{DocEmpleado}"></div>
+                        <input class="roltext1" name="docEmpleado" id="docEmpleado" th:field="*{docEmpleado}" placeholder="12487596">
+                        <div th:if="${#fields.hasErrors('docEmpleado')}" th:errors="*{docEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">El Documento tiene que estar ingresado, solo puede contener numeros.</p>
@@ -50,8 +50,8 @@
                     <div class="formulario_grupo" id="grupo_eps">
                         <label class="rol">Eps Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="EpsEmpleado" id="EpsEmpleado" th:field="*{EpsEmpleado}" placeholder="SuperSalud">
-                        <div th:if="${#fields.hasErrors('EpsEmpleado')}" th:errors="*{EpsEmpleado}"></div>
+                        <input class="roltext1" name="epsEmpleado" id="epsEmpleado" th:field="*{epsEmpleado}" placeholder="SuperSalud">
+                        <div th:if="${#fields.hasErrors('epsEmpleado')}" th:errors="*{epsEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">La Eps tiene que estar ingresada, solo puede contener Letras y espacios.</p>
@@ -60,8 +60,8 @@
                     <div class="formulario_grupo" id="grupo_direcc">
                         <label class="rol">Direccion Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="DireccEmpleado" id="DireccEmpleado" th:field="*{DireccEmpleado}" placeholder="Av 150 # 78b">
-                        <div th:if="${#fields.hasErrors('DireccEmpleado')}" th:errors="*{DireccEmpleado}"></div>
+                        <input class="roltext1" name="direccEmpleado" id="direccEmpleado" th:field="*{direccEmpleado}" placeholder="Av 150 # 78b">
+                        <div th:if="${#fields.hasErrors('direccEmpleado')}" th:errors="*{direccEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">La direcccion tiene que estar ingresado, solo puede contener Letras, numeros y ciertos signos.</p>
@@ -69,19 +69,19 @@
                     <!-- generoEmpleado -->
                     <div class="formulario_grupo" id="grupo_genero">
                         <label class="rol">Genero Empleado</label><br>
-                        <select class="roltext1" name="GeneroEmpleado" id="GeneroEmpleado"  th:field="*{GeneroEmpleado}">
-                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Masculino">Masculino</option>
-                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Femenino">Femenino</option>
-                            <option id="GeneroEmpleado" class="roltext1" name="GeneroEmpleado" value="Otro">Otro</option>
+                        <select class="roltext1" name="generoEmpleado" id="generoEmpleado"  th:field="*{generoEmpleado}">
+                            <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Masculino">Masculino</option>
+                            <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Femenino">Femenino</option>
+                            <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Otro">Otro</option>
                         </select>
-                        <div th:if="${#fields.hasErrors('GeneroEmpleado')}" th:errors="*{GeneroEmpleado}"></div>
+                        <div th:if="${#fields.hasErrors('generoEmpleado')}" th:errors="*{generoEmpleado}"></div>
                     </div>
                     <!-- telefonoEmpleado -->
                     <div class="formulario_grupo" id="grupo_tel">
                         <label class="rol">Telefono Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="TelEmpleado" id="TelEmpleado" th:field="*{TelEmpleado}" placeholder="3201457846">
-                        <div th:if="${#fields.hasErrors('TelEmpleado')}" th:errors="*{TelEmpleado}"></div>
+                        <input class="roltext1" name="telEmpleado" id="telEmpleado" th:field="*{telEmpleado}" placeholder="3201457846">
+                        <div th:if="${#fields.hasErrors('telEmpleado')}" th:errors="*{telEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">El Telefono tiene que estar ingresado, solo puede contener numeros.</p>
@@ -90,7 +90,8 @@
                     <div class="formulario_grupo" id="grupo_email">
                         <label class="rol">Email Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="EmailEmpleado" id="EmailEmpleado" th:field="*{EmailEmpleado}" placeholder="andrea@correo.com">
+                        <input class="roltext1" name="emailEmpleado" id="emailEmpleado" th:field="*{emailEmpleado}" placeholder="andrea@correo.com">
+                        <div th:if="${#fields.hasErrors('emailEmpleado')}" th:errors="*{emailEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">El Email tiene que estar ingresado, solo puede contener Letras, numeros y ciertos signos.</p>
@@ -98,24 +99,24 @@
                     <!-- rhEmpleado -->
                     <div class="formulario_grupo" id="grupo_rh">
                         <label class="rol">Rh Empleado</label><br>
-                        <select class="roltext1" name="RhEmpleado" id="RhEmpleado"  th:field="*{RhEmpleado}">
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="A+">A+</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="A-">A-</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="B+">B+</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="B-">B-</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="AB+">AB+</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="AB-">AB-</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="O+">O+</option>
-                            <option id="RhEmpleado" class="roltext1" name="RhEmpleado" value="O-">O-</option>
+                        <select class="roltext1" name="rhEmpleado" id="rhEmpleado"  th:field="*{rhEmpleado}">
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="A+">A+</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="A-">A-</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="B+">B+</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="B-">B-</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="AB+">AB+</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="AB-">AB-</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="O+">O+</option>
+                            <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="O-">O-</option>
                         </select>
-                        <div th:if="${#fields.hasErrors('RhEmpleado')}" th:errors="*{RhEmpleado}"></div>
+                        <div th:if="${#fields.hasErrors('rhEmpleado')}" th:errors="*{rhEmpleado}"></div>
                     </div>
                     <!-- especialidadEmpleado -->
                     <div class="formulario_grupo" id="grupo_especial">
                         <label class="rol">Especialidad Empleado</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" name="EspecialidadEmpleado" id="EspecialidadEmpleado" th:field="*{EspecialidadEmpleado}" placeholder="Liquidacion Nominal">
-                        <div th:if="${#fields.hasErrors('EspecialidadEmpleado')}" th:errors="*{EspecialidadEmpleado}"></div>
+                        <input class="roltext1" name="especialidadEmpleado" id="especialidadEmpleado" th:field="*{especialidadEmpleado}" placeholder="Liquidacion Nominal">
+                        <div th:if="${#fields.hasErrors('especialidadEmpleado')}" th:errors="*{especialidadEmpleado}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
@@ -144,9 +145,9 @@
                         </div>
                             <br><label class="rol">Estado Empleado</label><br>
                             <div id="cargo_select">
-                            <select class="roltext1" name="EstadoEmpleado" id="EstadoEmpleado">
-                                <option id="EstadoEmpleado" class="roltext1" name="EstadoEmpleado" value="true">Activar</option>
-                                <option id="EstadoEmpleado" class="roltext1" name="EstadoEmpleado" value="false">Inactivar</option>
+                            <select class="roltext1" name="estadoEmpleado" id="estadoEmpleado">
+                                <option id="estadoEmpleado" class="roltext1" name="estadoEmpleado" value="true">Activar</option>
+                                <option id="estadoEmpleado" class="roltext1" name="estadoEmpleado" value="false">Inactivar</option>
                             </select>
                             <div>
                             <button type="submit" class="enviar" value="crear" name="accion">Enviar</button>

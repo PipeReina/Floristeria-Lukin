@@ -67,7 +67,7 @@ public class EmpleadoController {
     }
     @PostMapping("/add")
         public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
-            if(res.hasErrors()){
+            if(!res.hasErrors()){
                 System.out.println(res.hasErrors());
                 m.addAttribute("cargos", cargod.findAll());
                 m.addAttribute("empleado", empleado);

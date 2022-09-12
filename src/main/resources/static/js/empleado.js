@@ -24,7 +24,7 @@ const campos={
 
 const validarFormulario = (e) => {
     switch (e.target.name){
-        case "NombreEmpleado":
+        case "nombreEmpleado":
             if(expresiones.nombre.test(e.target.value)){
                 document.getElementById('grupo_nombre').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_nombre').classList.add('formulario_grupo-correcto');
@@ -41,7 +41,7 @@ const validarFormulario = (e) => {
                 campos['nombre'] = false;
             }
         break;
-        case "ApellidoEmpleado":
+        case "apellidoEmpleado":
             if(expresiones.nombre.test(e.target.value)){
                 document.getElementById('grupo_apellido').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_apellido').classList.add('formulario_grupo-correcto');
@@ -58,7 +58,7 @@ const validarFormulario = (e) => {
                 campos['apellido'] = false;
             }
           break;
-          case "DocEmpleado":
+          case "docEmpleado":
             if(expresiones.doc.test(e.target.value)){
                 document.getElementById('grupo_documento').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_documento').classList.add('formulario_grupo-correcto');
@@ -75,7 +75,7 @@ const validarFormulario = (e) => {
                 campos['documento'] = false;
             }
           break;
-          case "EpsEmpleado":
+          case "epsEmpleado":
             if(expresiones.nombre.test(e.target.value)){
                 document.getElementById('grupo_eps').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_eps').classList.add('formulario_grupo-correcto');
@@ -92,7 +92,7 @@ const validarFormulario = (e) => {
                 campos['eps'] = false;
             }
           break;
-          case "DireccEmpleado":
+          case "direccEmpleado":
             if(expresiones.direc.test(e.target.value)){
                 document.getElementById('grupo_direcc').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_direcc').classList.add('formulario_grupo-correcto');
@@ -109,7 +109,7 @@ const validarFormulario = (e) => {
                 campos['direcc'] = false;
             }
           break;
-          case "TelEmpleado":
+          case "telEmpleado":
             if(expresiones.doc.test(e.target.value)){
                 document.getElementById('grupo_tel').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_tel').classList.add('formulario_grupo-correcto');
@@ -126,7 +126,7 @@ const validarFormulario = (e) => {
                 campos['tel'] = false;
             }
           break;
-          case "EmailEmpleado":
+          case "emailEmpleado":
             if(expresiones.email.test(e.target.value)){
                 document.getElementById('grupo_email').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_email').classList.add('formulario_grupo-correcto');
@@ -143,7 +143,7 @@ const validarFormulario = (e) => {
                 campos['email'] = false;
             }
           break;
-          case "EspecialidadEmpleado":
+          case "especialidadEmpleado":
             if(expresiones.especial.test(e.target.value)){
                 document.getElementById('grupo_especial').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_especial').classList.add('formulario_grupo-correcto');
