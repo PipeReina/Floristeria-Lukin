@@ -2,7 +2,8 @@ package com.nomina.nomina1.controller;
 
 import javax.validation.Valid;
 
-
+import com.nomina.nomina1.model.Devengado;
+import com.nomina.nomina1.model.IDevengado;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.nomina.nomina1.model.Devengado;
-import com.nomina.nomina1.model.IDevengado;
-import com.nomina.nomina1.services.IEmpleadoService;
-
 
 
 @Controller
@@ -28,12 +25,10 @@ public class DevengadoController {
 
     @Autowired
     private IDevengado Devengadof;
-    @Autowired
-    private IEmpleadoService empleadof;
+    
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
-        m.addAttribute("empleado", empleadof.findAll());
         m.addAttribute("Devengados", Devengadof.findAll());
         return "Devengado/listar";    
     }
@@ -56,12 +51,10 @@ public class DevengadoController {
     public String verDevengado(@PathVariable Integer id,Model m){
     Devengado Devengado=null;
     if(id>0){
-        m.addAttribute("empleado", empleadof.findAll());
     Devengadof.findById(id);
     }else{
     return "redirect:listar";
     }
-    m.addAttribute("empleado", empleadof.findAll());
     m.addAttribute("Devengado",Devengado);
     m.addAttribute("accion", "Detalle Devengado");
     return "Devengado/verc";
@@ -75,7 +68,6 @@ public class DevengadoController {
         }else{
             return "redirect:listar";
         }
-        m.addAttribute("empleado", empleadof.findAll());
         m.addAttribute("Devengado",Devengado);
         m.addAttribute("accion", "Actualizar Devengado");
         return "Devengado/form";
@@ -84,7 +76,6 @@ public class DevengadoController {
     @GetMapping("/form")     
     public String form(Model m){
         Devengado Devengado=new Devengado();
-        m.addAttribute("empleado", empleadof.findAll());
         m.addAttribute("Devengado", Devengado);
         m.addAttribute("accion", "Agregar Devengado");
         return "Devengado/form"; 
@@ -94,7 +85,6 @@ public class DevengadoController {
     @PostMapping("/add")
     public String add(@Valid Devengado Devengado,BindingResult res, Model m,SessionStatus status){
         if(res.hasErrors()){
-            m.addAttribute("empleado", empleadof.findAll());
             return "Devengado/form";
         }
         /*m.addAttribute("Devengado",Devengado); 

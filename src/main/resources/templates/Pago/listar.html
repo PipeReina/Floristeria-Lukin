@@ -11,34 +11,38 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <title>pago</title>
 </head>
-<body class="monda">
-    <div class="container-fluid">
-        <a type="button"  th:href="@{../}" style="text-decoration:none">Atras</a>
-        <br><h1>Listado pago</h1>
-        <a type="button"  th:href="@{form}" style="text-decoration:none"><i class="bi bi-plus-circle"></i>Agregar</a>
-        <table id="datat">
+<body>
+    <!--<div class="body">
+        <section class="section">-->
+            <nav>
+                <div class="nav">
+                    <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{form}">   Creacion  </button></a>
+                    <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
+                  </div>
+            </nav>
+            <table id="datat">
             <thead>
-                <th>Id</th>
-                <th>Fecha</th>
-                <!--<th>Artista</th>-->
-                <th colspan="2">Acciones</th>
+                <th>Id Pago</th>
+                <th>Fecha Pago</th>
+                <th>Empleado Fk</th>
             </thead>
             <tbody>
-                <tr th:if="${pagos.size()>0}" th:each="p:${pagos}">
-                    <td th:text="${p.id}"></td>
-                    <td th:text="${p.fecha}"></td>
-                    <!--<td th:text="${p.artistas.nombre}"></td>-->
-                    <td> 
-                        <a role="button" class="btn text-warning btn-sm" th:href="@{/pago/ver/} + ${p.id}"> 
+                <tr th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
+                    <td th:text="${c.id}"></td>
+                    <td th:text="${c.fecha}"></td>
+                    <td th:text="${c.FKdevengado.id}"></td>
+                    <!--<td> 
+                        <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
                             <i class="bi bi-pencil"></i> 
 
                         </a> 
-                        <a role="button" class="btn text-danger btn-sm" th:href="@{/pago/delete/} + ${p.id}" onclick="return confirm('Estás seguro que quieres eliminar este genero?');"> 
+                        <a role="button" class="btn text-danger btn-sm" th:href="@{/Pago/delete/} + ${p.id}" onclick="return confirm('Estás seguro que quieres eliminar este genero?');"> 
                             <i class="bi bi-trash"></i> 
                         </a>
-                    </td>
+                    </td>-->
                 </tr>
             </tbody>
         </table>

@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nomina.nomina1.model.IPago;
 import com.nomina.nomina1.model.Pago;
-
-
+import com.nomina.nomina1.model.IPago;
 
 @Service
 public class PagoServiceImpl implements IPagoService{

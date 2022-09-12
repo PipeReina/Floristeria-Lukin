@@ -1,8 +1,13 @@
 package com.nomina.nomina1.controller;
 
-import java.util.List;
+//import java.util.List;
 
 import javax.validation.Valid;
+
+import com.nomina.nomina1.model.Pago;
+//import com.nomina.nomina1.model.Pago;
+import com.nomina.nomina1.model.IPago;
+//import com.nomina.nomina1.service.IPagoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.nomina.nomina1.model.Devengado;
-import com.nomina.nomina1.model.IPago;
-import com.nomina.nomina1.model.Pago;
-import com.nomina.nomina1.services.IDevengadoService;
-
 
 
 @Controller
@@ -29,8 +29,8 @@ public class PagoController {
 
     @Autowired
     private IPago Pagof;
-    @Autowired
-    private IDevengadoService Devengadof;
+    //@Autowired
+    //private IPagoService Pagof;
     
     
     @GetMapping(path={"/listar","","/"})
@@ -64,8 +64,6 @@ public class PagoController {
         }else{
             return "redirect:listar";
         }
-        List<Devengado> Devengado = Devengadof.findAll();
-        m.addAttribute("Devengado", Devengado);
         m.addAttribute("Pago",Pago);
         m.addAttribute("accion", "Actualizar Pago");
         return "Pago/form";
@@ -74,8 +72,6 @@ public class PagoController {
     @GetMapping("/form")     
     public String form(Model m){
         Pago Pago=new Pago();
-        List<Devengado> Devengado = Devengadof.findAll();
-        m.addAttribute("Devengado", Devengado);
         m.addAttribute("Pago", Pago);
         m.addAttribute("accion", "Agregar Pago");
         return "Pago/form"; 
@@ -87,12 +83,10 @@ public class PagoController {
         if(res.hasErrors()){
             return "Pago/form";
         }
-        /*m.addAttribute("Pago",Pago); 
-        return "Pago/verc";*/
         Pagof.save(Pago);
         status.setComplete();
         return "redirect:listar";
-    }    
+    }   
 
 
     @GetMapping("/delete/{id}")

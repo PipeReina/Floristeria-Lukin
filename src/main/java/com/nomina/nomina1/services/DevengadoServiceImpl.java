@@ -1,6 +1,5 @@
 package com.nomina.nomina1.services;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.nomina.nomina1.model.Devengado;
 import com.nomina.nomina1.model.IDevengado;
-
 
 @Service
 public class DevengadoServiceImpl implements IDevengadoService{

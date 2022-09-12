@@ -2,59 +2,56 @@ package com.nomina.nomina1.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name="pagos")
 public class Pago {
-
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty
-    @Size(min=10,max=10)
-    @Column(length = 4,nullable=false)
+    @Column(length = 10)
+    @Size (min=2, max=10)
     private String fecha;
-    /*@OneToMany(mappedBy = "pagos", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Devengado> devengados;
-	
-	public void setdevengados(List<Devengado> devengados) {
-		this.devengados = devengados;
-	}
-    */
-
-    //Constructores
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Pago FKdevengado;
+    
     public Pago() {
-    }
+    }    
 
-    public Pago(Integer id, @NotEmpty @Size(min = 4, max = 4) String fecha/*, List<Devengado> devengados*/) {
+    public Pago(Integer id, @NotEmpty @Size(min = 2, max = 10) String fecha, Pago fKdevengado) {
         this.id = id;
         this.fecha = fecha;
-        /*this.devengados = devengados;*/
+        FKdevengado = fKdevengado;
     }
 
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getfecha() {
+    public String getFecha() {
         return fecha;
     }
-
-    public void setfecha(String fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
-    }  
+    }
 
+    public Pago getFKdevengado() {
+        return FKdevengado;
+    }
 
+    public void setFKdevengado(Pago fKdevengado) {
+        FKdevengado = fKdevengado;
+    }
 }
