@@ -6,8 +6,7 @@
     width: 100%;
     display: grid;
     align-items: center;
-    background-image: url(../img/fondoBody.jpg);
-    background-size: cover;
+
     grid-template-columns: 30% 40% 30%;
   }
 .formulario{

@@ -26,12 +26,12 @@ public class DevengadoServiceImpl implements IDevengadoService{
     }
 
     @Override
-    public Devengado findOne(Integer id) {
-        return Devengadof.findById(id).orElse(null);
+    public Devengado findOne(Integer idDev) {
+        return Devengadof.findById(idDev).orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
-        Devengadof.deleteById(id);
+    public void delete(Integer idDev) {
+        Devengadof.deleteById(idDev);
     }
 }

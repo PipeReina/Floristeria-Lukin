@@ -13,12 +13,12 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="devengados")
+@Table(name="devengado")
 public class Devengado {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idDDev;
+    private Integer idDev;
     @NotNull
     private Double totalDev;
     @NotEmpty
@@ -32,20 +32,20 @@ public class Devengado {
 
     }
 
-    public Devengado(Integer idDDev, @NotNull Double totalDev, @NotEmpty @Size(min = 10, max = 10) String fechaDev,
+    public Devengado(Integer idDev, @NotNull Double totalDev, @NotEmpty @Size(min = 10, max = 10) String fechaDev,
             Empleado fKempleado) {
-        this.idDDev = idDDev;
+        this.idDev = idDev;
         this.totalDev = totalDev;
         this.fechaDev = fechaDev;
         FKempleado = fKempleado;
     }
 
-    public Integer getIdDDev() {
-        return idDDev;
+    public Integer getIdDev() {
+        return idDev;
     }
 
-    public void setIdDDev(Integer idDDev) {
-        this.idDDev = idDDev;
+    public void setIdDev(Integer idDev) {
+        this.idDev = idDev;
     }
 
     public Double getTotalDev() {

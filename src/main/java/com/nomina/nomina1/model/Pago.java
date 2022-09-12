@@ -1,5 +1,7 @@
 package com.nomina.nomina1.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,39 +14,42 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="pagos")
+@Table(name="pago")
 public class Pago {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idPago;
     @NotEmpty
     @Column(length = 10)
     @Size (min=2, max=10)
-    private String fecha;
+    private Date fechaPago;
     @ManyToOne(fetch = FetchType.LAZY)
     private Pago FKdevengado;
     
     public Pago() {
-    }    
+    }
 
-    public Pago(Integer id, @NotEmpty @Size(min = 2, max = 10) String fecha, Pago fKdevengado) {
-        this.id = id;
-        this.fecha = fecha;
+    public Pago(Integer idPago, Date fechaPago, Pago fKdevengado) {
+        this.idPago = idPago;
+        this.fechaPago = fechaPago;
         FKdevengado = fKdevengado;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdPago() {
+        return idPago;
     }
-    public void setId(Integer id) {
-        this.id = id;
+
+    public void setIdPago(Integer idPago) {
+        this.idPago = idPago;
     }
-    public String getFecha() {
-        return fecha;
+
+    public Date getFechaPago() {
+        return fechaPago;
     }
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+
+    public void setFechaPago(Date fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public Pago getFKdevengado() {
@@ -54,4 +59,6 @@ public class Pago {
     public void setFKdevengado(Pago fKdevengado) {
         FKdevengado = fKdevengado;
     }
+
+    
 }

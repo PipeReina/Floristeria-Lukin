@@ -31,11 +31,10 @@
             </thead>
             <tbody>
                 <tr th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
-                    <td th:text="${c.id}"></td>
-                    <td th:text="${c.fecha}"></td>
-                    <td th:text="${c.FKdevengado.idDDev}"></td>
-                    <!--<td> 
-                        <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
+                    <td th:text="${c.idPago}"></td>
+                    <td th:text="${c.fechaPago}"></td>
+                    <td th:text="${c.FKdevengado.idDev}"></td>
+                        <!-- <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
                             <i class="bi bi-pencil"></i> 
 
                         </a> 

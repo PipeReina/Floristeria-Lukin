@@ -7,6 +7,6 @@ import com.nomina.nomina1.model.Pago;
 public interface IPagoService {
     public List<Pago> findAll();
     public void save (Pago Pago);
-    public Pago findOne(Integer id);
-    public void delete(Integer id);
+    public Pago findOne(Integer idPago);
+    public void delete(Integer idPago);
 }

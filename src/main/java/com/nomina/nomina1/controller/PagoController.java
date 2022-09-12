@@ -35,7 +35,7 @@ public class PagoController {
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
-        m.addAttribute("Pagos", Pagof.findAll());
+        m.addAttribute("Pago", Pagof.findAll());
         m.addAttribute("Devengados", Devengadof.findAll());
         return "Pago/listar";    
     }

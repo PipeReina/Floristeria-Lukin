@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="icon" th:href="@{/img/favicon.ico}">
     <title>Devengado</title>
 </head>
 <body>
@@ -32,7 +33,7 @@
             </thead>
             <tbody>
                 <tr th:if="${Devengados.size()>0}" th:each="c:${Devengados}">
-                    <td th:text="${c.idDDev}"></td>
+                    <td th:text="${c.idDev}"></td>
                     <td th:text="${c.totalDev}"></td>
                     <td th:text="${c.fechaDev}"></td>
                     <td th:text="${c.FKempleado.NombreEmpleado}"></td>

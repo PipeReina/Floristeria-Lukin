@@ -26,12 +26,12 @@ public class PagoServiceImpl implements IPagoService{
     }
 
     @Override
-    public Pago findOne(Integer id) {
-        return Pagof.findById(id).orElse(null);
+    public Pago findOne(Integer idPago) {
+        return Pagof.findById(idPago).orElse(null);
     }
 
     @Override
-    public void delete(Integer id) {
-        Pagof.deleteById(id);
+    public void delete(Integer idPago) {
+        Pagof.deleteById(idPago);
     }
 }
