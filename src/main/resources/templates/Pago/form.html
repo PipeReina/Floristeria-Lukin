@@ -29,10 +29,11 @@
                         </div>  
                         <br>
                         <div class="form-group">
+                            <label class="rol"> Devengado FK</label><br>
                             <select th:field="*{FKdevengado}">
-                                <option value="">Seleccione</option>
-                                <th:block th:each="dev:${devengados}">
-                                    <option th:text="${dev.id}" th:value="${dev.id}"></option>
+                                <option value="">Seleccione </option>
+                                <th:block th:each="c:${Devengados}">
+                                    <option th:text="${c.idDDev}" th:value="${c.idDDev}"></option>
                                 </th:block>
                             </select>
                         </div>

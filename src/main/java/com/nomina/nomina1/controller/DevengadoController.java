@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import com.nomina.nomina1.services.IEmpleadoService;
 
 
 
@@ -25,11 +26,13 @@ public class DevengadoController {
 
     @Autowired
     private IDevengado Devengadof;
-    
+    @Autowired
+    private IEmpleadoService empleadod;
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
         m.addAttribute("Devengados", Devengadof.findAll());
+        m.addAttribute("empleado", empleadod.findAll());
         return "Devengado/listar";    
     }
 
@@ -64,6 +67,7 @@ public class DevengadoController {
     public String ver(@PathVariable Integer id,Model m){
         Devengado Devengado=null;
         if(id>0){
+            m.addAttribute("empleado", empleadod.findAll());
             Devengadof.findById(id);
         }else{
             return "redirect:listar";
@@ -76,6 +80,7 @@ public class DevengadoController {
     @GetMapping("/form")     
     public String form(Model m){
         Devengado Devengado=new Devengado();
+         m.addAttribute("empleado", empleadod.findAll());
         m.addAttribute("Devengado", Devengado);
         m.addAttribute("accion", "Agregar Devengado");
         return "Devengado/form"; 
@@ -85,6 +90,7 @@ public class DevengadoController {
     @PostMapping("/add")
     public String add(@Valid Devengado Devengado,BindingResult res, Model m,SessionStatus status){
         if(res.hasErrors()){
+             m.addAttribute("empleado", empleadod.findAll());
             return "Devengado/form";
         }
         /*m.addAttribute("Devengado",Devengado); 

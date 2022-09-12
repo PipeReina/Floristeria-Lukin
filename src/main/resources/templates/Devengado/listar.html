@@ -32,9 +32,9 @@
             </thead>
             <tbody>
                 <tr th:if="${Devengados.size()>0}" th:each="c:${Devengados}">
-                    <td th:text="${c.id}"></td>
-                    <td th:text="${c.total}"></td>
-                    <td th:text="${c.fecha}"></td>
+                    <td th:text="${c.idDDev}"></td>
+                    <td th:text="${c.totalDev}"></td>
+                    <td th:text="${c.fechaDev}"></td>
                     <td th:text="${c.FKempleado.NombreEmpleado}"></td>
                     <!--<td> 
                         <a role="button" class="btn text-warning btn-sm" th:href="@{/Devengado/ver/} + ${dev.id}"> 

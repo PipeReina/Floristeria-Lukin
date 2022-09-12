@@ -1,9 +1,5 @@
 package com.nomina.nomina1.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,54 +18,50 @@ public class Devengado {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idDDev;
     @NotNull
-    private Double total;
+    private Double totalDev;
     @NotEmpty
     @Size(min=10,max=10)
     @Column(length = 4,nullable=false)
-    private String fecha;
+    private String fechaDev;
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado FKempleado;
     
-    @OneToMany(mappedBy = "FKdevengado", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Pago> FKpago;
-
     public Devengado(){
-        FKpago=new ArrayList<Pago>();
+
     }
 
-    public Devengado(Integer id, @NotNull Double total, @NotEmpty @Size(min = 10, max = 10) String fecha,
-            Empleado fKempleado, List<Pago> fKpago) {
-        this.id = id;
-        this.total = total;
-        this.fecha = fecha;
+    public Devengado(Integer idDDev, @NotNull Double totalDev, @NotEmpty @Size(min = 10, max = 10) String fechaDev,
+            Empleado fKempleado) {
+        this.idDDev = idDDev;
+        this.totalDev = totalDev;
+        this.fechaDev = fechaDev;
         FKempleado = fKempleado;
-        FKpago = fKpago;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdDDev() {
+        return idDDev;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdDDev(Integer idDDev) {
+        this.idDDev = idDDev;
     }
 
-    public Double getTotal() {
-        return total;
+    public Double getTotalDev() {
+        return totalDev;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
+    public void setTotalDev(Double totalDev) {
+        this.totalDev = totalDev;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFechaDev() {
+        return fechaDev;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFechaDev(String fechaDev) {
+        this.fechaDev = fechaDev;
     }
 
     public Empleado getFKempleado() {
@@ -81,13 +72,6 @@ public class Devengado {
         FKempleado = fKempleado;
     }
 
-    public List<Pago> getFKpago() {
-        return FKpago;
-    }
-
-    public void setFKpago(List<Pago> fKpago) {
-        FKpago = fKpago;
-    }
-
+    
     
 }

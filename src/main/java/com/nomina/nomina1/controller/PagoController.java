@@ -5,9 +5,7 @@ package com.nomina.nomina1.controller;
 import javax.validation.Valid;
 
 import com.nomina.nomina1.model.Pago;
-//import com.nomina.nomina1.model.Pago;
 import com.nomina.nomina1.model.IPago;
-//import com.nomina.nomina1.service.IPagoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.nomina.nomina1.services.IDevengadoService;
+
 
 
 @Controller
@@ -29,13 +29,14 @@ public class PagoController {
 
     @Autowired
     private IPago Pagof;
-    //@Autowired
-    //private IPagoService Pagof;
+    @Autowired
+    private IDevengadoService Devengadof;
     
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
         m.addAttribute("Pagos", Pagof.findAll());
+        m.addAttribute("Devengados", Devengadof.findAll());
         return "Pago/listar";    
     }
 
@@ -60,6 +61,7 @@ public class PagoController {
     public String ver(@PathVariable Integer id,Model m){
         Pago Pago=null;
         if(id>0){
+            m.addAttribute("Devengados", Devengadof.findAll());
             Pagof.findById(id);
         }else{
             return "redirect:listar";
@@ -73,6 +75,7 @@ public class PagoController {
     public String form(Model m){
         Pago Pago=new Pago();
         m.addAttribute("Pago", Pago);
+        m.addAttribute("Devengados", Devengadof.findAll());
         m.addAttribute("accion", "Agregar Pago");
         return "Pago/form"; 
     }
@@ -81,6 +84,7 @@ public class PagoController {
     @PostMapping("/add")
     public String add(@Valid Pago Pago,BindingResult res, Model m,SessionStatus status){
         if(res.hasErrors()){
+            m.addAttribute("Devengados", Devengadof.findAll());
             return "Pago/form";
         }
         Pagof.save(Pago);
