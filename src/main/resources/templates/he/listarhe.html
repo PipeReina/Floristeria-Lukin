@@ -30,7 +30,6 @@
                 <th>Estado</th>
                 <th colspan="2">Acciones</th>
             </thead>
-            </html>
             <tbody>
                 <tr th:if="${hse.size()>0}" th:each="c:${hse}">
                     <td th:text="${c.idHorasExtra}"></td>
@@ -62,7 +61,7 @@
             </tbody>
         </table>
     </div>
-
+    <section>
     <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
     <script th:src="@{../js/reporte.js}"></script>
     

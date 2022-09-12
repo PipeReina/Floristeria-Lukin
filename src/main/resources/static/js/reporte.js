@@ -17,13 +17,13 @@ $boton.addEventListener("click",()=>{
 
         //tipo e imagen y calidad
         image:{
-            type:'jpeg',
+            type:'pdf',
             quality:0.98
         },
         //opciones para la libreria de canvas
         html2canvas:{
             //entre mayor escala mayor calidad pero pesara mas
-            scale:3,
+            scale:4,
             letterRendering:true,
         },
         jsPDF:{
