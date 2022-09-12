@@ -32,7 +32,7 @@ public class Empleado {
     @Column(name="epsEmpleado", length=20)
     private String epsEmpleado;
     @NotEmpty    
-    @Column(name="direccEmpleado", length = 100)
+    @Column(name="direccEmpleado", length = 200)
     private String direccEmpleado;
     @NotEmpty    
     @Column(name="generoEmpleado", length=20)
@@ -49,7 +49,6 @@ public class Empleado {
     @NotEmpty    
     @Column(name="especialidadEmpleado", length=50)
     private String especialidadEmpleado;
-    @NotEmpty    
     @Column(name="fotoEmpleado", length=100000000)
     private String fotoEmpleado;
     @Column(name="estadoEmpleado") 
@@ -64,7 +63,7 @@ public class Empleado {
     public Empleado(Integer idEmpleado, @NotEmpty String nombreEmpleado, @NotEmpty String apellidoEmpleado,
             @NotEmpty String docEmpleado, @NotEmpty String epsEmpleado, @NotEmpty String direccEmpleado,
             @NotEmpty String generoEmpleado, @NotEmpty String telEmpleado, @NotEmpty String emailEmpleado,
-            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, @NotEmpty String fotoEmpleado,
+            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, String fotoEmpleado,
             Boolean estadoEmpleado, Cargo fKcargo) {
         this.idEmpleado = idEmpleado;
         this.nombreEmpleado = nombreEmpleado;

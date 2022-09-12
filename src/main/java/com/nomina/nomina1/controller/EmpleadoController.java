@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
-import org.apache.catalina.startup.ClassLoaderFactory.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -70,11 +68,13 @@ public class EmpleadoController {
     @PostMapping("/add")
         public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
             if(res.hasErrors()){
+                System.out.println(res.hasErrors());
                 m.addAttribute("cargos", cargod.findAll());
+                m.addAttribute("empleado", empleado);
                 return "empleado/creacion";
             }
             if(!imagen.isEmpty()){
-                Path director=Paths.get("src//main//resources//static/img");
+                Path director=Paths.get("src//main//resources//static//img");
                 String rutaAbs=director.toFile().getAbsolutePath();
 
                 try {

@@ -1,6 +1,6 @@
 package com.nomina.nomina1.services;
 import java.util.List;
-import java.util.Optional;
+// import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,14 +34,14 @@ public class EmpleadoServicelmps implements IEmpleadoService{
         empleadod.deleteById(idEmpleado);
     }
     
-    private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
-        Optional <Empleado> userFound = repository.findByEmailEmpleado(empleado.getEmailEmpleado());
-   }
-    private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
-        Optional <Empleado> userFound = repository.findByDocEmpleado(empleado.getDocEmpleado());
-   }
-    private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
-        Optional <Empleado> userFound = repository.findByTelEmpleado(empleado.getTelEmpleado());
-   }
+//     private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
+//         Optional <Empleado> userFound = repository.findByEmailEmpleado(empleado.getEmailEmpleado());
+//    }
+//     private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
+//         Optional <Empleado> userFound = repository.findByDocEmpleado(empleado.getDocEmpleado());
+//    }
+//     private boolean checkUsernameAvailable(Empleado empleado) throws Exception {
+//         Optional <Empleado> userFound = repository.findByTelEmpleado(empleado.getTelEmpleado());
+//    }
 
 }
