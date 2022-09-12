@@ -16,6 +16,7 @@
     <section class="section">
         <nav>
             <div class="nav">
+            <button id="btncrearpdf"><a>Generar pdf</button></a>
             <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{/comision/formcom}">   Creacion  </button></a>
             <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
             </div>
@@ -63,5 +64,7 @@
             </tbody>
         </table>
     </div>
+    <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
+    <script th:src="@{../js/reporte.js}"></script>
 </body>
 </html>
