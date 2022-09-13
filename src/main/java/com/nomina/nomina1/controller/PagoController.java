@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.nomina.nomina1.services.IDevengadoService;
+import com.nomina.nomina1.services.IPagoService;
 
 
 
@@ -28,14 +29,14 @@ import com.nomina.nomina1.services.IDevengadoService;
 public class PagoController {
 
     @Autowired
-    private IPago Pagof;
+    private IPagoService Pagof;
     @Autowired
     private IDevengadoService Devengadof;
     
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
-        m.addAttribute("Pago", Pagof.findAll());
+        m.addAttribute("Pagos", Pagof.findAll());
         m.addAttribute("Devengados", Devengadof.findAll());
         return "Pago/listar";    
     }
@@ -62,7 +63,7 @@ public class PagoController {
         Pago Pago=null;
         if(id>0){
             m.addAttribute("Devengados", Devengadof.findAll());
-            Pagof.findById(id);
+            Pagof.findOne(id);
         }else{
             return "redirect:listar";
         }
@@ -97,7 +98,7 @@ public class PagoController {
     public String delete(@PathVariable Integer id) {
 		
 		if(id > 0) {
-			Pagof.deleteById(id);
+			Pagof.delete(id);
 		}
 		return "redirect:../listar";
 	}

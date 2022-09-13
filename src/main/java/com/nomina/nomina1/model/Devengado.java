@@ -1,5 +1,8 @@
 package com.nomina.nomina1.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,10 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="devengado")
@@ -21,24 +23,31 @@ public class Devengado {
     private Integer idDev;
     @NotNull
     private Double totalDev;
-    @NotEmpty
-    @Size(min=10,max=10)
-    @Column(length = 4,nullable=false)
-    private String fechaDev;
+    @Column(length = 10)
+    private String fechaDev=getFechaActual();
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado FKempleado;
-    
+    @OneToOne(mappedBy = "FKdevengado")
+    private Pago FKpago;
     public Devengado(){
 
     }
 
-    public Devengado(Integer idDev, @NotNull Double totalDev, @NotEmpty @Size(min = 10, max = 10) String fechaDev,
-            Empleado fKempleado) {
+    public static String getFechaActual() {
+        Date ahora = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
+        return formateador.format(ahora);
+    }
+    
+
+    public Devengado(Integer idDev, @NotNull Double totalDev, String fechaDev, Empleado fKempleado) {
         this.idDev = idDev;
         this.totalDev = totalDev;
         this.fechaDev = fechaDev;
         FKempleado = fKempleado;
     }
+
+
 
     public Integer getIdDev() {
         return idDev;

@@ -32,7 +32,7 @@
                             <select th:field="*{FKdevengado}">
                                 <option value="">Seleccione </option>
                                 <th:block th:each="c:${Devengados}">
-                                    <option th:text="${c.idDev}" th:value="${c.idDev}"></option>
+                                    <option th:text="${c.idDev} + ${c.fechaDev}" th:value="${c.idDev}"></option>
                                 </th:block>
                             </select>
                         </div>
