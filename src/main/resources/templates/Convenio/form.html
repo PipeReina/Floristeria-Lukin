@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="icon" th:href="@{/img/favicon.ico}">
-    <title>Devengado</title>
+    <title>Convenio</title>
 </head>
 <body>
     <div class="body">
@@ -15,29 +15,38 @@
             <div class="formu1">
                 <div class="formu2">
                     <a type="button"  th:href="@{listar}" style="text-decoration:none">Atras</a>
-                    <form th:action="@{/Devengado/add}" method="post" th:object="${Devengado}" style="width: 35rem;" class="mx-auto" id="formulario">
+                    <form th:action="@{/Convenio/add}" method="post" th:object="${Convenio}" style="width: 35rem;" class="mx-auto" id="formulario">
 
-                        <!-- Total Pago -->
-                        <div class="formulario_grupo" id="grupo_totalDev">
-                            <label class="rol">Total Devengado</label><br>
+                        <!-- Hora Convenio -->
+                        <div class="formulario_grupo" id="grupo_horaConvenio">
+                            <label class="rol">Hora Convenio</label><br>
                         <div id="cargo_input">
-                            <input class="roltext1" name="totalDev" id="totalDev" th:field="*{totalDev}" placeholder="Liquidacion Nominal">
-                            <div th:if="${#fields.hasErrors('totalDev')}" th:errors="*{totalDev}"></div>
+                            <input class="roltext1" type="number" name="horaConvenio" id="horaConvenio" th:field="*{horaConvenio}" placeholder="Horas Mensauales">
+                            <div th:if="${#fields.hasErrors('horaConvenio')}" th:errors="*{horaConvenio}"></div>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
                             <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
                         </div>
-                        <!-- FechaPago -->
-                        <br>
-                        <div class="formulario_grupo" id="grupo_fechaDev">
-                            <label class="rol">Fecha</label><br>
+                        <!-- Disas Convenio -->
+                        <div class="formulario_grupo" id="grupo_diasConvenio">
+                            <label class="rol">Días</label><br>
                         <div id="cargo_input">
-                            <input class="roltext1" type="date" name="fechaDev" id="fechaDev" th:field="*{fechaDev}">
-                            <div class="form-text text-danger" th:if="${#fields.hasErrors('fechaDev')}"
-                            th:errors="*{fechaDev}"></div>
+                            <input class="roltext1" type="number" name="diasConvenio" id="diasConvenio" th:field="*{diasConvenio}"  placeholder="Dias Mensauales">
+                            <div class="form-text text-danger" th:if="${#fields.hasErrors('diasConvenio')}"
+                            th:errors="*{diasConvenio}"></div>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
-                            <p class="formulario__input-error">El fechaDev tiene que estar ingresado, solo puede contener Letras.</p>
+                            <p class="formulario__input-error">El diasConvenio tiene que estar ingresado, solo puede contener Letras.</p>
+                    </div>
+                    <div class="formulario_grupo" id="grupo_salarioConvenio">
+                        <label class="rol">Salario</label><br>
+                    <div id="cargo_input">
+                        <input class="roltext1" type="number" name="salarioConvenio" id="salarioConvenio" th:field="*{salarioConvenio}"  placeholder="Salario Mensauales">
+                        <div class="form-text text-danger" th:if="${#fields.hasErrors('salarioConvenio')}"
+                        th:errors="*{salarioConvenio}"></div>
+                        <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>
+                        <p class="formulario__input-error">El salarioConvenio tiene que estar ingresado, solo puede contener Letras.</p>
                     </div>
                         <div class="form-group">
                             <label class="rol"> Empleado FK</label><br>
@@ -48,9 +57,9 @@
                                 </th:block>
                             </select>
                         </div>
-                        <div class="formulario__mensaje" id="formulario__mensaje">
+                        <!-- <div class="formulario__mensaje" id="formulario__mensaje">
                             <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
-                        </div>
+                        </div> -->
                         <div>
                             <a><button type="submit" class="btn col-3" style="text-decoration:none">Guardar</button></a>
                         </div>
@@ -59,7 +68,7 @@
             </div>
         </section>
     </div>
-    <script th:src="@{../js/devengado.js}"></script>
+    <script th:src="@{../js/Convenio.js}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 </html>

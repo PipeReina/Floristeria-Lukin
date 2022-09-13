@@ -1,81 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="https://wwww.thymeleaf.org" lang="es">
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
 <head>
-    <meta chdevset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="icon" th:href="@{/img/favicon.ico}">
     <title>Incapacidad</title>
 </head>
 <body>
-    <!-- <div class="body">
-        <section class="section"> -->
-            <nav>
-                <div class="nav">
-                    <button id="menu"><i class="fi fi-rr-add"></i><a th:href="@{form}">   Creacion  </button></a>
-                    <button id="regresar"><i class="fi fi-sr-rewind"></i><a th:href="@{/index}">   Regresar</button></a>
-                  </div>
-            </nav>
-            <table id="datat">
-            <thead>
-                <th>Id Incapacidad</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Final</th>
-                <th>Soporte</th>
-                <th>Fk Empleado<th>
-                <th>Acciones</th>
-            </thead>
-            <tbody>
-                <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
-                    <td th:text="${c.idIncapacidad}"></td>
-                    <td th:text="${c.fechaInicio}"></td>
-                    <td th:text="${c.fechaFinal}"></td>
-                    <td th:text="${c.soporteIncapacidad}"></td>
-                    <td th:text="${c.FKempleado.NombreEmpleado}"></td>
-                    <td th:if="${c.estadoIncapacidad==true}" id="activo">
-                        <span class="badge bg-success active">Activo</span>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==false}" id="inactivo">
-                        <span class="badge bg-danger active">Inactivo</span>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==true}" id="estadoboton">
-                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}"><button>Inactivar</button></a>
-                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                            <button onclick="return confirm('¿Estas seguro de Editar el Incapacidad?');"><i class="fi fi-rr-edit"></i></button></a>
-                        <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/eliminar/}+${c.idIncapacidad}" > 
-                            <button onclick="return confirm('¿Estas seguro de Eliminar el Incapacidad?');"><i class="fi fi-rr-trash"></i></button>
-                            </a>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==false}" id="estadoboton">
-                        <a rol="button" class="btn btn-success btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}"><button>Activar</button></a>
-                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                            <button onclick="return confirm('¿Estas seguro de Editar el Incapacidad?');"><i class="fi fi-rr-edit"></i></button></a>
-                        <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/eliminar/}+${c.idIncapacidad}" > 
-                            <button onclick="return confirm('¿Estas seguro de Eliminar el Incapacidad?');"><i class="fi fi-rr-trash"></i></button>
-                            </a>
-                        </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <script>
+    <div class="body">
+        <section class="section">
+                <h1>Registrar</h1>
+            <div class="formu1">
+                <div class="formu2">
+                    <a type="button"  th:href="@{listar}" style="text-decoration:none">Atras</a>
+                    <form th:action="@{/Incapacidad/add}" method="post" th:object="${Incapacidad}" style="width: 35rem;" class="mx-auto" id="formulario">
 
-        var datat=document.querySelector("#datat"); 
-        var dataTable=new DataTable("#datat",{ 
-          perPage:10,
-          labels: {
-              placeholder: "Busca por un campo...",
-              perPage: "{select} registros por página",
-              noRows: "No se encontraron registros",
-              info: "Mostrando {start} a {end} de {rows} registros",
-          }
-        } ) ;
-        
-        
-        </script>
-    
+                        <!-- FechaInicio -->
+                        <div class="formulario_grupo" id="grupo_fechaInicio">
+                            <label class="rol">Fecha Inicio</label><br>
+                        <div id="cargo_input"> 
+                            <input class="roltext1" type="date" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Liquidacion Nominal">
+                            <div th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                            <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                        </div>
+                        <!-- FechaFinal -->
+                        <br>
+                        <div class="formulario_grupo" id="grupo_fechaFinal">
+                            <label class="rol">Fecha Final</label><br>
+                        <div id="cargo_input"> 
+                            <input class="roltext1" type="date" name="fechaFinal" id="fechaFinal" th:field="*{fechaFinal}" placeholder="Liquidacion Nominal">
+                            <div th:if="${#fields.hasErrors('fechaFinal')}" th:errors="*{fechaFinal}"></div>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                            <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                        </div>
+                        <!-- EmpleadoEK -->
+                        <div class="form-group">
+                            <label class="rol"> Empleado FK</label><br>
+                            <select th:field="*{FKempleado}">
+                                <option value="">Seleccione </option>
+                                <th:block th:each="c:${empleado}">
+                                    <option th:text="${c.nombreEmpleado}" th:value="${c.idEmpleado}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+                        </div>
+                        <!-- soporteIncapacidad -->
+                        <div class="formulario_grupo" id="grupo_soporteIncapacidad">
+                            <label class="rol">Soporte Empleado</label><br>
+                        <div id="cargo_input">
+                            <input type="file" accept=".pdf" name="soporteIncapacidad" id="soporteIncapacidad" th:field="*{soporteIncapacidad}">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                         </div>
+                             <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                        </div>
+                            <br><label class="rol">Estado Empleado</label><br>
+                            <div id="cargo_select">
+                            <select class="roltext1" name="estadoIncapacidad" id="estadoIncapacidad">
+                                <option id="estadoIncapacidad" class="roltext1" name="estadoIncapacidad" value="true">Activar</option>
+                                <option id="estadoIncapacidad" class="roltext1" name="estadoIncapacidad" value="false">Inactivar</option>
+                            </select>
+                            <div>
+                        <div>
+                            <a><button type="submit" class="btn col-3" style="text-decoration:none">Guardar</button></a>
+                        </div>
+                    </form>        
+                </div>
+            </div>
+        </section>
+    </div>
+    <script th:src="@{../js/incapacidad.js}"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 </html>
+
+    

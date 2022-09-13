@@ -14,6 +14,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.ui.Model;
 
 import com.nomina.nomina1.services.IEmpleadoService;
+import com.nomina.nomina1.services.IIncapacidadService;
 import com.nomina.nomina1.model.Incapacidad;
 import com.nomina.nomina1.model.IIncapacidad;
 
@@ -25,7 +26,7 @@ import com.nomina.nomina1.model.IIncapacidad;
 public class IncapacidadController {
 
     @Autowired
-    private IIncapacidad Incapacidadf;
+    private IIncapacidadService Incapacidadf;
     @Autowired
     private IEmpleadoService empleadod;
     
@@ -55,14 +56,14 @@ public class IncapacidadController {
         Incapacidad Incapacidad=null;
         if(id>0){
             m.addAttribute("empleado", empleadod.findAll());
-            Incapacidadf.findById(id);
+            Incapacidad=Incapacidadf.findOne(id);
         }else{
             return "redirect:listar";
         }
         m.addAttribute("empleado", empleadod.findAll());
-        m.addAttribute("Incapacidads", Incapacidad);
+        m.addAttribute("Incapacidad", Incapacidad);
         m.addAttribute("accion", "Actualizar Incapacidad");
-        return "Incapacidad/f";
+        return "Incapacidad/edit";
     }
 
     @GetMapping("/form")     
@@ -87,31 +88,24 @@ public class IncapacidadController {
         status.setComplete();
         return "redirect:listar";
     }    
-    // @GetMapping("/estado/{idIncapacidad}")
-    // public String estado(@PathVariable Integer idIncapacidad,Model m){
-    //     Incapacidad incapacidad=null;
-    //     incapacidad=Incapacidadf.findOne(idIncapacidad);
-    //     if(incapacidad.getEstadoIncapacidad()==true){
-    //         incapacidad.setEstadoIncapacidad(false);
-    //    }else if (incapacidad.getEstadoIncapacidad()==false){
-    //     incapacidad.setEstadoIncapacidad(true);
-    //    }
-    //    Incapacidadf.save(incapacidad);
-    //    return "redirect:../";
-    // }
-
-    // @GetMapping("/eliminar/{id}")
-    // public String delete(@PathVariable Integer idIncapacidad) {
-	// 	if(idIncapacidad > 0) {
-    //         Incapacidadf.delete(idIncapacidad);
-	// 	}
-	// 	return "redirect:../listar";
-	// }
+    @GetMapping("/estado/{idIncapacidad}")
+     public String estado(@PathVariable Integer idIncapacidad,Model m){
+         Incapacidad incapacidad=null;
+         incapacidad=Incapacidadf.findOne(idIncapacidad);
+         if(incapacidad.getEstadoIncapacidad()==true){
+             incapacidad.setEstadoIncapacidad(false);
+        }else if (incapacidad.getEstadoIncapacidad()==false){
+         incapacidad.setEstadoIncapacidad(true);
+        }
+        Incapacidadf.save(incapacidad);
+        return "redirect:../";
+     }
+     
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
 		
 		if(id > 0) {
-			Incapacidadf.deleteById(id);
+			Incapacidadf.delete(id);
 		}
 		return "redirect:../listar";
 	}
