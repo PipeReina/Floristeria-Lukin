@@ -5,8 +5,6 @@ package com.nomina.nomina1.controller;
 import javax.validation.Valid;
 
 import com.nomina.nomina1.model.Pago;
-import com.nomina.nomina1.model.IPago;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
