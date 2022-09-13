@@ -137,7 +137,7 @@
                         <div class="formulario_grupo" id="grupo_foto">
                             <label class="rol">Foto Empleado</label><br>
                             <div id="cargo_input">
-                                <input type="file" accept="image/*,.pdf" name="fotoEmpleado" id="fotoEmpleado" th:field="*{fotoEmpleado}">
+                                <input type="file" accept="image/*,.png" name="fotoEmpleado" id="fotoEmpleado" th:field="*{fotoEmpleado}">
                                 <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                 <div th:if="${#fields.hasErrors('fotoEmpleado')}" th:errors="*{FotoEmpleado}"></div>
                             </div>

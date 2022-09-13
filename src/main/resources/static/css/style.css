@@ -30,7 +30,7 @@
     height: 100%;
     width: 100%;
     grid-template-columns: 5% 30% 30% 30% 5%;
-    grid-template-rows: 50px 100px auto 50px;
+    grid-template-rows: 50px auto auto auto auto 50px;
 }
 
 .boton1{
@@ -146,6 +146,70 @@
 }
 
 .boton4 a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+.boton5{
+    grid-column-start: 2;
+    grid-row-start: 4;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(38, 38, 38, 0.841);
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.boton5 a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+.boton6{
+    grid-column-start: 4;
+    grid-row-start: 4;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(38, 38, 38, 0.841);
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.boton6 a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+.boton7{
+    grid-column-start: 2;
+    grid-row-start: 5;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(38, 38, 38, 0.841);
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.boton7 a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+
+}
+.boton8{
+    grid-column-start: 4;
+    grid-row-start: 5;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(38, 38, 38, 0.841);
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.boton8 a {
     text-decoration: none;
     color: rgb(255, 255, 255);
 

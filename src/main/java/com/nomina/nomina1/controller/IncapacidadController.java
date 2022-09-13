@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import com.nomina.nomina1.services.IEmpleadoService;
 import com.nomina.nomina1.services.IIncapacidadService;
 import com.nomina.nomina1.model.Incapacidad;
-import com.nomina.nomina1.model.IIncapacidad;
 
 
 
