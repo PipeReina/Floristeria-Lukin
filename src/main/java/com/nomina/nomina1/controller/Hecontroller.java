@@ -30,13 +30,14 @@ public class Hecontroller {
     @GetMapping(path={"/listarhe","","/"})
     public String listarhe(Model mo){
         mo.addAttribute("hse", het.findAll());
+        mo.addAttribute("empleado", empleadod.findAll());
+
         return "he/listarhe";
     }
 
     @GetMapping("/verhe")
     public String verhe(Model mo){
         he horase = new he();
-        horase.setIdHorasExtra(1);
         mo.addAttribute("he",horase);
         return "he/verhe";
     }
@@ -66,6 +67,7 @@ public class Hecontroller {
     @PostMapping("add")
     public String add(@Valid he he, BindingResult res, Model mo, SessionStatus status){
         if(res.hasErrors()){
+            mo.addAttribute("empleado", empleadod.findAll());
             return "he/formhe";
         }
         het.save(he);
