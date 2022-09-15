@@ -238,9 +238,9 @@
                         <span class="badge bg-danger active">Inactivo</span>
                         </td>
                         <td th:if="${c.estadoCom==true}" id="estadoboton">
-                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/comision/estado/}+${c.idComision}"><button>Inactivar</button></a>
+                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/comision/estado/}+${c.idComision}" onclick="guar()"><button>Inactivar</button></a>
                         <a role="button" class="btn btn-warning btn-sm" th:href="@{/comision/edit/}+${c.idComision}"> 
-                            <button onclick="return confirm('¿Estas seguro de Editar el Cargo?');"><i class="fa fa-edit"></i></button></a>
+                            <button onclick="guar();"><i class="fa fa-edit"></i></button></a>
                         <a role="button" class="btn btn-danger btn-sm"th:href="@{/comision/delete/}+${c.idComision}" > 
                             <button onclick="return confirm('¿Estas seguro de Eliminar el Cargo?');"><i class="fa fa-trash"></i></button>
                             </a>
@@ -281,7 +281,7 @@
 <script th:src="@{../js/main.js}"></script>
 <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
 <script th:src="@{../js/reporte.js}"></script>
-<script th:src="@{../js/cargo.js}"></script>
+<script th:src="@{../js/comision.js}"></script>
 <script>
 
 var datat=document.querySelector("#datat"); 

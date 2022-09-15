@@ -4,6 +4,7 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
     nombre: /^[a-zA-Z\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
     doc: /^\d{7,14}$/, // 7 a 14 numeros.
+    tel: /^\d{10}$/, // 7 a 14 numeros.
     direc: /^[a-zA-Z0-9\#\/\-\.\,\s]{1,100}$/, // Letras, numeros, signos de puntuacion (,\.\:\;)
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //email
     especial: /^[a-zA-Z\s]{1,50}$/, // Letras y espacios, pueden llevar acentos.
@@ -110,7 +111,7 @@ const validarFormulario = (e) => {
             }
           break;
           case "telEmpleado":
-            if(expresiones.doc.test(e.target.value)){
+            if(expresiones.tel.test(e.target.value)){
                 document.getElementById('grupo_tel').classList.remove('formulario_grupo-incorrecto');
                 document.getElementById('grupo_tel').classList.add('formulario_grupo-correcto');
                 document.querySelector('#grupo_tel i').classList.add('fa-check-circle');
@@ -204,6 +205,13 @@ inputs.forEach((input)=>{
 })
 
 
+function guar(){
+    confirm("Se guardaron los cambios");
+  }
+function eli(){
+    confirm("Se Eliminara");
+  }
+
 formulario.addEventListener('submit', (e) => {
     if(campos.nombre && campos.descrip){
         // bien
@@ -211,4 +219,7 @@ formulario.addEventListener('submit', (e) => {
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo')
     }
 });
+function guar(){
+    alert("Se guardaron los cambios")
+  }
 

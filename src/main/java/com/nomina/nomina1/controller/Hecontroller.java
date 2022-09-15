@@ -29,10 +29,11 @@ public class Hecontroller {
 
     @GetMapping(path={"/listarhe","","/"})
     public String listarhe(Model mo){
-        mo.addAttribute("hse", het.findAll());
         mo.addAttribute("empleado", empleadod.findAll());
-
-        return "he/listarhe";
+        mo.addAttribute("hse", het.findAll());
+    
+        System.out.println(mo);
+        return "he/listar";
     }
 
     @GetMapping("/verhe")

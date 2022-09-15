@@ -205,3 +205,7 @@
     
 })(jQuery);
 
+function guar(){
+    alert("Se guardaron los cambios")
+  }
+

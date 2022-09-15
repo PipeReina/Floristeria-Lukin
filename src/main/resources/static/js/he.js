@@ -46,5 +46,7 @@ formulario.addEventListener('submit', (e) => {
         document.getElementById('formulario__mensaje').classList.add('formulario__mensaje-activo')
     }
 });
-
+function guar(){
+    alert("Se guardaron los cambios")
+  }
 

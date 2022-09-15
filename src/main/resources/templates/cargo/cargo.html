@@ -237,9 +237,9 @@
                     <span class="badge bg-danger active">Inactivo</span>
                     </td>
                     <td th:if="${c.estadoCargo==true}" id="estadoboton">
-                    <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/cargo/estado/}+${c.idCargo}"><button>Inactivar</button></a>
+                    <a rol="button" class="btn btn-danger btn-sm" th:href="@{/cargo/estado/}+${c.idCargo}" onclick="guar()"><button>Inactivar</button></a>
                     <a role="button" class="btn btn-warning btn-sm" th:href="@{/cargo/edit/}+${c.idCargo}"> 
-                        <button onclick="return confirm('¿Estas seguro de Editar el Cargo?');"><i class="fa fa-edit"></i></button></a>
+                        <button onclick="guar();"><i class="fa fa-edit"></i></button></a>
                     <a role="button" class="btn btn-danger btn-sm"th:href="@{/cargo/eliminar/}+${c.idCargo}" > 
                         <button onclick="return confirm('¿Estas seguro de Eliminar el Cargo?');"><i class="fa fa-trash"></i></button>
                         </a>
@@ -281,6 +281,7 @@
         <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
         <script th:src="@{../js/reporte.js}"></script>
         <script th:src="@{../js/cargo.js}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
     
             var datat=document.querySelector("#datat"); 

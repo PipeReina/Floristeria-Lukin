@@ -25,8 +25,11 @@
     <link th:href="@{../css/bootstrap.css}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link   th:href="@{../css/style1.css}" rel="stylesheet">    <title>Incapacidad</title>
+    <link   th:href="@{../css/style1.css}" rel="stylesheet">
+
+    <title>Listar Horas Extra</title>
 </head>
+
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
@@ -41,7 +44,7 @@
           <!-- Sidebar Start -->
           <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a th:href="index.html" class="navbar-brand mx-4 mb-3">
+                <a th:href="@{../}" class="navbar-brand mx-4 mb-3">
                     <img th:src="@{../img/Timmpay-Negro-peque.gif}" style="width: 180px; height: 60px;">
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -213,44 +216,40 @@
 
         <!-- contenido -->
         <div class="tabla">
-            <table id="datat">
+        <table id="datat">
             <thead>
-                <th>Id Incapacidad</th>
-                <th>Fecha Inicio</th>
-                <th>Fecha Final</th>
-                <th>Soporte</th>
-                <th>Fk Empleado<th>
-                <th>Acciones</th>
+                <th>Id Horas Extra</th>
+                <th>Fecha Hora Extra</th>
+                <th>Id Empleado FK</th>
+                <th>Estado</th>
+                <th colspan="2">Acciones</th>
             </thead>
             <tbody>
-                <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
-                    <td th:text="${c.idIncapacidad}"></td>
-                    <td th:text="${c.fechaInicio}"></td>
-                    <td th:text="${c.fechaFinal}"></td>
-                    <td th:text="${c.soporteIncapacidad}"></td>
-                    <td th:text="${c.FKempleado.NombreEmpleado}"></td>
-                    <td th:if="${c.estadoIncapacidad==true}" id="activo">
-                        <span class="badge bg-success active">Activo</span>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==false}" id="inactivo">
-                        <span class="badge bg-danger active">Inactivo</span>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==true}" id="estadoboton">
-                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}" onclick="guar()"><button>Inactivar</button></a>
-                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                            <button onclick="guar();"><i class="fa fa-edit"></i></button></a>
-                            <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/delete/} + ${c.idIncapacidad}" > 
-                            <button onclick="return confirm('¿Estas seguro de Eliminar el Incapacidad?');"><i class="fa fa-trash"></i></button>
-                            </a>
-                        </td>
-                        <td th:if="${c.estadoIncapacidad==false}" id="estadoboton">
-                        <a rol="button" class="btn btn-success btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}"><button>Activar</button></a>
-                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                            <button onclick="return confirm('¿Estas seguro de Editar el Incapacidad?');"><i class="fa fa-edit"></i></button></a>
-                        <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/delete/} + ${c.idIncapacidad}" > 
-                            <button onclick="conf();"><i class="fa fa-trash"></i></button>
+                <tr th:if="${hse.size()>0}" th:each="c:${hse}">
+                    <td th:text="${c.idHorasExtra}"></td>
+                    <td th:text="${c.fechaHE}"></td>
+                    <td th:text="${c.idEmpleadoFK.NombreEmpleado}"></td>
+                    <td th:if="${c.estadoHE==true}"> 
+                        <span class="badge bg-success active">Activo</span> 
+                    </td> 
+                    <td th:if="${c.estadoHE==false}"> 
+                        <span class="badge bg-danger active">Inactivo</span> 
+                    </td> 
+                    <td th:if="${c.estadoHE==true}" id="estadoboton">
+                        <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/he/estado/}+${c.idHorasExtra}"  onclick="guar()"><button>Inactivar</button></a>
+                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/he/buscarhe/}+${c.idHorasExtra}"> 
+                            <button onclick="guar();"><i class="fa fa-edit"></i></button></a>                        <a role="button" class="btn btn-danger btn-sm" th:href="@{/he/delete/}+${c.idHorasExtra}"> 
+                            <button onclick="return confirm('¿Estas seguro de Eliminar las horas extra?');"><i class="fi fi-rr-trash"></i></button>
                         </a>
                         </td>
+                        <td th:if="${c.estadoHE==false}" id="estadoboton">
+                        <a rol="button" class="btn btn-success btn-sm"  th:href="@{/he/estado/}+${c.idHorasExtra}"><button>Activar</button></a>
+                        <a role="button" class="btn btn-warning btn-sm" th:href="@{/he/buscarhe/}+${c.idHorasExtra}"> 
+                            <button onclick="return confirm('¿Estas seguro de editar las horas extra?');"><i class="fi fi-rr-edit"></i></button></a>
+                        <a role="button" class="btn btn-danger btn-sm" th:href="@{/he/delete/}+${c.idHorasExtra}"> 
+                            <button onclick="conf();"><i class="fa fa-trash"></i></button>
+                          </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -279,7 +278,7 @@
 <script th:src="@{../js/main.js}"></script>
 <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
 <script th:src="@{../js/reporte.js}"></script>
-<script th:src="@{../js/incapacidad.js}"></script>
+<script th:src="@{../js/he.js}"></script>
 <script>
 
 var datat=document.querySelector("#datat"); 

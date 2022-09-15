@@ -36,43 +36,54 @@ public class he {
     }
 
 
-    public he(Integer idHorasExtra, @Size(min = 2, max = 50) String fechaHE, Boolean estadoHE, Empleado idEmpleadoFK) {
+    public he(Integer idHorasExtra, String fechaHE, Boolean estadoHE, Empleado idEmpleadoFK) {
         IdHorasExtra = idHorasExtra;
         FechaHE = fechaHE;
         EstadoHE = estadoHE;
-       IdEmpleadoFK = idEmpleadoFK;
+        IdEmpleadoFK = idEmpleadoFK;
     }
+
 
     public Integer getIdHorasExtra() {
         return IdHorasExtra;
     }
 
+
     public void setIdHorasExtra(Integer idHorasExtra) {
         IdHorasExtra = idHorasExtra;
     }
+
 
     public String getFechaHE() {
         return FechaHE;
     }
 
+
     public void setFechaHE(String fechaHE) {
         FechaHE = fechaHE;
     }
+
 
     public Boolean getEstadoHE() {
         return EstadoHE;
     }
 
+
     public void setEstadoHE(Boolean estadoHE) {
         EstadoHE = estadoHE;
     }
-public Empleado getIdEmpleadoFK() {
+
+
+    public Empleado getIdEmpleadoFK() {
         return IdEmpleadoFK;
     }
+
 
     public void setIdEmpleadoFK(Empleado idEmpleadoFK) {
         IdEmpleadoFK = idEmpleadoFK;
     }
+
+    
     
     
 }

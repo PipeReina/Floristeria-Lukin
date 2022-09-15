@@ -350,7 +350,7 @@
                                 <option id="estadoEmpleado" class="roltext1" name="estadoEmpleado" value="false">Inactivar</option>
                             </select>
                             <div>
-                            <button type="submit" class="enviar" value="crear" name="accion">Enviar</button>
+                            <button type="submit" class="enviar" value="crear"  onclick="guar();"  name="accion">Enviar</button>
                             </div>
                         </form>
                     </div>
@@ -372,12 +372,11 @@
                     <script th:src="@{../../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
                 
                     <!-- Template Javascript -->
-          <script th:src="@{../../js/cargo.js}"></script>
           <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
           <script th:src="@{../../js/html2pdf.bundl.min.js}"></script>
           <script th:src="@{../../js/main.js}"></script>
           <script th:src="@{../../js/reporte.js}"></script>
-          <script th:src="@{../../js/cargo.js}"></script>
+          <script th:src="@{../../js/empleado.js}"></script>
           <script>
       
               var datat=document.querySelector("#datat"); 

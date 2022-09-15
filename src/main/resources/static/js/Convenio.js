@@ -81,3 +81,6 @@ const validarFormulario = (e) => {
 
     });
     
+    function guar(){
+        alert("Se guardaron los cambios")
+      }

@@ -42,3 +42,6 @@ $boton.addEventListener("click",()=>{
 });
 
 });
+function guar(){
+    alert("Se guardaron los cambios")
+  }

@@ -690,6 +690,7 @@ td{
 
 .formulario__input-error-activo{
     display: block;
+    color: #fff;
 }
 
 .formulario__validacion-estado{
