@@ -43,8 +43,8 @@ public class Comisioncontroller {
         return "comision/vercom";
     }
 
-    @GetMapping("/buscarcom/{idComision}")
-    public String buscarcom(@PathVariable Integer idComision,Model mo){
+    @GetMapping("/edit/{idComision}")
+    public String edit(@PathVariable Integer idComision,Model mo){
         comision comision = null;
         if(idComision>0){   
         comision = com.findOne(idComision);
@@ -53,7 +53,7 @@ public class Comisioncontroller {
         }
         mo.addAttribute("comision",comision);
         mo.addAttribute("accion","Actualizar Comision");
-        return "comision/formcom";  
+        return "comision/edit";  
     }  
 
     @GetMapping("/formcom")
