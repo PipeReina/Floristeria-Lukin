@@ -10,9 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.lang.NonNull;
+// import org.springframework.lang.NonNull;
 
 @Entity
 @Table(name="pago")
@@ -21,7 +22,8 @@ public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPago;
-    @NonNull
+    // @NonNull
+    @NotNull
     @Column(length = 10)
     @Size (min=2, max=10)
     private String fechaPago;
@@ -32,11 +34,17 @@ public class Pago {
     public Pago() {
     }
 
+    
+
     public Pago(Integer idPago, @Size(min = 2, max = 10) String fechaPago, Devengado fKdevengado) {
         this.idPago = idPago;
         this.fechaPago = fechaPago;
-        FKdevengado = fKdevengado;
+        this.FKdevengado = fKdevengado;
     }
+
+
+
+ 
 
     public Integer getIdPago() {
         return idPago;
@@ -60,6 +68,10 @@ public class Pago {
 
     public void setFKdevengado(Devengado fKdevengado) {
         FKdevengado = fKdevengado;
+    }
+
+    public Object findAll() {
+        return null;
     }
 
     

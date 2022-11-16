@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Range;
+
 @Entity
 @Table(name="convenio")
 public class Convenio {
@@ -19,29 +21,34 @@ public class Convenio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idConvenio;
     @NotEmpty
-    @Size(min=1,max=10)
+    @Range(min=1,max=10)
     @Column(length = 4,nullable=false)
-    private String horaConvenio;
+    private Integer horaConvenio;
+    @Range(min=1,max=10)
+    @Column(length = 4,nullable=false)
+    private Integer horaAlDia;
     @NotEmpty
-    @Size(min=1,max=10)
+    @Range(min=1,max=10)
     @Column(length = 4,nullable=false)
-    private String diasConvenio;
+    private Integer diasConvenio;
     @NotEmpty
-    @Size(min=2,max=15)
+    @Range(min=2,max=15)
     @Column(length = 4,nullable=false)
-    private String salarioConvenio;
+    private Integer salarioConvenio;
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado FKempleado;
     
     public Convenio(){
 
-    }
+ 
+   }
 
-    public Convenio(Integer idConvenio, @NotEmpty @Size(min = 1, max = 10) String horaConvenio,
-            @NotEmpty @Size(min = 1, max = 10) String diasConvenio,
-            @NotEmpty @Size(min = 6, max = 15) String salarioConvenio, Empleado fKempleado) {
+    public Convenio(Integer idConvenio, @NotEmpty @Size(min = 1, max = 10) Integer horaConvenio,
+            @Size(min = 1, max = 10) Integer horaAlDia, @NotEmpty @Size(min = 1, max = 10) Integer diasConvenio,
+            @NotEmpty @Size(min = 2, max = 15) Integer salarioConvenio, Empleado fKempleado) {
         this.idConvenio = idConvenio;
         this.horaConvenio = horaConvenio;
+        this.horaAlDia = horaAlDia;
         this.diasConvenio = diasConvenio;
         this.salarioConvenio = salarioConvenio;
         FKempleado = fKempleado;
@@ -55,27 +62,35 @@ public class Convenio {
         this.idConvenio = idConvenio;
     }
 
-    public String getHoraConvenio() {
+    public Integer getHoraConvenio() {
         return horaConvenio;
     }
 
-    public void setHoraConvenio(String horaConvenio) {
+    public void setHoraConvenio(Integer horaConvenio) {
         this.horaConvenio = horaConvenio;
     }
 
-    public String getDiasConvenio() {
+    public Integer getHoraAlDia() {
+        return horaAlDia;
+    }
+
+    public void setHoraAlDia(Integer horaAlDia) {
+        this.horaAlDia = horaAlDia;
+    }
+
+    public Integer getDiasConvenio() {
         return diasConvenio;
     }
 
-    public void setDiasConvenio(String diasConvenio) {
+    public void setDiasConvenio(Integer diasConvenio) {
         this.diasConvenio = diasConvenio;
     }
 
-    public String getSalarioConvenio() {
+    public Integer getSalarioConvenio() {
         return salarioConvenio;
     }
 
-    public void setSalarioConvenio(String salarioConvenio) {
+    public void setSalarioConvenio(Integer salarioConvenio) {
         this.salarioConvenio = salarioConvenio;
     }
 
@@ -87,4 +102,7 @@ public class Convenio {
         FKempleado = fKempleado;
     }
 
-}
+    
+
+   
+ }
