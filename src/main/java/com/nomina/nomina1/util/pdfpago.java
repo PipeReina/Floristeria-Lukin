@@ -30,7 +30,7 @@ public class pdfpago  extends AbstractPdfView{
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
                 @SuppressWarnings("unchecked")
-                List<Pago> Pago=(List<Pago>) model.get("Pago");
+                List<Pago> Pagos=(List<Pago>) model.get("Pagos");
 
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
@@ -80,7 +80,7 @@ public class pdfpago  extends AbstractPdfView{
 
                 /*bucle for muestra todos los Pagos */
 
-                for(Pago Pagop: Pago){
+                for(Pago Pagop: Pagos){
                     celda= new PdfPCell(new Phrase(Pagop.getIdPago().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);

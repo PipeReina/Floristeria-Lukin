@@ -30,7 +30,7 @@ public class pdfincapacidad  extends AbstractPdfView{
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
                 @SuppressWarnings("unchecked")
-                List<Incapacidad> incapacidad=(List<Incapacidad>) model.get("incapacidad");
+                List<Incapacidad> Incapacidads=(List<Incapacidad>) model.get("Incapacidads");
 
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
@@ -94,7 +94,7 @@ public class pdfincapacidad  extends AbstractPdfView{
 
                 /*bucle for muestra todos los Incapacidads */
 
-                for(Incapacidad Incapacidadp: incapacidad){
+                for(Incapacidad Incapacidadp: Incapacidads){
                     celda= new PdfPCell(new Phrase(Incapacidadp.getIdIncapacidad().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -113,7 +113,7 @@ public class pdfincapacidad  extends AbstractPdfView{
                     celda.setPadding(3);
                     tablaIncapacidad.addCell(celda);
 
-                    celda= new PdfPCell(new Phrase(Incapacidadp.getSoporteIncapacidad(),fuentedataceldas));
+                    celda= new PdfPCell(new Phrase(Incapacidadp.getSoporteIncapacidad().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
                     celda.setPadding(3);

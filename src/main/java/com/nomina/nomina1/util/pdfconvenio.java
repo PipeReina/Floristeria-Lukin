@@ -37,7 +37,7 @@ public class pdfconvenio  extends AbstractPdfView{
                 Font fuentedataceldas = FontFactory.getFont(FontFactory.COURIER,10,Color.BLACK);
 
                 document.setPageSize(PageSize.LETTER.rotate());
-                document.setMargins(-50, -50,50,20);
+                document.setMargins(-50,-50,50,20);
                 document.open();
                 PdfPCell celda = null;
 

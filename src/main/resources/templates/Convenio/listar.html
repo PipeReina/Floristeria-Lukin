@@ -243,7 +243,7 @@
             </tbody>
         </table>
         <a rol="button"
-        th:href="@{/Convenio/listar/(format=pdf)}" target="_blank" title="Exportar lista convenio a pdf">
+        th:href="@{/Convenio/listar/(format=pdf)}" download="Lista_de_Convenios" target="_blank" title="Exportar lista convenio a pdf">
         <img  class="img-responsive center-box" th:src="@{../img/pdf.png }" height="auto">
         </a>
         </div>
@@ -282,7 +282,8 @@ var dataTable=new DataTable("#datat",{
       noRows: "No se encontraron registros",
       info: "Mostrando {start} a {end} de {rows} registros",
   }
-} ) ;
+} 
+) ;
 
 
 </script>

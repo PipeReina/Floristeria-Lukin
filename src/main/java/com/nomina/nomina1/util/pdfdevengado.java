@@ -30,7 +30,7 @@ public class pdfdevengado  extends AbstractPdfView{
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
                 @SuppressWarnings("unchecked")
-                List<Devengado> devengado=(List<Devengado>) model.get("devengado");
+                List<Devengado> Devengados=(List<Devengado>) model.get("Devengados");
 
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
@@ -43,7 +43,7 @@ public class pdfdevengado  extends AbstractPdfView{
 
                 PdfPTable tablatitulo= new PdfPTable(1);
                 
-                celda =new PdfPCell(new Phrase("Lista de Devengadoes",fuentetitulo));
+                celda =new PdfPCell(new Phrase("Lista de Devengados",fuentetitulo));
                 celda.setBorder(0);
                 celda.setBackgroundColor(new Color(229,113,55));
                 celda.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -63,20 +63,21 @@ public class pdfdevengado  extends AbstractPdfView{
                 celda.setPadding(3);
                 tablaDevengado.addCell(celda);
 
-                celda = new PdfPCell(new Phrase("Costo Venta",fuentetitulocolumnas));
+                celda = new PdfPCell(new Phrase("Total Devengado",fuentetitulocolumnas));
                 celda.setBackgroundColor(Color.white);
                 celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda.setVerticalAlignment(Element.ALIGN_CENTER);
                 celda.setPadding(3);
                 tablaDevengado.addCell(celda);
 
-                celda = new PdfPCell(new Phrase("Fecha Comisión",fuentetitulocolumnas));
+                celda = new PdfPCell(new Phrase("Fecha Devengado",fuentetitulocolumnas));
                 celda.setBackgroundColor(Color.white);
                 celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda.setVerticalAlignment(Element.ALIGN_CENTER);
                 celda.setPadding(3);
                 tablaDevengado.addCell(celda);
 
+                
                 celda = new PdfPCell(new Phrase("Empleado",fuentetitulocolumnas));
                 celda.setBackgroundColor(Color.white);
                 celda.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -84,10 +85,9 @@ public class pdfdevengado  extends AbstractPdfView{
                 celda.setPadding(3);
                 tablaDevengado.addCell(celda);
 
-
                 /*bucle for muestra todos los Devengados */
 
-                for(Devengado Devengadosp: devengado){
+                for(Devengado Devengadosp: Devengados){
                     celda= new PdfPCell(new Phrase(Devengadosp.getIdDev().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
