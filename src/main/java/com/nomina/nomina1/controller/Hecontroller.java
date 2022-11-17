@@ -29,20 +29,22 @@ public class Hecontroller {
 
     @GetMapping(path={"/listarhe","","/"})
     public String listarhe(Model mo){
+        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("hse", het.findAll());
-        return "he/listarhe";
+    
+        System.out.println(mo);
+        return "he/listar";
     }
 
     @GetMapping("/verhe")
     public String verhe(Model mo){
         he horase = new he();
-        horase.setIdHorasExtra(1);
         mo.addAttribute("he",horase);
         return "he/verhe";
     }
 
-    @GetMapping("/buscarhe/{idHorasExtra}")
-    public String buscarhe(@PathVariable Integer idHorasExtra,Model mo){
+    @GetMapping("/edit/{idHorasExtra}")
+    public String edit(@PathVariable Integer idHorasExtra,Model mo){
         he he = null;
         if(idHorasExtra>0){
             he = het.findOne(idHorasExtra);
@@ -51,7 +53,7 @@ public class Hecontroller {
         }
         mo.addAttribute("he",he);
         mo.addAttribute("accion","Actualizar Horas Extra");
-        return "he/formhe";  
+        return "he/edit";  
     }  
 
     @GetMapping("/formhe")
@@ -66,6 +68,7 @@ public class Hecontroller {
     @PostMapping("add")
     public String add(@Valid he he, BindingResult res, Model mo, SessionStatus status){
         if(res.hasErrors()){
+            mo.addAttribute("empleado", empleadod.findAll());
             return "he/formhe";
         }
         het.save(he);

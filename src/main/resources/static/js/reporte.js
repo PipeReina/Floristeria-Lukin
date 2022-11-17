@@ -1,44 +1,29 @@
+function generarpdf() {
+    var pdf = new jsPDF('p', 'pt', 'letter');
+    source = $('#imprimir')[0];
 
-
-//practica para que los documentos esten cargados 
-document.addEventListener("DOMContentLoaded",()=>{
-    //incluir boton
-    const $boton=document.querySelector('#btncrearpdf');
-//click del boton 
-$boton.addEventListener("click",()=>{
-    //captura del documento
-    const $elementoaconvertir= document.body;
-    //incluir el archivo 
-    html2pdf()
-    .set({
-        margin: 1,
-        //nombre del documento que se le sugiere al ususario
-        filename:'Reporte.pdf',
-
-        //tipo e imagen y calidad
-        image:{
-            type:'pdf',
-            quality:0.98
-        },
-        //opciones para la libreria de canvas
-        html2canvas:{
-            //entre mayor escala mayor calidad pero pesara mas
-            scale:4,
-            letterRendering:true,
-        },
-        jsPDF:{
-            unit:"in",
-            format:"a3",
-            //normal vertical landscape en horizontal
-            orientation: 'landscape'
+    specialElementHandlers = {
+        '#bypassme': function (element, renderer) {
+            return true
         }
-    })
-    //enviar el elemento para convertir 
-    .from($elementoaconvertir)
-    //se guarda
-    .save()
-    //error
-    .catch(error=>console.log(error));
-});
+    };
+    margins = {
+        top: 80,
+        bottom: 60,
+        left: 40,
+        width: 522
+    };
 
-});
+    pdf.fromHTML(
+        source, 
+        margins.left, // x coord
+        margins.top, { // y coord
+            'width': margins.width, 
+            'elementHandlers': specialElementHandlers
+        },
+
+        function (dispose) {
+            pdf.save('Reporte.pdf');
+        }, margins
+    );
+}
