@@ -219,7 +219,7 @@
                         <div class="formulario_grupo" id="grupo_fechaInicio">
                             <label class="rol">Fecha Inicio</label><br>
                         <div id="cargo_input"> 
-                            <input class="roltext1" type="date" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Liquidacion Nominal">
+                            <input class="roltext1" max="00-00-0000" type="date" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Liquidacion Nominal">
                             <div th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
                             <i class="formulario__validacion-estado fas fa-times-circle"></i>
                         </div>
