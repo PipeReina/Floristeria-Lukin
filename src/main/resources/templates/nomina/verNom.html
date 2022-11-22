@@ -307,15 +307,15 @@
                         <h1 class="nombreEm"> <b>Seleccione el nombre del Empleado</b></h1>
 
                         <div class="select" th:field="*{empleado}">
-                            <select name="" id="" class="form-select">
+                            <select name="" id="IdNom"  class="form-select">
                                 <option value="">Seleccione</option>
                                 <th:block th:each="c:${empleado}">
-                                    <option th:text="${c.idEmpleado} + ${c.nombreEmpleado} + ${c.apellidoEmpleado}" th:value="${c.idEmpleado}"></option>
+                                    <option th:text="${c.idEmpleado} + ${c.nombreEmpleado} + ${c.apellidoEmpleado}" th:value="${c.idEmpleado}" name="IdNom"></option>
                                 </th:block>
                             </select>
                         </div>
                         <div class="calcular" style="text-align: center;">
-                            <button class="btn btn-outline-primary">Calcular</button>
+                            <button class="btn btn-outline-primary" type="submit" onclick="calcular()">Calcular</button>
                         </div>
                     </div>
                     <div class="nomi">
@@ -472,6 +472,7 @@
     <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
     <script th:src="@{../../js/common.js}"></script>
     <script th:src="@{../../js/scripts.js}"></script>
+    <script th:src="@{../../js/verNom.js}"></script>
     <!-- Page Specific Scripts End -->
   </body>
 </html>

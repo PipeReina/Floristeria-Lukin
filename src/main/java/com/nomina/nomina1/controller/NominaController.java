@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import java.lang.Integer;
 
@@ -14,9 +16,6 @@ import com.nomina.nomina1.model.Empleado;
 import com.nomina.nomina1.model.comision;
 import com.nomina.nomina1.model.he;
 import com.nomina.nomina1.services.EmpleadoServicelmps;
-// import com.nomina.nomina1.model.Pago;
-// import com.nomina.nomina1.model.comision;
-// import com.nomina.nomina1.model.he;
 import com.nomina.nomina1.services.NominaServicelmps;
 
 
@@ -25,38 +24,15 @@ import com.nomina.nomina1.services.NominaServicelmps;
 @RequestMapping("/nomina")
 public class NominaController {
     
-    // @Autowired
-    // private Pago Pagof;
-    // @Autowired
-    // private Empleado Empleadof;
-    // @Autowired
-    // private Convenio Conveniof;
-    // @Autowired
-    // private he hsef;
-    // @Autowired
-    // private comision ComiIcomisionf;
-    // @Autowired
-    // private Cargo Cargof;
 
-//
-    // private Float Comisioon=ComiIcomisionf.getCostoVenta();
-    
-    // private Boolean hse=hsef.getEstadoHE();
-    //private String Cargoo=Cargof.getNombreCargo();
-    // private Float Pagoo=Pagof.getFechaPago();
-    // private Float HrsContrato=Conveniof.getHoraConvenio();
-    // private Float HrsNormal=Conveniof.getHoraAlDia();
-    // private Float DiaConvenio=Conveniof.getDiasConvenio();
 
     @Autowired
     public NominaServicelmps empleadoservicio;
     @Autowired
     public EmpleadoServicelmps Empleado;
-    @Autowired
-    public EmpleadoServicelmps Empleadoo;
 
      @GetMapping(path={"/nominaTotal","","/"})
-     public String NominaTotal(Model mo){
+     public String NominaTotal(Model mo, @RequestParam (value="IdNom") Integer IdNom){
 
         Float nomina = 0f;
         Integer diasCon = 0;
@@ -76,8 +52,8 @@ public class NominaController {
         Float Salud=0f;
 
 
-        Empleado empleado = empleadoservicio.findOne(1);
-        Empleado empleadoo = empleadoservicio.findOne(CantHrs);
+       if(IdNom!=null){
+        Empleado empleado = empleadoservicio.findOne(IdNom);
         for (Convenio nominaempleado:empleado.getConvenio()) {
             //horas trabajadas por dia    
             diasCon=nominaempleado.getHoraConvenio();
@@ -120,6 +96,7 @@ public class NominaController {
         TotalDed= Pencion+Salud; 
 
         nomina=TotalDev-TotalDed;
+       }
 
             mo.addAttribute("nomina", nomina);
             mo.addAttribute("SalarioB", SalarioB);
@@ -134,109 +111,7 @@ public class NominaController {
             
         }}}
 
-
-
-
-        // comision objetoComision = new comision();
-        // Float Comisioon = objetoComision.getCostoVenta();
-        // he hsef = new he();
-        // Boolean hse=hsef.getEstadoHE();
-
-        // Convenio Conveniof= new Convenio();
-        // Float HrsContrato=Conveniof.getHoraConvenio();
-        // Float HrsNormal=Conveniof.getHoraAlDia();
-        // Float DiaConvenio=Conveniof.getDiasConvenio();
-         
-//  ////////////////////////// Calcular Hors Diaria
-         
-//       Float CostoDia= (HrsContrato*HrsNormal);
-
-        
-// // ////////////////////////////////////////////////////////////calcular contrato 
-//          Float Contrato= (DiaConvenio*CostoDia);
- 
-// //////////////////////////////////////////////////////////// TotalDevengado
-//     if (hse==true ||Contrato<2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.25% - AUXTRANSPORTE AÑADIDO - COMISION AÑADIDA//////////
-//         Float totalComision = Comisioon*0.015f;
-//         Float AuxTrans = 117172f;
-//         Float HrsExtra= HrsNormal*0.0125f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if(hse==false ||Contrato<2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.75% - AUXTRANSPORTE AÑADIDO - COMISION AÑADIDA//////////
-//         Float totalComision = Comisioon*0.015f;
-//         Float AuxTrans = 117172f;
-//         Float HrsExtra= HrsNormal*0.0175f;
-        
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==true ||Contrato>2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.25% - AUXTRANSPORTE NO  - COMISION AÑADIDA//////////
-//         Float totalComision = Comisioon*0.015f;
-//         Float AuxTrans = 0f;
-//         Float HrsExtra= HrsNormal*0.0125f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==false ||Contrato>2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.75% - AUXTRANSPORTE NO  - COMISION AÑADIDA//////////
-//         Float totalComision = Comisioon*0.015f;
-//         Float AuxTrans = 0f;
-//         Float HrsExtra= HrsNormal*0.0175f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==true ||Contrato<2000000 || Comisioon<80000){
-//         ///////////DEVENGADO CON HRS 1.25% - AUXTRANSPORTE AÑADIDO  - COMISION NO//////////
-//         Float totalComision = Comisioon*0f;
-//         Float AuxTrans = 117172f;
-//         Float HrsExtra= HrsNormal*0.0125f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==false ||Contrato<2000000 || Comisioon<80000){
-//         ///////////DEVENGADO CON HRS 1.75% - AUXTRANSPORTE AÑADIDO  - COMISION NO//////////
-//         Float totalComision = Comisioon*0f;
-//         Float AuxTrans = 117172f;
-//         Float HrsExtra= HrsNormal*0.0175f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==true ||Contrato>2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.25% - AUXTRANSPORTE NO  - COMISION NO//////////
-//         Float totalComision = Comisioon*0f;
-//         Float AuxTrans = 0f;
-//         Float HrsExtra= HrsNormal*0.0125f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }else if (hse==false ||Contrato>2000000 || Comisioon>=80000){
-//         ///////////DEVENGADO CON HRS 1.75% - AUXTRANSPORTE NO  - COMISION NO//////////
-//         Float totalComision = Comisioon*0f;
-//         Float AuxTrans = 0f;
-//         Float HrsExtra= HrsNormal*0.0175f;
-
-//         Float TotalDevengado= totalComision+AuxTrans+HrsExtra+Contrato; 
-
-//          mo.addAttribute("nomina", TotalDevengado);
-
-//     }
     return "nomina/verNom";
     }
+
 }

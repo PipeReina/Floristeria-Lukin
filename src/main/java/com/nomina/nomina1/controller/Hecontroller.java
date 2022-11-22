@@ -33,6 +33,7 @@ public class Hecontroller {
         mo.addAttribute("hse", het.findAll());
         he he = new he();
         mo.addAttribute("he", he);
+        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("accion", "Agregar horas extra");
     
         System.out.println(mo);

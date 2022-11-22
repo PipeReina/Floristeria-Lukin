@@ -93,8 +93,6 @@ public class ConvenioController {
              m.addAttribute("empleado", empleadod.findAll());
             return "Convenio/form";
         }
-        /*m.addAttribute("Convenio",Convenio); 
-        return "Convenio/verc";*/
         Conveniof.save(Convenio);
         status.setComplete();
         return "redirect:listar";
