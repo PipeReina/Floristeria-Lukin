@@ -31,6 +31,9 @@ public class Hecontroller {
     public String listarhe(Model mo){
         mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("hse", het.findAll());
+        he he = new he();
+        mo.addAttribute("he", he);
+        mo.addAttribute("accion", "Agregar horas extra");
     
         System.out.println(mo);
         return "he/listar";

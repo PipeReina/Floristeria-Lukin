@@ -9,6 +9,7 @@ public class IndexController {
     @GetMapping(path = {"/","","/index","/home"})
     public String index(Model m){
         m.addAttribute("msn", "Este mensaje viene del controlador");
-        return "index";
+        return "Home";
     }
+
 }

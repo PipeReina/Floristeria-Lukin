@@ -36,26 +36,12 @@ public class PagoController {
     public String listar(Model m){
         m.addAttribute("Pagos", Pagof.findAll());
         m.addAttribute("Devengados", Devengadof.findAll());
+        Pago Pago=new Pago();
+        m.addAttribute("Pago", Pago);
+        m.addAttribute("Devengados", Devengadof.findAll());
+        m.addAttribute("accion", "Agregar Pago");
         return "Pago/listar";    
     }
-
-
-    /*@GetMapping("/verc")
-    public String verc(Model m){
-        Pago alb=new Pago();
-        alb.setId(1);
-        alb.setNombre("Jennifer");
-        m.addAttribute("Pago", alb);
-        return "Pago/verc";
-    }*/
-
-    /*@GetMapping("/ver")
-    public String ver(@RequestParam int id,String nom,Model m){
-        m.addAttribute("msn", "En la ruta llegó el id "+id+" y el nombre recibido es "+nom);
-        return "Pago/ver";
-    }*/
-
-
     @GetMapping("/ver/{id}")
     public String ver(@PathVariable Integer id,Model m){
         Pago Pago=null;

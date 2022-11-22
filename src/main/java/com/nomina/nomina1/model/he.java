@@ -3,11 +3,13 @@ package com.nomina.nomina1.model;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Size;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,6 +23,10 @@ public class he {
 
     @Column (length = 50,nullable=true)
     private String FechaHE;
+
+    @Range(min=1,max=2)
+    @Column(length = 4,nullable=false)
+    private Integer CantidadHrs;
 
     @Column (length = 50, nullable=true)
     private Boolean EstadoHE;
@@ -36,9 +42,11 @@ public class he {
     }
 
 
-    public he(Integer idHorasExtra, String fechaHE, Boolean estadoHE, Empleado idEmpleadoFK) {
+    public he(Integer idHorasExtra, String fechaHE, @Range(min = 1, max = 2) Integer cantidadHrs, Boolean estadoHE,
+            Empleado idEmpleadoFK) {
         IdHorasExtra = idHorasExtra;
         FechaHE = fechaHE;
+        CantidadHrs = cantidadHrs;
         EstadoHE = estadoHE;
         IdEmpleadoFK = idEmpleadoFK;
     }
@@ -64,6 +72,16 @@ public class he {
     }
 
 
+    public Integer getCantidadHrs() {
+        return CantidadHrs;
+    }
+
+
+    public void setCantidadHrs(Integer cantidadHrs) {
+        CantidadHrs = cantidadHrs;
+    }
+
+
     public Boolean getEstadoHE() {
         return EstadoHE;
     }
@@ -83,7 +101,6 @@ public class he {
         IdEmpleadoFK = idEmpleadoFK;
     }
 
-    
     
     
 }

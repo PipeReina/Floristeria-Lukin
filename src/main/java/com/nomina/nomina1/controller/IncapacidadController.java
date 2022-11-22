@@ -33,6 +33,10 @@ public class IncapacidadController {
     public String listar(Model m){
         m.addAttribute("Incapacidads", Incapacidadf.findAll());
         m.addAttribute("empleado", empleadod.findAll());
+        Incapacidad Incapacidad=new Incapacidad();
+        m.addAttribute("empleados", empleadod.findAll());
+        m.addAttribute("Incapacidad", Incapacidad);
+        m.addAttribute("accion", "Agregar Incapacidad");
         return "Incapacidad/listar";    
     }
 

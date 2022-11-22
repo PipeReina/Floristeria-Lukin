@@ -19,7 +19,7 @@ public class comision {
     private Integer IdComision;
 
     @Column (length = 50)
-    private Integer CostoVenta;
+    private Float CostoVenta = 0.0f;
 
     @Column (length = 50, nullable=true)
     private String FechaCom;
@@ -37,12 +37,12 @@ public class comision {
     }
 
 
-    public comision(Integer idComision, Integer costoVenta, String fechaCom, Boolean estadoCom, Empleado idEmpleadoFK) {
+    public comision(Integer idComision, Float costoVenta, String fechaCom, Boolean estadoCom, Empleado idEmpleadoFK) {
         IdComision = idComision;
         CostoVenta = costoVenta;
         FechaCom = fechaCom;
         EstadoCom = estadoCom;
-       IdEmpleadoFK = idEmpleadoFK;
+        IdEmpleadoFK = idEmpleadoFK;
     }
 
 
@@ -56,12 +56,12 @@ public class comision {
     }
 
 
-    public Integer getCostoVenta() {
+    public Float getCostoVenta() {
         return CostoVenta;
     }
 
 
-    public void setCostoVenta(Integer costoVenta) {
+    public void setCostoVenta(Float costoVenta) {
         CostoVenta = costoVenta;
     }
 
@@ -80,6 +80,7 @@ public class comision {
         return EstadoCom;
     }
 
+
     public void setEstadoCom(Boolean estadoCom) {
         EstadoCom = estadoCom;
     }
@@ -94,6 +95,8 @@ public class comision {
         IdEmpleadoFK = idEmpleadoFK;
     }
 
+
+    
 }
 
     
