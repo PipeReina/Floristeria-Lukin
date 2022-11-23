@@ -1,304 +1,616 @@
 <!DOCTYPE html>
-<html xmlns:th="https://wwww.thymeleaf.org" lang="es"><head>
-        <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link rel="icon" th:href="@{../img/favicon.ico}">
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link ref="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
+    <head>
+        <link rel="icon" th:href="@{/img/logo/ICONO (1).png}">
     
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link th:href="@{../lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
-    <link th:href="@{../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link th:href="@{../css/bootstrap.css}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link   th:href="@{../css/style1.css}" rel="stylesheet">
-
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>Timmpay</title>
+        <meta name="description" content="Home screen that contains stats, charts, call to action buttons and various listing elements." />
+        <!-- Favicon Tags Start -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+        <meta name="application-name" content="&nbsp;" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="img/favicon/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="img/favicon/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
+        <!-- Favicon Tags End -->
+        <!-- Font Tags Start -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="font/CS-Interface/style.css" />
+        <!-- Font Tags End -->
+        <!-- Vendor Styles Start -->
+        <link rel="stylesheet" th:href="@{../css/vendor/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/OverlayScrollbars.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/glide.core.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/glide.core.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/introjs.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/select2.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/select2-bootstrap4.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/plyr.css}" />
+        <!-- Vendor Styles End -->
+        <!-- Template Base Styles Start -->
+        <link rel="stylesheet" th:href="@{../css/styles.css}" />
+        <!-- Template Base Styles End -->
     
-    <title>Cargo</title>
-</head>
-<body>
-    <body>
-        <div class="container-xxl position-relative bg-white d-flex p-0">
-            <!-- Spinner Start -->
-            <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-                <div class="spinner-border textcolor" style="width: 3rem; height: 3rem;" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            </div>
-            <!-- Spinner End -->
+        <link rel="stylesheet" th:href="@{../css/main.css}" />
+        <script th:src="@{../js/base/loader.js}"></script>
+      </head>
+      <body class="fondo">
+        <div id="root">
+          <div id="nav" class="nav-container d-flex">
+            <div class="nav-content d-flex">
+              <!-- Logo Start -->
+              <div class="logo position-relative">
+                <a th:href="@{../}">
+                  <!-- Logo can be added directly -->
+                  <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
-    
-              <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
-            <nav class="navbar bg-light navbar-light">
-                <a th:href="@{../}" class="navbar-brand mx-4 mb-3">
-                    <img th:src="@{../img/Timmpay-Negro-peque.gif}" style="width: 180px; height: 60px;">
+                  <!-- Or added via css to provide different ones for different color themes -->
+                  <div class="img" style="width: 190px !important;">
+                  <img th:src="@{../img/logo/Timmpay-Blanco-icon.png}" alt=""></div>
                 </a>
-                <div class="d-flex align-items-center ms-4 mb-4">
-                    <div class="position-relative">
-                        <img class="rounded-circle" th:src="@{../img/11.jpg}" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+              </div>
+              <!-- Logo End -->
+    
+    
+    
+              <!-- User Menu Start -->
+              <div class="user-container d-flex">
+                <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="profile" alt="profile" th:src="@{../img/profile/profile-9.jpg}" />
+                  <div class="name">Lisa Jackson</div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end user-menu wide">
+                  <div class="row mb-3 ms-0 me-0">
+                    <div class="col-12 ps-1 mb-2">
+                      <div class="text-extra-small text-primary">ACCOUNT</div>
                     </div>
-                    <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">User Info</a>
+                        </li>
+                        <li>
+                          <a href="#">Preferences</a>
+                        </li>
+                        <li>
+                          <a href="#">Calendar</a>
+                        </li>
+                      </ul>
                     </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Security</a>
+                        </li>
+                        <li>
+                          <a href="#">Billing</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row mb-1 ms-0 me-0">
+                    <div class="col-12 p-1 mb-2 pt-2">
+                      <div class="text-extra-small text-primary">APPLICATION</div>
+                    </div>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Themes</a>
+                        </li>
+                        <li>
+                          <a href="#">Language</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Devices</a>
+                        </li>
+                        <li>
+                          <a href="#">Storage</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row mb-1 ms-0 me-0">
+                    <div class="col-12 p-1 mb-3 pt-3">
+                      <div class="separator-light"></div>
+                    </div>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="help" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Help</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="document-full" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Docs</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="gear" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Settings</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="logout" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Logout</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div class="navbar-nav w-100">
-                    <a th:href="index.html" class="nav-item nav-link active"><i class="fa fa-search"></i>Index</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-briefcase"></i>Cargo</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../cargo/cargo}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../cargo/crear}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-users"></i>Empleado</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../empleado/empleado}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../empleado/crear}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-donate"></i>Comisiones</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../comision/listarcom}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../comision/formcom}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-clock"></i>Horas Extras</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../he/listarhe}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../he/formhe}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-file"></i>Convenio</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../Convenio/listar}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../Convenio/form}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-calendar-check"></i>Incapacidad</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../Incapacidad/listar}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../Incapacidad/form}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-coins"></i>Devengado</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../Devengado/listar}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../Devengado/form}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-money-bill-wave"></i>Pago</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a th:href="@{../Pago/listar}" class="dropdown-item">Listar</a>
-                            <a th:href="@{../Pago/form}" class="dropdown-item">Registrar</a>
-                        </div>
-                    </div>
-                    
+              </div>
+              <!-- User Menu End -->
+    
+              <!-- Menu Start -->
+              <div class="menu-container flex-grow-1">
+                <ul id="menu" class="menu">
+                  <li>
+                    <a href="#dashboards" data-href="Dashboards.html">
+                      <i data-cs-icon="home" class="icon" data-cs-size="18"></i>
+                      <span class="label">Empleado</span>
+                    </a>
+                    <ul id="dashboards">
+                      <li>
+                        <a th:href="@{../he/listarhe}">
+                          <span class="label">Horas Extra</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../comision/listarcom}">
+                          <span class="label">Comisión</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Incapacidad/listar}">
+                          <span class="label">Incapacidad</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#apps" data-href="Apps.html">
+                      <i data-cs-icon="screen" class="icon" data-cs-size="18"></i>
+                      <span class="label">Tesorero</span>
+                    </a>
+                    <ul id="apps">
+                      <li>
+                        <a th:href="@{../nomina/nominaTotal1}">
+                          <span class="label">Nomina - Empleado</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#pages" data-href="Pages.html">
+                      <i data-cs-icon="notebook-1" class="icon" data-cs-size="18"></i>
+                      <span class="label">Administrador</span>
+                    </a>
+                    <ul id="pages">
+                      <li>
+                        <a th:href="@{../Incapacidad/listar}">
+                          <span class="label">Incapacidad</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Convenio/listar}">
+                          <span class="label">Convenio</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../cargo/cargo}">
+                          <span class="label">Cargo</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../empleado/empleado}">
+                          <span class="label">Empleado</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#blocks" data-href="Blocks.html">
+                      <i data-cs-icon="grid-5" class="icon" data-cs-size="18"></i>
+                      <span class="label">Contador</span>
+                    </a>
+                    <ul id="blocks">
+                      <li>
+                        <a th:href="@{../nomina/nominaTotal1}">
+                          <span class="label">Aval Nominal</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Pago/listar}">
+                          <span class="label">Pago</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <!-- Menu End -->
+    
+              <!-- Mobile Buttons Start -->
+              <div class="mobile-buttons-container">
+                <!-- Scrollspy Mobile Button Start -->
+                <a id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+                  <i data-cs-icon="menu-dropdown"></i>
+                </a>
+                <!-- Scrollspy Mobile Button End -->
+    
+                <!-- Scrollspy Mobile Dropdown Start -->
+                <div class="dropdown-menu dropdown-menu-end" id="scrollSpyDropdown"></div>
+                <!-- Scrollspy Mobile Dropdown End -->
+    
+                <!-- Menu Button Start -->
+                <a id="mobileMenuButton" class="menu-button">
+                  <i data-cs-icon="menu"></i>
+                </a>
+                <!-- Menu Button End -->
+              </div>
+              <!-- Mobile Buttons End -->
+            </div>
+            <div class="nav-shadow"></div>
+          </div>
+<!-- comienzo -->
+      <main>
+        <div class="container">
+          <div class="row">
+            <div class="col tables">
+              <!-- Title and Top Buttons Start -->
+              <div class="page-title-container">
+                <div class="row">
+                  <!-- Title Start -->
+                  <div class="col-12 col-md-7">
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Cargo</b></h1>
+                    <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+                      <ul class="breadcrumb pt-0">
+                        <li class="breadcrumb-item"><a th:href="@{../index}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">Cargo</a></li>
+                        <!-- <li class="breadcrumb-item"><a href="Interface.Plugins.html">Plugins</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.Plugins.Datatables.html">Datatables</a></li> -->
+                      </ul>
+                    </nav>
+                  </div>
+                  <!-- Title End -->
+
+                  <!-- Top Buttons Start -->
+                  <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
+                    <!-- Add New Button Start -->
+                    <button type="button" class="btn btn-outline-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
+                      <i data-cs-icon="plus"></i>
+                      <span onclick="abrir()">Agregar</span>
+                    </button>
+                    <!-- Add New Button End -->
+
+                  </div>
+                  <!-- Top Buttons End -->
                 </div>
-            </nav>
-        </div>
-        <!-- Sidebar End -->
-    
-    
-            <!-- Content Start -->
-            <div class="content">
-                <!-- Navbar Start -->
-                <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                    <a href="../index.html" class="navbar-brand d-flex d-lg-none me-4">
-                        <h2 class="textcolor mb-0"><i class="fa fa-hashtag"></i></h2>
-                    </a>
-                    <a href="#" class="sidebar-toggler flex-shrink-0">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                    <form class="d-none d-md-flex ms-4">
-                        <input class="form-control border-0" type="search" placeholder="Search">
-                    </form>
-                    <div class="navbar-nav align-items-center ms-auto">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="fa fa-envelope me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Message</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle" th:src="@{../img/11.jpg}" alt="" style="width: 40px; height: 40px;">
-                                        <div class="ms-2">
-                                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                            <small>15 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle" th:src="@{../img/11.jpg}" alt="" style="width: 40px; height: 40px;">
-                                        <div class="ms-2">
-                                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                            <small>15 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <div class="d-flex align-items-center">
-                                        <img class="rounded-circle" th:src="@{../img/11.jpg}" alt="" style="width: 40px; height: 40px;">
-                                        <div class="ms-2">
-                                            <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                            <small>15 minutes ago</small>
-                                        </div>
-                                    </div>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item text-center">See all message</a>
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <i class="fa fa-bell me-lg-2"></i>
-                                <span class="d-none d-lg-inline-flex">Notificatin</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">Profile updated</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">New user added</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item">
-                                    <h6 class="fw-normal mb-0">Password changed</h6>
-                                    <small>15 minutes ago</small>
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a href="#" class="dropdown-item text-center">See all notifications</a>
-                            </div>
-                        </div>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                <img class="rounded-circle me-lg-2" th:src="@{../img/11.jpg}" alt="" style="width: 40px; height: 40px;">
-                                <span class="d-none d-lg-inline-flex">John Doe</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">My Profile</a>
-                                <a href="#" class="dropdown-item">Settings</a>
-                                <a href="#" class="dropdown-item">Log Out</a>
-                            </div>
-                        </div>
+              </div>
+              <!-- Title and Top Buttons End -->
+
+              <!-- Content Start -->
+              <div class="data-table-rows slim">
+                <!-- Controls Start -->
+                <div class="row">
+                  <!-- Search Start -->
+                  <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
+                    <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
+                      <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableRowsServerSide" />
+                      <span class="search-magnifier-icon">
+                        <i data-cs-icon="search"></i>
+                      </span>
+                      <span class="search-delete-icon d-none">
+                        <i data-cs-icon="close"></i>
+                      </span>
                     </div>
-                </nav>
-                <!-- Navbar End -->
-    
-    
-                <!-- contenido -->
-                <div class="tabla">
-                <table id="datat">
-                    <thead>
-                   <th>Id</th>
-                   <th>Nombre</th>
-                   <th>Descripcion</th>
-                   <th>Estado</th>
-                   <th>Acciones</th>
-                   </thead>
-                   <tbody>
-                    <tr th:if="${cargo.size>0}" th:each="c:${cargo}">
-                    <td th:text="${c.idCargo}"></td>
-                    <td th:text="${c.nombreCargo}"></td>
-                    <td th:text="${c.DescripcionCargo}"></td>
-                    <td th:if="${c.estadoCargo==true}" id="activo">
-                    <span class="badge bg-success active">Activo</span>
-                    </td>
-                    <td th:if="${c.estadoCargo==false}" id="inactivo">
-                    <span class="badge bg-danger active">Inactivo</span>
-                    </td>
-                    <td th:if="${c.estadoCargo==true}" id="estadoboton">
-                    <a rol="button" class="btn btn-danger btn-sm" th:href="@{/cargo/estado/}+${c.idCargo}" onclick="guar()"><button>Inactivar</button></a>
-                    <a role="button" class="btn btn-warning btn-sm" th:href="@{/cargo/edit/}+${c.idCargo}"> 
-                        <button onclick="guar();"><i class="fa fa-edit"></i></button></a>
-                    <a role="button" class="btn btn-danger btn-sm"th:href="@{/cargo/eliminar/}+${c.idCargo}" > 
-                        <button onclick="return confirm('¿Estas seguro de Eliminar el Cargo?');"><i class="fa fa-trash"></i></button>
-                        </a>
-                    </td>
-                    <td th:if="${c.estadoCargo==false}" id="estadoboton">
-                    <a rol="button" class="btn btn-success btn-sm"  th:href="@{/cargo/estado/}+${c.idCargo}"><button>Activar</button></a>
-                    <a role="button" class="btn btn-warning btn-sm" th:href="@{/cargo/edit/}+${c.idCargo}"> 
-                        <button onclick="return confirm('¿Estas seguro de Editar el Cargo?');"><i class="fa fa-edit"></i></button></a>
-                    <a role="button" class="btn btn-danger btn-sm"th:href="@{/cargo/eliminar/}+${c.idCargo}" > 
-                        <button onclick="conf();"><i class="fa fa-trash"></i></button>
-                        </a>
-                    </td>
-                    </tr>
-                    </tbody>
+                  </div>
+                  <!-- Search End -->
+
+                  <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
+                    <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
+
+
+                      <!-- Edit Button Start -->
+                      <button
+                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled"
+                        data-bs-delay="0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Edit"
+                        type="button"
+                      >
+                        <i data-cs-icon="edit"></i>
+                      </button>
+                      <!-- Edit Button End -->
+
+                      <!-- Delete Button Start -->
+                      <button
+                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable"
+                        data-bs-delay="0"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Delete"
+                        type="button"
+                      >
+                        <i data-cs-icon="bin"></i>
+                      </button>
+                      <!-- Delete Button End -->
+                    </div>
+                    <div class="d-inline-block">
+
+                      <!-- Export Dropdown Start -->
+                      <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
+                        <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
+                          <span
+                            class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown"
+                            data-bs-delay="0"
+                            data-bs-placement="top"
+                            data-bs-toggle="tooltip"
+                            title="Export"
+                          >
+                            <i data-cs-icon="download"></i>
+                          </span>
+                        </button>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                          <button class="dropdown-item export-copy" type="button">Copy</button>
+                          <button class="dropdown-item export-excel" type="button">Excel</button>
+                          <button class="dropdown-item export-cvs" type="button">Cvs</button>
+                        </div>
+                      </div>
+                      <!-- Export Dropdown End -->
+
+                      <!-- Length Start -->
+                      <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableRowsServerSide" data-childSelector="span">
+                        <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
+                          <span
+                            class="btn btn-foreground-alternate dropdown-toggle"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            data-bs-delay="0"
+                            title="Item Count"
+                          >
+                            10 Datos
+                          </span>
+                        </button>
+                        <div class="dropdown-menu shadow dropdown-menu-end">
+                          <a class="dropdown-item" href="#">5 Datos</a>
+                          <a class="dropdown-item active" href="#">10 Datos</a>
+                          <a class="dropdown-item" href="#">20 Datos</a>
+                        </div>
+                      </div>
+                      <!-- Length End -->
+                    </div>
+                  </div>
+                </div>
+                <!-- Controls End -->
+
+                <!-- Table Start -->
+                <div class="data-table-responsive-wrapper">
+                    <table id="datatableRowsServerSide" class="data-table nowrap hover">
+                      <thead>
+                        <tr>
+                          <th class="text-muted text-uppercase">Id</th>
+                          <th class="text-muted text-uppercase">Nombre</th>
+                          <th class="text-muted text-uppercase">Rol</th>
+                          <th class="text-muted text-uppercase">Descripcion</th>
+                          <th class="text-muted text-uppercase">Acciones</th>
+                          <th class="empty">&nbsp;</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr th:if="${cargo.size>0}" th:each="c:${cargo}">
+                          <td th:text="${c.idCargo}"></td>
+                          <td th:text="${c.nombreCargo}"></td>
+                          <td th:text="${c.rolCargo}"></td>
+                          <td th:text="${c.DescripcionCargo}"></td>
+                          <td th:if="${c.estadoCargo==true}" id="activo">
+                          <span class="badge bg-success active">Activo</span>
+                          </td>
+                          <td th:if="${c.estadoCargo==false}" id="inactivo">
+                          <span class="badge bg-danger active">Inactivo</span>
+                          </td>
+                          <td th:if="${c.estadoCargo==true}" id="estadoboton">
+                            <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/cargo/estado/}+${c.idCargo}">Inactivar</a>
+                            </td>
+                            <td th:if="${c.estadoCargo==false}" id="estadoboton">
+                            <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/cargo/estado/}+${c.idCargo}">Activar</a>
+                            </td>
+                          <td> 
+                            <!-- Boton Borrar-->
+                            <a th:href="@{/cargo/eliminar/}+${c.idCargo}"> 
+                            <button
+                              onclick="conf()"
+                              class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                              data-bs-delay="0"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Eliminar"
+                              type="button">
+                              <i data-cs-icon="bin"></i>
+                            </button>
+                          </a>
+                            <!--Boton Editar -->
+                            <a th:href="@{/cargo/edit/}+${c.idCargo}"> 
+                            <button
+                              class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                              data-bs-delay="0"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="Editar"
+                              type="button">
+                            <i data-cs-icon="edit"></i>
+                          </button></a>
+                        </td>
+                         </td>
+                          </tr>
+                          </tbody>
                     </table>
-                    <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
+                  </div>
+                  <!-- Table End -->
+              </div>
+              <!-- Content End -->
+            </div>
+          </div>
+        </div>
+            <!-- Satart modal Agregar -->
+    <section class="fondoMol" id="ModalFondo">
+        <div class="modall">
+            <div class="cabe">
+              <h1>Agregar</h1>
+              <button class="btn-close" onclick="cerrar()"></button>
+            </div>
+            <div class="form1">
+              <form th:action="@{/cargo/add}" method="post" th:object="${cargos}" id="formulario">
+                <!-- nombreCargo -->
+                <div class="formulario_grupo" id="grupo_nombre">
+                  <label class="rol">Nombre Cargo </label><br>
+                    <div id="cargo_input">
+                      <input class="roltext1 form-control" name="NombreCargo" id="NombreCargo" th:field="*{NombreCargo}" placeholder="Contador">
+                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">El Nombre tiene que estar ingresado, solo puede contener Letras.</p>
+                </div>
+                <!-- DescripCargo -->
+                <div class="formulario_grupo" id="grupo_descrip">
+                  <label class="rol">Descripcion Cargo</label><br>
+                    <div id="cargo_input">
+                      <input class="roltext1 form-control" name="DescripcionCargo" id="DescripcionCargo" th:field="*{DescripcionCargo}" placeholder="Realiza acciones de contabilidad interna">
+                      <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                  </div>
+                  <p class="formulario__input-error">La Descripcion tiene que estar ingresada, solo puede contener letras y signos (, . : ;).</p>
                 </div>
                 
-            <!-- Content End -->
-    
-    
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg cambiocolor btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+                <!-- rolCargo -->
+                <div class="formulario_grupo" id="grupo_rolCargo">
+                  <label class="rol">Rol en el sistema</label><br>
+                      <div id="cargo_select">
+                          <select class="roltext1 form-control" name="rolCargo" id="rolCargo">
+                            <option id="rolCargo" class="roltext1" name="rolCargo" value="Tesorero">Tesorero</option>
+                            <option id="rolCargo" class="roltext1" name="rolCargo" value="Contador">Contador</option>
+                            <option id="rolCargo" class="roltext1" name="rolCargo" value="Admin">Admin</option>
+                            <option id="rolCargo" class="roltext1" name="rolCargo" value="Empleado">Empleado</option>
+                          </select>
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>  
+                </div>
+                <!-- EstadoCargo -->
+                <div class="formulario_grupo" id="grupo_estado">
+                  <label class="rol">Estado Cargo</label><br>
+                      <div id="cargo_select">
+                          <select class="roltext1 form-control" name="EstadoCargo" id="EstadoCargo">
+                            <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="true">Activar</option>
+                            <option id="EstadoCargo" class="roltext1" name="EstadoCargo" value="false">Inactivar</option>
+                          </select>
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                    </div>  
+                </div>
+                <br><br>
+                          <div class="bootom">
+                            <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
+                            <a href=""><button type="submit" class="enviar btn btn-primary" value="form" name="accion">Agregar</button></a>
+                          </div>
+                        </form>
         </div>
-    
-        <!-- JavaScript Libraries -->
-        <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
-        <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js}"></script>
-        <script th:src="@{../lib/chart/chart.min.js}"></script>
-        <script th:src="@{../lib/easing/easing.min.js}"></script>
-        <script th:src="@{../lib/waypoints/waypoints.min.js}"></script>
-        <script th:src="@{../lib/owlcarousel/owl.carousel.min.js}"></script>
-        <script th:src="@{../lib/tempusdominus/js/moment.min.js}"></script>
-        <script th:src="@{../lib/tempusdominus/js/moment-timezone.min.js}"></script>
-        <script th:src="@{../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js}"></script>
-    
-        <!-- Template Javascript -->
-        <script th:src="@{../js/main.js}"></script>
-        <script th:src="@{../js/html2pdf.bundl.min.js}"></script>
-        <script th:src="@{../js/reporte.js}"></script>
-        <script th:src="@{../js/cargo.js}"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-    
-            var datat=document.querySelector("#datat"); 
-            var dataTable=new DataTable("#datat",{ 
-              perPage:10,
-              labels: {
-                  placeholder: "Busca por un campo...",
-                  perPage: "{select} registros por página",
-                  noRows: "No se encontraron registros",
-                  info: "Mostrando {start} a {end} de {rows} registros",
-              }
-            } ) ;
-            
-            
-            </script>
-    </body>
-    </html>
- <!-- <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a> -->
-            
-    
+      </section> 
+      <!-- End modal Agregar -->
+      </main>
+      <!-- Layout Footer Start -->
+      <footer>
+        <div class="footer-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <p class="mb-0 text-muted text-medium">Colored Strategies 2021</p>
+              </div>
+              <div class="col-sm-6 d-none d-sm-block">
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- Layout Footer End -->
+    </div>
+
+    <!-- Search Modal Start -->
+    <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 p-0">
+            <button type="button" class="btn-close btn btn-icon btn-icon-only btn-foreground" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body ps-5 pe-5 pb-0 border-0">
+            <input id="searchPagesInput" class="form-control form-control-xl borderless ps-0 pe-0 mb-1 auto-complete" type="text" autocomplete="off" />
+          </div>
+          <div class="modal-footer border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0">
+            <span class="text-alternate d-inline-block m-0 me-3">
+              <i data-cs-icon="arrow-bottom" data-cs-size="15" class="text-alternate align-middle me-1"></i>
+              <span class="align-middle text-medium">Navigate</span>
+            </span>
+            <span class="text-alternate d-inline-block m-0 me-3">
+              <i data-cs-icon="arrow-bottom-left" data-cs-size="15" class="text-alternate align-middle me-1"></i>
+              <span class="align-middle text-medium">Select</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Modal End -->
+
+    <!-- Vendor Scripts Start -->
+    <script th:src="@{../../js/vendor/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{../../js/vendor/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{../../js/vendor/OverlayScrollbars.min.js}"></script>
+    <script th:src="@{../../js/vendor/autoComplete.min.js}"></script>
+    <script th:src="@{../../js/vendor/clamp.min.js}"></script>
+    <script th:src="@{../../js/vendor/bootstrap-submenu.js}"></script>
+    <script th:src="@{../../js/vendor/datatables.min.js}"></script>
+    <script th:src="@{../../js/vendor/mousetrap.min.js}"></script>
+    <!-- Vendor Scripts End -->
+
+    <!-- Template Base Scripts Start -->
+    <script th:src="@{../../font/CS-Line/csicons.min.js}"></script>
+    <script th:src="@{../../js/base/helpers.js}"></script>
+    <script th:src="@{../../js/base/globals.js}"></script>
+    <script th:src="@{../../js/base/nav.js}"></script>
+    <script th:src="@{../../js/base/search.js}"></script>
+    <script th:src="@{../../js/base/settings.js}"></script>
+    <script th:src="@{../../js/base/init.js}"></script>
+    <!-- Template Base Scripts End -->
+    <!-- Page Specific Scripts Start -->
+    <script th:src="@{../../js/cs/datatable.extend.js}"></script>
+    <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
+    <script th:src="@{../../js/common.js}"></script>
+    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
+    <script th:src="@{../../js/funciona.js}"></script>
+    <script th:src="@{../../js/modal.js}"></script>
+    <script th:src="@{../../js/Validaciones/Cargo.js}"></script>
+    <!-- Page Specific Scripts End -->
+  </body>
+</html>

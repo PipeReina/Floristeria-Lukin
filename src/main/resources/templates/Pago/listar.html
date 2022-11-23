@@ -54,7 +54,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a th:href="Home">
+                <a th:href="@{../}">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -515,7 +515,7 @@
                     <div class="formulario_grupo" id="grupo_fechaPago">
                         <label class="rol">Fecha</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" type="date" name="fechaPago" id="fechaPago" th:field="*{fechaPago}">
+                        <input class="roltext1 form-control" type="date" name="fechaPago" id="fechaPago" th:field="*{fechaPago}">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">El fechaPago tiene que estar ingresado, solo puede contener Letras.</p>

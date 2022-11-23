@@ -53,7 +53,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a th:href="Home">
+                <a th:href="@{../}">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -421,7 +421,7 @@
                         <th class="text-muted text-small text-uppercase">Tipo de Hrs</th>
                         <th class="text-muted text-small text-uppercase">Fehca de Hrs</th>
                         <th class="text-muted text-small text-uppercase">FK empleado</th>
-                        <th class="text-muted text-small text-uppercase check"></th>
+                        <th class="text-muted text-small text-uppercase check">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -431,7 +431,32 @@
                                 <td th:text="${c.EstadoHE}"></td>
                                 <td th:text="${c.fechaHE}"></td>
                                 <td th:text="${c.idEmpleadoFK.NombreEmpleado}+' '+${c.idEmpleadoFK.ApellidoEmpleado}"></td>
-                            <td> <input type="checkbox" class="form-check-input" id="check"></td>
+                                <td> 
+                                  <!-- Boton Borrar-->
+                                  <a th:href="@{/he/delete/}+${c.idHorasExtra}"> 
+                                  <button
+                                    onclick="eli()"
+                                    class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                                    data-bs-delay="0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Eliminar"
+                                    type="button">
+                                    <i data-cs-icon="bin"></i>
+                                  </button>
+                                </a>
+                                  <!--Boton Editar -->
+                                  <a th:href="@{/he/edit/}+${c.idHorasExtra}"> 
+                                  <button
+                                    class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                                    data-bs-delay="0"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Editar"
+                                    type="button">
+                                  <i data-cs-icon="edit"></i>
+                                </button></a>
+                              </td>
                         </tr>
                     </tbody>
                   </table>

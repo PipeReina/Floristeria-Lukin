@@ -53,7 +53,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a th:href="Home">
+                <a th:href="@{../}">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -288,11 +288,11 @@
                 <div class="row">
                   <!-- Title Start -->
                   <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Horas Extras</b></h1>
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Empleado</b></h1>
                     <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
                       <ul class="breadcrumb pt-0">
                         <li class="breadcrumb-item"><a th:href="@{../index}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="Interface.html">HorasExtras</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">Empleado</a></li>
                         <!-- <li class="breadcrumb-item"><a href="Interface.Plugins.html">Plugins</a></li>
                         <li class="breadcrumb-item"><a href="Interface.Plugins.Datatables.html">Datatables</a></li> -->
                       </ul>
@@ -446,6 +446,7 @@
                         <td th:text="${c.telEmpleado}"></td>
                         <td th:text="${c.emailEmpleado}"></td>
                         <td th:text="${c.rhEmpleado}"></td>
+                        <td th:text="${c.FKcargo.NombreCargo}"></td>
                         <td th:text="${c.especialidadEmpleado}"></td>
                         <td th:if="${c.estadoEmpleado==true}" id="activo">
                         <span class="badge bg-success active">Activo</span>
@@ -460,7 +461,6 @@
                         <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/empleado/estado/}+${c.idEmpleado}">Activar</a>
                         </td>
 
-                        <td th:text="${c.FKcargo.NombreCargo}"></td>
       
                         <td> 
                           <!-- Boton Borrar-->
@@ -500,62 +500,156 @@
           </div>
         </div>
             <!-- Satart modal Agregar -->
-    <!-- <section class="fondoMol" id="ModalFondo">
+     <section class="fondoMol" id="ModalFondo">
         <div class="modall">
             <div class="cabe">
               <h1>Agregar</h1>
               <button class="btn-close" onclick="cerrar()"></button>
             </div>
             <div class="form1">
-                <form th:action="@{/he/add}" th:object="${he}" method="post" id="formulario">
-                    <div class="mb-3">
-                        <div class="formulario_grupo" id="grupo_fechahe">
-                            <label class="rol">Fecha de las Horas Extra</label>
-                            <br>
-                            <div id="">
-                                <input class="roltext1 form-control" type="date" name="FechaHE" id="FechaHE" th:field="*{FechaHE}"
-                                    placeholder="2022-05-03">
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            </div>
-                            <p class="formulario__input-error">La fecha de las horas extra es acorde al calendario</p>
+              <form th:action="@{/empleado/add}" method="post" th:object="${empleados}" id="formulario" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <!-- nombreEmpelado -->
+                <div class="formulario_grupo" id="grupo_nombre">
+                <label class="rol">Nombre Empleado</label><br>
+                <div id="cargo_input">
+                <input class="roltext1 form-control" name="nombreEmpleado" id="nombreEmpleado" th:field="*{nombreEmpleado}" placeholder="Andrea">
+                <div th:if="${#fields.hasErrors('nombreEmpleado')}" th:errors="*{nombreEmpleado}"></div>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El Nombre tiene que estar ingresado, solo puede contener Letras.</p>
+                </div>
+                <!-- apellidoEmpleado -->
+                <div class="formulario_grupo" id="grupo_apellido">
+                <label class="rol">Apellido Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="apellidoEmpleado" id="apellidoEmpleado" th:field="*{apellidoEmpleado}" placeholder="Rodriguez">
+                    <div th:if="${#fields.hasErrors('apellidoEmpleado')}" th:errors="*{apellidoEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El Apellido tiene que estar ingresado, solo puede contener Letras.</p>
+                </div>
+                <!-- docEmpleado -->
+                <div class="formulario_grupo" id="grupo_documento">
+                    <label class="rol">Documento Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="docEmpleado" id="docEmpleado" th:field="*{docEmpleado}" placeholder="12487596">
+                    <div th:if="${#fields.hasErrors('docEmpleado')}" th:errors="*{docEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">El Documento tiene que estar ingresado, solo puede contener números. De 7 a 14 digitos</p>
+                </div>
+                <!-- epsEmpleado -->
+                <div class="formulario_grupo" id="grupo_eps">
+                    <label class="rol">Eps Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="epsEmpleado" id="epsEmpleado" th:field="*{epsEmpleado}" placeholder="SuperSalud">
+                    <div th:if="${#fields.hasErrors('epsEmpleado')}" th:errors="*{epsEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">La Eps tiene que estar ingresada, solo puede contener Letras y espacios.</p>
+                </div>
+                <!-- direccEmpleado -->
+                <div class="formulario_grupo" id="grupo_direcc">
+                    <label class="rol">Direccion Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="direccEmpleado" id="direccEmpleado" th:field="*{direccEmpleado}" placeholder="Av 150 # 78b">
+                    <div th:if="${#fields.hasErrors('direccEmpleado')}" th:errors="*{direccEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">La direcccion tiene que estar ingresado, solo puede contener Letras, numeros y ciertos signos.</p>
+                </div>
+                <!-- generoEmpleado -->
+                <div class="formulario_grupo" id="grupo_genero">
+                    <label class="rol">Genero Empleado</label><br>
+                    <select class="roltext1 form-control" name="generoEmpleado" id="generoEmpleado"  th:field="*{generoEmpleado}">
+                        <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Masculino">Masculino</option>
+                        <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Femenino">Femenino</option>
+                        <option id="generoEmpleado" class="roltext1" name="generoEmpleado" value="Otro">Otro</option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('generoEmpleado')}" th:errors="*{generoEmpleado}"></div>
+                </div>
+                <!-- telefonoEmpleado -->
+                <div class="formulario_grupo" id="grupo_tel">
+                    <label class="rol">Telefono Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="telEmpleado" id="telEmpleado" th:field="*{telEmpleado}" placeholder="3201457846">
+                    <div th:if="${#fields.hasErrors('telEmpleado')}" th:errors="*{telEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">El Telefono tiene que estar ingresado, solo puede contener numeros.</p>
+                </div>
+                <!-- emailEmpleado -->
+                <div class="formulario_grupo" id="grupo_email">
+                    <label class="rol">Email Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="emailEmpleado" id="emailEmpleado" th:field="*{emailEmpleado}" placeholder="andrea@correo.com">
+                    <div th:if="${#fields.hasErrors('emailEmpleado')}" th:errors="*{emailEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">El Email tiene que estar ingresado, solo puede contener Letras, numeros y ciertos signos.</p>
+                </div>
+                <!-- rhEmpleado -->
+                <div class="formulario_grupo" id="grupo_rh">
+                    <label class="rol">Rh Empleado</label><br>
+                    <select class="roltext1 form-control" name="rhEmpleado" id="rhEmpleado"  th:field="*{rhEmpleado}">
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="A+">A+</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="A-">A-</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="B+">B+</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="B-">B-</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="AB+">AB+</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="AB-">AB-</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="O+">O+</option>
+                        <option id="rhEmpleado" class="roltext1" name="rhEmpleado" value="O-">O-</option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('rhEmpleado')}" th:errors="*{rhEmpleado}"></div>
+                </div>
+                <!-- especialidadEmpleado -->
+                <div class="formulario_grupo" id="grupo_especial">
+                    <label class="rol">Especialidad Empleado</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" name="especialidadEmpleado" id="especialidadEmpleado" th:field="*{especialidadEmpleado}" placeholder="Liquidacion Nominal">
+                    <div th:if="${#fields.hasErrors('especialidadEmpleado')}" th:errors="*{especialidadEmpleado}"></div>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                </div>
+                <!-- Cargofk -->
+                <div class="form-group">
+                    <label class="rol"> Cargo FK</label><br>
+                    <select th:field="*{FKcargo}" class="form-control">
+                        <option value="">Seleccione el Cargo</option>
+                        <th:block th:each="c:${cargos}">
+                            <option th:text="${c.nombreCargo}" th:value="${c.idCargo}"></option>
+                        </th:block>
+                    </select>
+                    <div th:if="${#fields.hasErrors('FKcargo')}" th:errors="*{FKcargo}"></div>
+                </div>
+                    <br>
+                        <!-- fotoEmpleado -->
+                    <div class="formulario_grupo" id="grupo_foto">
+                        <label class="rol">Foto Empleado</label><br>
+                        <div id="cargo_input">
+                            <input type="file" class="form-control" accept="image/*,.png" name="fotoEmpleado" id="fotoEmpleado" th:field="*{fotoEmpleado}">
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            <div th:if="${#fields.hasErrors('fotoEmpleado')}" th:errors="*{FotoEmpleado}"></div>
                         </div>
-                        <br>
-                        <div class="formulario_grupo" id="grupo_CantidadHrs">
-                            <label class="rol">Cantidad de Horas Extra</label>
-                            <br>
-                            <div id="">
-                                <input class="roltext1 form-control" type="text" name="CantidadHrs" id="CantidadHrs" th:field="*{CantidadHrs}"
-                                    placeholder="3">
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            </div>
-                            <p class="formulario__input-error">La catidad de las horas Extras debe estar ingresadas</p>
-                        </div>
-                        <br>
-
-                        <label class="rol">Tipo de Horas Extra</label><br>
-                        <div id="cargo_select ">
-                            <select class="roltext1 form-control" name="EstadoHE" id="EstadoHE">
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="0">Diurna</option>
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="1">Nocturna</option>
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="1">Semanal</option>
-                            </select>
-                            <br>
-                            <label class="rol" for="empleado">Empleado FK</label><br>
-                            <select class="roltext form-control" th:field="*{IdEmpleadoFK}">
-                                <option value="">Seleccione el Empleado</option>
-                                <th:block th:each="empleado: ${empleado}">
-                                    <option th:text="${empleado.NombreEmpleado}+' '+${empleado.ApellidoEmpleado}" th:value="${empleado.IdEmpleado}">
-                                    </option>
-                                </th:block>
-                            </select><br>
-                          </div>
+                         <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                    </div>
+                        <br><label class="rol">Estado Empleado</label><br>
+                        <div id="cargo_select">
+                        <select class="roltext1 form-control" name="estadoEmpleado" id="estadoEmpleado">
+                            <option id="estadoEmpleado" class="roltext1" name="estadoEmpleado" value="true">Activar</option>
+                            <option id="estadoEmpleado" class="roltext1" name="estadoEmpleado" value="false">Inactivar</option>
+                        </select>
+                        </div><br><br>
                           <div class="bootom">
                             <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
                             <a href=""><button type="submit" class="enviar btn btn-primary" value="formhe" name="accion">Agregar</button></a>
                           </div>
                         </form>
         </div>
-      </section> -->
+      </section>
       <!-- End modal Agregar -->
       </main>
       <!-- Layout Footer Start -->
@@ -627,7 +721,7 @@
     <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
-    <script th:src="@{../../js/Validaciones/HE.js}"></script>
+    <script th:src="@{../../js/Validaciones/Empleado.js}"></script>
     <!-- Page Specific Scripts End -->
   </body>
 </html>

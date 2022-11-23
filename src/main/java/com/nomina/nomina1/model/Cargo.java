@@ -23,6 +23,9 @@ public class Cargo {
     @NotEmpty    
     @Column(name="nombreCargo", length=20)
     private String nombreCargo;
+    @NotEmpty
+    @Column(name="rolCargo", length=20)
+    private String rolCargo;
     @NotEmpty    
     @Column(name="DescripcionCargo", length=100)
     private String DescripcionCargo;
@@ -35,10 +38,11 @@ public class Cargo {
         FKempleado=new ArrayList<Empleado>();
     }
 
-    public Cargo(Integer idCargo, @NotEmpty String nombreCargo, @NotEmpty String descripcionCargo, Boolean estadoCargo,
-            List<Empleado> fKempleado) {
+    public Cargo(Integer idCargo, @NotEmpty String nombreCargo, @NotEmpty String rolCargo,
+            @NotEmpty String descripcionCargo, Boolean estadoCargo, List<Empleado> fKempleado) {
         this.idCargo = idCargo;
         this.nombreCargo = nombreCargo;
+        this.rolCargo = rolCargo;
         DescripcionCargo = descripcionCargo;
         this.estadoCargo = estadoCargo;
         FKempleado = fKempleado;
@@ -58,6 +62,14 @@ public class Cargo {
 
     public void setNombreCargo(String nombreCargo) {
         this.nombreCargo = nombreCargo;
+    }
+
+    public String getRolCargo() {
+        return rolCargo;
+    }
+
+    public void setRolCargo(String rolCargo) {
+        this.rolCargo = rolCargo;
     }
 
     public String getDescripcionCargo() {
@@ -84,7 +96,6 @@ public class Cargo {
         FKempleado = fKempleado;
     }
 
-
-
+   
     
 }

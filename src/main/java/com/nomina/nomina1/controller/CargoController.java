@@ -27,6 +27,9 @@ public class CargoController {
     @GetMapping(path = {"/","cargo"})
     public String listar(Model m){
         m.addAttribute("cargo", cargod.findAll());
+        Cargo cargo=new Cargo();
+        m.addAttribute("cargos", cargo);
+        m.addAttribute("accion", "Agregar cargo");
         return "cargo/cargo";
     }
 
@@ -42,22 +45,18 @@ public class CargoController {
          m.addAttribute("cargo",cargo);
          return "cargo/edit";
      }
-    @GetMapping("/crear")     
-    public String creacion(Model m){
-        Cargo cargo=new Cargo();
-        m.addAttribute("cargo", cargo);
-        m.addAttribute("accion", "Agregar cargo");
-        return "cargo/creacion"; 
-    }
+
     @PostMapping("/add")
         public String add(@Valid Cargo cargo,BindingResult res, Model m,SessionStatus status){
+            System.out.println("holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+cargo);
             if(res.hasErrors()){
-                return "cargo/creacion";
+                return "cargo/cargo";
             }
             cargod.save(cargo);
             status.setComplete();
-            return "redirect:cargo";
+            return "redirect:./";
         }
+
      @GetMapping("/estado/{idCargo}")
      public String estado(@PathVariable Integer idCargo,Model m){
          Cargo cargo=null;

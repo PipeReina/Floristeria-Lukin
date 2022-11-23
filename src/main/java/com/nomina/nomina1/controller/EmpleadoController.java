@@ -39,6 +39,9 @@ public class EmpleadoController {
     public String listar(Model m){
         m.addAttribute("cargos", cargod.findAll());
         m.addAttribute("empleado", empleadod.findAll());
+        Empleado empleado=new Empleado();
+        m.addAttribute("empleados", empleado);
+        m.addAttribute("accion", "Agregar empleado");
         return "empleado/empleado";
     }
 
@@ -57,21 +60,13 @@ public class EmpleadoController {
          return "empleado/edit";
      }
 
-     @GetMapping("/crear")     
-    public String creacion(Model m){
-        Empleado empleado=new Empleado();
-        m.addAttribute("cargos", cargod.findAll());
-        m.addAttribute("empleado", empleado);
-        m.addAttribute("accion", "Agregar empleado");
-        return "empleado/creacion"; 
-    }
     @PostMapping("/add")
         public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
             if(!res.hasErrors()){
                 System.out.println(res.hasErrors());
                 m.addAttribute("cargos", cargod.findAll());
                 m.addAttribute("empleado", empleado);
-                return "empleado/creacion";
+                return "empleado/empleado";
             }
             if(!imagen.isEmpty()){
                 Path director=Paths.get("src//main//resources//static//img");
