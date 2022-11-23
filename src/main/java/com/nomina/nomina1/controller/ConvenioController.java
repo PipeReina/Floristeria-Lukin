@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+
+import com.nomina.nomina1.services.ConvenioServiceImpl;
 import com.nomina.nomina1.services.IEmpleadoService;
 
 
@@ -25,7 +27,7 @@ import com.nomina.nomina1.services.IEmpleadoService;
 public class ConvenioController {
 
     @Autowired
-    private IConvenio Conveniof;
+    private ConvenioServiceImpl Conveniof;
     @Autowired
     private IEmpleadoService empleadod;
     
@@ -34,31 +36,16 @@ public class ConvenioController {
         m.addAttribute("Convenios", Conveniof.findAll());
         m.addAttribute("empleado", empleadod.findAll());
         Convenio Convenio=new Convenio();
-        m.addAttribute("empleado", empleadod.findAll());
        m.addAttribute("Convenio", Convenio);
        m.addAttribute("accion", "Agregar Convenio");
         return "Convenio/listar";    
     }
 
-
-    @GetMapping("/verc")
-    public String verc(Model m){
-        Convenio alb=new Convenio();
-        m.addAttribute("Convenio", alb);
-        return "Convenio/verc";
-    }
-
-    /*@GetMapping("/ver")
-    public String ver(@RequestParam int id,String nom,Model m){
-        m.addAttribute("msn", "En la ruta llegó el id "+id+" y el nombre recibido es "+nom);
-        return "Convenio/ver";
-    }*/
-
     @GetMapping("/ver-Convenio/{id}")
     public String verConvenio(@PathVariable Integer id,Model m){
     Convenio Convenio=null;
     if(id>0){
-    Conveniof.findById(id);
+    Conveniof.findOne(id);
     }else{
     return "redirect:listar";
     }
@@ -72,7 +59,7 @@ public class ConvenioController {
         Convenio Convenio=null;
         if(id>0){
             m.addAttribute("empleado", empleadod.findAll());
-            Conveniof.findById(id);
+            Conveniof.findOne(id);
         }else{
             return "redirect:listar";
         }
@@ -81,33 +68,26 @@ public class ConvenioController {
         return "Convenio/form";
     }
 
-    @GetMapping("/form")     
-    public String form(Model m){
-        Convenio Convenio=new Convenio();
-         m.addAttribute("empleado", empleadod.findAll());
-        m.addAttribute("Convenio", Convenio);
-        m.addAttribute("accion", "Agregar Convenio");
-        return "Convenio/form"; 
-    }
 
 
     @PostMapping("/add")
     public String add(@Valid Convenio Convenio,BindingResult res, Model m,SessionStatus status){
+        System.out.print("Informacion❤️"+Convenio);
+
         if(res.hasErrors()){
              m.addAttribute("empleado", empleadod.findAll());
-            return "Convenio/form";
+            return "Convenio/listar";
         }
         Conveniof.save(Convenio);
         status.setComplete();
         return "redirect:listar";
     }    
 
-
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
 		
 		if(id > 0) {
-			Conveniof.deleteById(id);
+			Conveniof.delete(id);
 		}
 		return "redirect:../listar";
 	}

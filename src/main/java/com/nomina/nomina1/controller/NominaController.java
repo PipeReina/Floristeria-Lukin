@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import java.lang.Integer;
 
-// import com.nomina.nomina1.model.Cargo;
 import com.nomina.nomina1.model.Convenio;
 import com.nomina.nomina1.model.Empleado;
 import com.nomina.nomina1.model.comision;
@@ -112,6 +110,14 @@ public class NominaController {
         }}}
 
     return "nomina/verNom";
+    }
+    
+
+    @GetMapping(path={"/nominaTotal1","","/"})
+    public String listar(Model m){
+        m.addAttribute("empleado", Empleado.findAll());
+
+        return "nomina/verNom1";    
     }
 
 }

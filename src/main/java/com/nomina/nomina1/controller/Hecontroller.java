@@ -3,6 +3,8 @@ package com.nomina.nomina1.controller;
 import javax.validation.Valid;
 import com.nomina.nomina1.model.he;
 import com.nomina.nomina1.services.Iheservice;
+import com.nomina.nomina1.services.heserviceimpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +27,7 @@ public class Hecontroller {
     private IEmpleadoService empleadod;
 
     @Autowired
-    private Iheservice het;
+    private heserviceimpl het;
 
     @GetMapping(path={"/listarhe","","/"})
     public String listarhe(Model mo){
@@ -33,7 +35,6 @@ public class Hecontroller {
         mo.addAttribute("hse", het.findAll());
         he he = new he();
         mo.addAttribute("he", he);
-        mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("accion", "Agregar horas extra");
     
         System.out.println(mo);
@@ -60,20 +61,12 @@ public class Hecontroller {
         return "he/edit";  
     }  
 
-    @GetMapping("/formhe")
-    public String formhe(Model mo){
-        he he = new he();
-        mo.addAttribute("he", he);
-        mo.addAttribute("empleado", empleadod.findAll());
-        mo.addAttribute("accion", "Agregar horas extra");
-        return "he/formhe";
-    }
 
-    @PostMapping("add")
+    @PostMapping("/add")
     public String add(@Valid he he, BindingResult res, Model mo, SessionStatus status){
         if(res.hasErrors()){
             mo.addAttribute("empleado", empleadod.findAll());
-            return "he/formhe";
+            return "he/listar";
         }
         het.save(he);
         status.setComplete();

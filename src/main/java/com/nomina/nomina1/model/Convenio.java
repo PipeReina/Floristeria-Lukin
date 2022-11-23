@@ -9,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
@@ -20,17 +19,16 @@ public class Convenio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idConvenio;
-    @NotEmpty
-    @Range(min=1,max=10)
-    @Column(length = 4,nullable=false)
+
+    @Column(length = 10,nullable=false)
     private Integer horaConvenio;
-    @Range(min=1,max=10)
-    @Column(length = 4,nullable=false)
+
+    @Column(length = 10,nullable=false)
     private Integer horaAlDia;
-    @NotEmpty
-    @Range(min=1,max=10)
-    @Column(length = 4,nullable=false)
+
+    @Column(length = 10,nullable=false)
     private Integer diasConvenio;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado FKempleado;
     
@@ -39,15 +37,19 @@ public class Convenio {
  
    }
 
-    public Convenio(Integer idConvenio, @NotEmpty @Size(min = 1, max = 10) Integer horaConvenio,
-            @Size(min = 1, max = 10) Integer horaAlDia, @NotEmpty @Size(min = 1, max = 10) Integer diasConvenio,
-             Empleado fKempleado) {
+   
+
+    public Convenio(Integer idConvenio, @Range(min = 0, max = 10) Integer horaConvenio,
+            @Range(min = 0, max = 10) Integer horaAlDia, @Range(min = 0, max = 10) Integer diasConvenio,
+            Empleado fKempleado) {
         this.idConvenio = idConvenio;
         this.horaConvenio = horaConvenio;
         this.horaAlDia = horaAlDia;
         this.diasConvenio = diasConvenio;
         FKempleado = fKempleado;
     }
+
+
 
     public Integer getIdConvenio() {
         return idConvenio;
@@ -89,7 +91,7 @@ public class Convenio {
         FKempleado = fKempleado;
     }
 
-    
+   
 
    
  }

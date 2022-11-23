@@ -2,7 +2,8 @@ package com.nomina.nomina1.controller;
 
 import javax.validation.Valid;
 import com.nomina.nomina1.model.comision;
-import com.nomina.nomina1.services.Icomisionservice;
+import com.nomina.nomina1.services.comisionserviceimpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,12 +27,18 @@ public class Comisioncontroller {
     private IEmpleadoService empleadod;
 
     @Autowired
-    private Icomisionservice com;
+    private comisionserviceimpl com;
 
     @GetMapping(path={"/listarcom","","/"})
     public String listarcom(Model mo){
         mo.addAttribute("empleado", empleadod.findAll());
         mo.addAttribute("comisiones", com.findAll());
+
+        ///////////////// Form
+
+        comision comision = new comision();
+        mo.addAttribute("comision", comision);
+        mo.addAttribute("accion");  
         return "comision/listarcom";
     }
  
@@ -56,21 +63,13 @@ public class Comisioncontroller {
         return "comision/edit";  
     }  
 
-    @GetMapping("/formcom")
-    public String formcom(Model mo){
-        comision comision = new comision();
-        mo.addAttribute("comision", comision);
-        mo.addAttribute("empleado", empleadod.findAll());
-        mo.addAttribute("accion");
-        return "comision/formcom";
-    }
-
-    @PostMapping("add")
+    @PostMapping("/add")
     public String add(@Valid comision comision, BindingResult res, Model mo, SessionStatus status){
+        System.out.print("Informacion❤️"+comision);
         if(res.hasErrors()){
             
         mo.addAttribute("empleado", empleadod.findAll());
-        return "comision/formcom";
+        return "comision/listarcom";
         }
         com.save(comision);
         status.setComplete();

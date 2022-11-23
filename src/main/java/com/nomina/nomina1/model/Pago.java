@@ -25,26 +25,20 @@ public class Pago {
     // @NonNull
     @NotNull
     @Column(length = 10)
-    @Size (min=2, max=10)
+    @Size (min=2, max=20)
     private String fechaPago;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "FKdevengado_id", referencedColumnName = "idDev")
-    private Devengado FKdevengado;
+    @JoinColumn(name = "empleadoFK")
+    private Empleado empleadoFK;
     
     public Pago() {
     }
 
-    
-
-    public Pago(Integer idPago, @Size(min = 2, max = 10) String fechaPago, Devengado fKdevengado) {
+    public Pago(Integer idPago, @NotNull @Size(min = 2, max = 10) String fechaPago, Empleado empleadoFK) {
         this.idPago = idPago;
         this.fechaPago = fechaPago;
-        this.FKdevengado = fKdevengado;
+        this.empleadoFK = empleadoFK;
     }
-
-
-
- 
 
     public Integer getIdPago() {
         return idPago;
@@ -62,24 +56,14 @@ public class Pago {
         this.fechaPago = fechaPago;
     }
 
-    public Devengado getFKdevengado() {
-        return FKdevengado;
+    public Empleado getEmpleadoFK() {
+        return empleadoFK;
     }
 
-    public void setFKdevengado(Devengado fKdevengado) {
-        FKdevengado = fKdevengado;
-    }
-
-    public Object findAll() {
-        return null;
+    public void setEmpleadoFK(Empleado empleadoFK) {
+        this.empleadoFK = empleadoFK;
     }
 
     
-
-    
-
-    
-
-   
     
 }

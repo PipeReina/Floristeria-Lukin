@@ -54,7 +54,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a href="Dashboards.Default.html">
+                <a th:href="Home">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -201,13 +201,8 @@
                     </a>
                     <ul id="apps">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Nomina - Empleado</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="Apps.Calendar.html">
-                          <span class="label">Nomina - Devengado</span>
                         </a>
                       </li>
                     </ul>
@@ -247,7 +242,7 @@
                     </a>
                     <ul id="blocks">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Aval Nominal</span>
                         </a>
                       </li>
@@ -432,7 +427,7 @@
                         <tr id="trr" th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
                             <td th:text="${c.idPago}"></td>
                             <td th:text="${c.fechaPago}"></td>
-                            <td th:text="${c.FKdevengado.idDev}"></td>
+                            <td th:text="${c.empleadoFK.nombreEmpleado}"></td>
                             <td> <input type="checkbox" class="form-check-input" id="check"></td>
                             </td>
                         </tr>
@@ -511,19 +506,16 @@
             <!-- Satart modal Agregar -->
     <section class="fondoMol" id="ModalFondo">
         <div class="modall">
-          <form action="">
             <div class="cabe">
               <h1>Agregar</h1>
               <button class="btn-close" onclick="cerrar()"></button>
             </div>
             <div class="form1">
-                <form th:action="@{/Pago/add}" method="post" th:object="${Pago}" style="width: 35rem;" class="mx-auto" id="formulario"> 
+                <form th:action="@{/Pago/add}" method="post" th:object="${Pago}"id="formulario"> 
                     <div class="formulario_grupo" id="grupo_fechaPago">
                         <label class="rol">Fecha</label><br>
                     <div id="cargo_input">
-                        <input class="roltext1" type="datetime-local" name="fechaPago" id="fechaPago" th:field="*{fechaPago}">
-                        <div class="form-text text-danger" th:if="${#fields.hasErrors('fechaPago')}"
-                        th:errors="*{fechaPago}"></div>
+                        <input class="roltext1" type="date" name="fechaPago" id="fechaPago" th:field="*{fechaPago}">
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                         <p class="formulario__input-error">El fechaPago tiene que estar ingresado, solo puede contener Letras.</p>
@@ -531,10 +523,10 @@
                 <br>
                 <div class="form-group">
                     <label class="rol"> Devengado FK</label><br>
-                    <select th:field="*{FKdevengado}">
+                    <select th:field="*{empleadoFK}">
                         <option value="">Seleccione </option>
-                        <th:block th:each="c:${Devengados}">
-                            <option th:text="${c.idDev} + ${c.fechaDev}" th:value="${c.idDev}"></option>
+                        <th:block th:each="c:${empleados}">
+                            <option th:text="${c.idEmpleado} + ${c.nombreEmpleado}" th:value="${c.idEmpleado}"></option>
                         </th:block>
                     </select>
                 </div>
@@ -544,7 +536,6 @@
                 <div>
                     <a><button type="submit" class="btn col-3" style="text-decoration:none">Guardar</button></a>
                 </div>
-                </form>
             </div>
             <div class="bootom">
               <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
@@ -572,29 +563,7 @@
       <!-- Layout Footer End -->
     </div>
 
-    <!-- Search Modal Start -->
-    <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header border-0 p-0">
-            <button type="button" class="btn-close btn btn-icon btn-icon-only btn-foreground" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body ps-5 pe-5 pb-0 border-0">
-            <input id="searchPagesInput" class="form-control form-control-xl borderless ps-0 pe-0 mb-1 auto-complete" type="text" autocomplete="off" />
-          </div>
-          <div class="modal-footer border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0">
-            <span class="text-alternate d-inline-block m-0 me-3">
-              <i data-cs-icon="arrow-bottom" data-cs-size="15" class="text-alternate align-middle me-1"></i>
-              <span class="align-middle text-medium">Navigate</span>
-            </span>
-            <span class="text-alternate d-inline-block m-0 me-3">
-              <i data-cs-icon="arrow-bottom-left" data-cs-size="15" class="text-alternate align-middle me-1"></i>
-              <span class="align-middle text-medium">Select</span>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <!-- Search Modal End -->
 
     <!-- Vendor Scripts Start -->
@@ -621,36 +590,11 @@
     <script th:src="@{../../js/cs/datatable.extend.js}"></script>
     <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
     <script th:src="@{../../js/common.js}"></script>
-    <script th:src="@{../../js/scripts.js}"></script>
+    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
+    <script th:src="@{../../js/Validaciones/Pago.js}"></script>
     <!-- Page Specific Scripts End -->
   </body>
 </html>
-        <!-- contenido
-        <div class="tabla">
-            <table id="datat">
-            <thead>
-                <th>Id Pago</th>
-                <th>Fecha Pago</th>
-                <th>Devengado Fk</th>
-            </thead>
-            <tbody>
-                <tr th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
-                    <td th:text="${c.idPago}"></td>
-                    <td th:text="${c.fechaPago}"></td>
-                    <td th:text="${c.FKdevengado.idDev}"></td>
-                         <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
-                            <i class="bi bi-pencil"></i> 
 
-                        </a> 
-                        <a role="button" class="btn text-danger btn-sm" th:href="@{/Pago/delete/} + ${p.id}" onclick="return confirm('Estás seguro que quieres eliminar este genero?');"> 
-                            <i class="bi bi-trash"></i> 
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
-    </div> -->
-    

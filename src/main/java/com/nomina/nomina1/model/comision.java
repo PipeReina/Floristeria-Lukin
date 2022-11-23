@@ -19,7 +19,7 @@ public class comision {
     private Integer IdComision;
 
     @Column (length = 50)
-    private Float CostoVenta = 0.0f;
+    private Float CostoVenta;
 
     @Column (length = 50, nullable=true)
     private String FechaCom;

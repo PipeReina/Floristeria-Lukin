@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 
 import com.nomina.nomina1.services.IEmpleadoService;
 import com.nomina.nomina1.services.IIncapacidadService;
+import com.nomina.nomina1.services.IncapacidadServiceImpl;
 import com.nomina.nomina1.model.Incapacidad;
 
 
@@ -25,7 +26,7 @@ import com.nomina.nomina1.model.Incapacidad;
 public class IncapacidadController {
 
     @Autowired
-    private IIncapacidadService Incapacidadf;
+    private IncapacidadServiceImpl Incapacidadf;
     @Autowired
     private IEmpleadoService empleadod;
     
@@ -69,24 +70,13 @@ public class IncapacidadController {
         return "Incapacidad/edit";
     }
 
-    @GetMapping("/form")     
-    public String form(Model m){
-        Incapacidad Incapacidad=new Incapacidad();
-        m.addAttribute("empleados", empleadod.findAll());
-        m.addAttribute("Incapacidad", Incapacidad);
-        m.addAttribute("accion", "Agregar Incapacidad");
-        return "Incapacidad/form"; 
-    }
-
 
     @PostMapping("/add")
     public String add(@Valid Incapacidad Incapacidad,BindingResult res, Model m,SessionStatus status){
         if(res.hasErrors()){
              m.addAttribute("empleado", empleadod.findAll());
-            return "Incapacidad/form";
+            return "Incapacidad/listar";
         }
-        /*m.addAttribute("Incapacidad",Incapacidad); 
-        return "Incapacidad/verc";*/
         Incapacidadf.save(Incapacidad);
         status.setComplete();
         return "redirect:listar";

@@ -24,8 +24,7 @@ public class he {
     @Column (length = 50,nullable=true)
     private String FechaHE;
 
-    @Range(min=1,max=2)
-    @Column(length = 4,nullable=false)
+    @Column(length = 50,nullable=false)
     private Integer CantidadHrs;
 
     @Column (length = 50, nullable=true)
@@ -42,7 +41,7 @@ public class he {
     }
 
 
-    public he(Integer idHorasExtra, String fechaHE, @Range(min = 1, max = 2) Integer cantidadHrs, Boolean estadoHE,
+    public he(Integer idHorasExtra, String fechaHE, Integer cantidadHrs, Boolean estadoHE,
             Empleado idEmpleadoFK) {
         IdHorasExtra = idHorasExtra;
         FechaHE = fechaHE;

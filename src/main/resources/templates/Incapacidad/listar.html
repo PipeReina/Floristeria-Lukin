@@ -54,7 +54,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a href="Dashboards.Default.html">
+                <a th:href="Home">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -201,13 +201,8 @@
                     </a>
                     <ul id="apps">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Nomina - Empleado</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="Apps.Calendar.html">
-                          <span class="label">Nomina - Devengado</span>
                         </a>
                       </li>
                     </ul>
@@ -247,7 +242,7 @@
                     </a>
                     <ul id="blocks">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Aval Nominal</span>
                         </a>
                       </li>
@@ -294,11 +289,11 @@
                 <div class="row">
                   <!-- Title Start -->
                   <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Pago</b></h1>
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Incapacidad</b></h1>
                     <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
                       <ul class="breadcrumb pt-0">
                         <li class="breadcrumb-item"><a th:href="@{../index}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="Interface.html">Pago</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">Incapacidad</a></li>
                         <!-- <li class="breadcrumb-item"><a href="Interface.Plugins.html">Plugins</a></li>
                         <li class="breadcrumb-item"><a href="Interface.Plugins.Datatables.html">Datatables</a></li> -->
                       </ul>
@@ -422,21 +417,21 @@
                   <table id="datatableRowsServerSide" class="data-table nowrap hover">
                     <thead>
                       <tr>
-                        <th class="text-muted text-small text-uppercase">Id</th>
+                        <th class="text-muted text-small text-uppercase id">Id</th>
+                        <th class="text-muted text-small text-uppercase">FK empleado</th>
                         <th class="text-muted text-small text-uppercase">Fecha Inicio </th>
                         <th class="text-muted text-small text-uppercase">Fecha Final</th>
                         <th class="text-muted text-small text-uppercase">Soporte</th>
-                        <th class="text-muted text-small text-uppercase">FK empleado</th>
-                        <th class="text-muted text-small text-uppercase"></th>
+                        <th class="text-muted text-small text-uppercase check"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
-                        <td th:text="${c.idIncapacidad}"></td>
+                      <td th:text="${c.idIncapacidad}"></td>
+                      <td th:text="${c.FKempleado.nombreEmpleado}+' '+${c.FKempleado.apellidoEmpleado}"></td>
                         <td th:text="${c.fechaInicio}"></td>
                         <td th:text="${c.fechaFinal}"></td>
                         <td th:text="${c.soporteIncapacidad}"></td>
-                        <td th:text="${c.FKempleado.nombreEmpleado}"></td>
                         <td> <input type="checkbox" class="form-check-input" id="check"></td>
                     </tr>
                  </tbody>
@@ -453,19 +448,18 @@
             <!-- Satart modal Agregar -->
     <section class="fondoMol" id="ModalFondo">
         <div class="modall">
-          <form action="">
             <div class="cabe">
               <h1>Agregar</h1>
               <button class="btn-close" onclick="cerrar()"></button>
             </div>
             <div class="form1">
-                <form th:action="@{/Incapacidad/add}" method="post" th:object="${Incapacidad}" style="width: 35rem;" class="mx-auto" id="formulario">
+                <form th:action="@{/Incapacidad/add}" method="post" th:object="${Incapacidad}" id="formulario">
 
                     <!-- FechaInicio -->
                     <div class="formulario_grupo" id="grupo_fechaInicio">
                         <label class="rol">Fecha Inicio</label><br>
                     <div id="cargo_input"> 
-                        <input class="roltext1 form-control" type="date" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Liquidacion Nominal">
+                        <input class="roltext1 form-control" type="date" max="00-00-0000" name="fechaInicio" id="fechaInicio" th:field="*{fechaInicio}" placeholder="Liquidacion Nominal">
                         <div th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
@@ -509,18 +503,13 @@
                         <select class="roltext1 form-control" name="estadoIncapacidad" id="estadoIncapacidad">
                             <option id="estadoIncapacidad" class="roltext1" name="estadoIncapacidad" value="true">Activar</option>
                             <option id="estadoIncapacidad" class="roltext1" name="estadoIncapacidad" value="false">Inactivar</option>
-                        </select>
-                        <div>
-                    <div>
-                        <a><button type="submit" class="btn col-3" style="text-decoration:none">Guardar</button></a>
-                    </div>
+                        </select><br>
+                        </div>
+                  <div class="bootom">
+                    <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
+                    <a href=""><button class="btn btn-primary" type="submit" value="formhe" name="accion">Agregar</button></a>
+                  </div>
                 </form>
-            </div>
-            <div class="bootom">
-              <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
-              <a href=""><button class="btn btn-primary" type="submit" value="formhe" name="accion">Agregar</button></a>
-            </div>
-          </form>
         </div>
       </section>
       <!-- End modal Agregar -->
@@ -567,54 +556,12 @@
     <script th:src="@{../../js/cs/datatable.extend.js}"></script>
     <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
     <script th:src="@{../../js/common.js}"></script>
-    <script th:src="@{../../js/scripts.js}"></script>
+    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
+    <script th:src="@{../../js/Validaciones/Incapacidad.js}"></script>
+
     <!-- Page Specific Scripts End -->
   </body>
 </html>
-<!-- contenido -->
-<!-- <div class="tabla">
-    <table id="datat">
-    <thead>
-        <th>Id Incapacidad</th>
-        <th>Fecha Inicio</th>
-        <th>Fecha Final</th>
-        <th>Soporte</th>
-        <th>Fk Empleado<th>
-        <th>Acciones</th>
-    </thead>
-    <tbody>
-        <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
-            <td th:text="${c.idIncapacidad}"></td>
-            <td th:text="${c.fechaInicio}"></td>
-            <td th:text="${c.fechaFinal}"></td>
-            <td th:text="${c.soporteIncapacidad}"></td>
-            <td th:text="${c.FKempleado.NombreEmpleado}"></td>
-            <td th:if="${c.estadoIncapacidad==true}" id="activo">
-                <span class="badge bg-success active">Activo</span>
-                </td>
-                <td th:if="${c.estadoIncapacidad==false}" id="inactivo">
-                <span class="badge bg-danger active">Inactivo</span>
-                </td>
-                <td th:if="${c.estadoIncapacidad==true}" id="estadoboton">
-                <a rol="button" class="btn btn-danger btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}" onclick="guar()"><button>Inactivar</button></a>
-                <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                    <button onclick="guar();"><i class="fa fa-edit"></i></button></a>
-                    <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/delete/} + ${c.idIncapacidad}" > 
-                    <button onclick="return confirm('¿Estas seguro de Eliminar el Incapacidad?');"><i class="fa fa-trash"></i></button>
-                    </a>
-                </td>
-                <td th:if="${c.estadoIncapacidad==false}" id="estadoboton">
-                <a rol="button" class="btn btn-success btn-sm"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}"><button>Activar</button></a>
-                <a role="button" class="btn btn-warning btn-sm" th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
-                    <button onclick="return confirm('¿Estas seguro de Editar el Incapacidad?');"><i class="fa fa-edit"></i></button></a>
-                <a role="button" class="btn btn-danger btn-sm"th:href="@{/Incapacidad/delete/} + ${c.idIncapacidad}" > 
-                    <button onclick="conf();"><i class="fa fa-trash"></i></button>
-                </a>
-                </td>
-        </tr>
-    </tbody>
-</table>
-<button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
-</div> -->
+

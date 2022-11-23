@@ -47,6 +47,7 @@
         <link rel="stylesheet" th:href="@{../css/main.css}" />
         <script th:src="@{../js/base/loader.js}"></script>
       </head>
+
       <body class="fondo">
         <div id="root">
           <div id="nav" class="nav-container d-flex">
@@ -279,228 +280,128 @@
             <div class="nav-shadow"></div>
           </div>
 <!-- comienzo -->
-      <main>
-        <div class="container">
-          <div class="row">
-            <div class="col tables">
-              <!-- Title and Top Buttons Start -->
-              <div class="page-title-container">
-                <div class="row">
-                  <!-- Title Start -->
-                  <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Horas Extras</b></h1>
-                    <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
-                      <ul class="breadcrumb pt-0">
-                        <li class="breadcrumb-item"><a th:href="@{../index}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="Interface.html">HorasExtras</a></li>
-                        <!-- <li class="breadcrumb-item"><a href="Interface.Plugins.html">Plugins</a></li>
-                        <li class="breadcrumb-item"><a href="Interface.Plugins.Datatables.html">Datatables</a></li> -->
-                      </ul>
-                    </nav>
-                  </div>
-                  <!-- Title End -->
+<main>
+    <div class="container">
+      <div class="row">
+        <div class="col tables">
+          <div class="page-title-container">
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <h1 class="mb-0 pb-0 display-4" id="title"><b>Nomina Total</b></h1>
+                <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+                  <ul class="breadcrumb pt-0">
+                    <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="Interface.html">NominaTotal</a></li>
 
-                  <!-- Top Buttons Start -->
-                  <div class="col-12 col-md-5 d-flex align-items-start justify-content-end">
-                    <!-- Add New Button Start -->
-                    <button type="button" class="btn btn-outline-primary btn-icon btn-icon-start w-100 w-md-auto add-datatable">
-                      <i data-cs-icon="plus"></i>
-                      <span onclick="abrir()">Agregar</span>
-                    </button>
-                    <!-- Add New Button End -->
-
-                  </div>
-                  <!-- Top Buttons End -->
-                </div>
+                  </ul>
+                </nav>
               </div>
-              <!-- Title and Top Buttons End -->
+              <div class="nomina">
 
-              <!-- Content Start -->
-              <div class="data-table-rows slim">
-                <!-- Controls Start -->
-                <div class="row">
-                  <!-- Search Start -->
-                  <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
-                    <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
-                      <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableRowsServerSide" />
-                      <span class="search-magnifier-icon">
-                        <i data-cs-icon="search"></i>
-                      </span>
-                      <span class="search-delete-icon d-none">
-                        <i data-cs-icon="close"></i>
-                      </span>
-                    </div>
-                  </div>
-                  <!-- Search End -->
+                    <div class="selectNom">
+                        <h1 class="nombreEm"> <b>Seleccione el nombre del Empleado</b></h1>
 
-                  <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
-                    <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
-
-
-                      <!-- Edit Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Edit"
-                        type="button"
-                      >
-                        <i data-cs-icon="edit"></i>
-                      </button>
-                      <!-- Edit Button End -->
-
-                      <!-- Delete Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Delete"
-                        type="button"
-                      >
-                        <i data-cs-icon="bin"></i>
-                      </button>
-                      <!-- Delete Button End -->
-                    </div>
-                    <div class="d-inline-block">
-
-                      <!-- Export Dropdown Start -->
-                      <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
-                        <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
-                          <span
-                            class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown"
-                            data-bs-delay="0"
-                            data-bs-placement="top"
-                            data-bs-toggle="tooltip"
-                            title="Export"
-                          >
-                            <i data-cs-icon="download"></i>
-                          </span>
-                        </button>
-                        <div class="dropdown-menu shadow dropdown-menu-end">
-                          <button class="dropdown-item export-copy" type="button">Copy</button>
-                          <button class="dropdown-item export-excel" type="button">Excel</button>
-                          <button class="dropdown-item export-cvs" type="button">Cvs</button>
+                        <div class="select" th:field="*{empleado}">
+                            <select name="" id="IdNom"  class="form-select">
+                                <option value="">Seleccione</option>
+                                <th:block th:each="c:${empleado}">
+                                    <option th:text="${c.idEmpleado}+' '+ ${c.nombreEmpleado} +' '+ ${c.apellidoEmpleado}" th:value="${c.idEmpleado}" name="IdNom"></option>
+                                </th:block>
+                            </select>
                         </div>
-                      </div>
-                      <!-- Export Dropdown End -->
-
-                      <!-- Length Start -->
-                      <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableRowsServerSide" data-childSelector="span">
-                        <button class="btn p-0 shadow" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,3">
-                          <span
-                            class="btn btn-foreground-alternate dropdown-toggle"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            data-bs-delay="0"
-                            title="Item Count"
-                          >
-                            10 Datos
-                          </span>
-                        </button>
-                        <div class="dropdown-menu shadow dropdown-menu-end">
-                          <a class="dropdown-item" href="#">5 Datos</a>
-                          <a class="dropdown-item active" href="#">10 Datos</a>
-                          <a class="dropdown-item" href="#">20 Datos</a>
+                        <div class="calcular" style="text-align: center;">
+                            <button class="btn btn-outline-primary" type="submit" onclick="calcular()">Calcular</button>
                         </div>
-                      </div>
-                      <!-- Length End -->
                     </div>
-                  </div>
-                </div>
-                <!-- Controls End -->
-
-                <!-- Table Start -->
-                <div class="data-table-responsive-wrapper">
-                  <table id="datatableRowsServerSide" class="data-table nowrap hover">
-                    <thead>
-                      <tr>
-                        <th class="text-muted text-small text-uppercase id">Id</th>
-                        <th class="text-muted text-small text-uppercase">Cantidad de Hrs</th>
-                        <th class="text-muted text-small text-uppercase">Tipo de Hrs</th>
-                        <th class="text-muted text-small text-uppercase">Fehca de Hrs</th>
-                        <th class="text-muted text-small text-uppercase">FK empleado</th>
-                        <th class="text-muted text-small text-uppercase check"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                            <tr th:if="${hse.size()>0}" th:each="c:${hse}">
-                                <td th:text="${c.idHorasExtra}"></td>
-                                <td th:text="${c.CantidadHrs}"></td>
-                                <td th:text="${c.EstadoHE}"></td>
-                                <td th:text="${c.fechaHE}"></td>
-                                <td th:text="${c.idEmpleadoFK.NombreEmpleado}+' '+${c.idEmpleadoFK.ApellidoEmpleado}"></td>
-                            <td> <input type="checkbox" class="form-check-input" id="check"></td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- Table End -->
+                    <div class="nomi">
+                        <div class="desprendible">
+                            <img th:src="@{../img/logo/Timmpay-Oscuro-icon.png}" class="desprendibleIMG">
+                            <h3>N° 000</h3>
+                           <div class="netoPago">
+                            <h1></h1> 
+                            <h1>0</h1> 
+                            <h4>Pago Neto</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Valor Devengado</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Valor Debengado</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Salario B</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Aux trnasporte</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Hrs Extra</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Comisión</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Pension</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Salud</h4>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
               </div>
-              <!-- Content End -->
             </div>
           </div>
-        </div>
-            <!-- Satart modal Agregar -->
-    <section class="fondoMol" id="ModalFondo">
-        <div class="modall">
-            <div class="cabe">
-              <h1>Agregar</h1>
-              <button class="btn-close" onclick="cerrar()"></button>
-            </div>
-            <div class="form1">
-                <form th:action="@{/he/add}" th:object="${he}" method="post" id="formulario">
-                    <div class="mb-3">
-                        <div class="formulario_grupo" id="grupo_fechahe">
-                            <label class="rol">Fecha de las Horas Extra</label>
-                            <br>
-                            <div id="">
-                                <input class="roltext1 form-control" type="date" name="FechaHE" id="FechaHE" th:field="*{FechaHE}"
-                                    placeholder="2022-05-03">
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            </div>
-                            <p class="formulario__input-error">La fecha de las horas extra es acorde al calendario</p>
-                        </div>
-                        <br>
-                        <div class="formulario_grupo" id="grupo_CantidadHrs">
-                            <label class="rol">Cantidad de Horas Extra</label>
-                            <br>
-                            <div id="">
-                                <input class="roltext1 form-control" type="text" name="CantidadHrs" id="CantidadHrs" th:field="*{CantidadHrs}"
-                                    placeholder="3">
-                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                            </div>
-                            <p class="formulario__input-error">La catidad de las horas Extras debe estar ingresadas</p>
-                        </div>
-                        <br>
+      </div>
+    </div>
+  </main>
 
-                        <label class="rol">Tipo de Horas Extra</label><br>
-                        <div id="cargo_select ">
-                            <select class="roltext1 form-control" name="EstadoHE" id="EstadoHE">
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="0">Diurna</option>
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="1">Nocturna</option>
-                                <option id="EstadoHE" class="roltext1" name="EstadoHE" value="1">Semanal</option>
-                            </select>
-                            <br>
-                            <label class="rol" for="empleado">Empleado FK</label><br>
-                            <select class="roltext form-control" th:field="*{IdEmpleadoFK}">
-                                <option value="">Seleccione el Empleado</option>
-                                <th:block th:each="empleado: ${empleado}">
-                                    <option th:text="${empleado.NombreEmpleado}+' '+${empleado.ApellidoEmpleado}" th:value="${empleado.IdEmpleado}">
-                                    </option>
-                                </th:block>
-                            </select><br>
-                          </div>
-                          <div class="bootom">
-                            <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
-                            <a href=""><button type="submit" class="enviar btn btn-primary" value="formhe" name="accion">Agregar</button></a>
-                          </div>
-                        </form>
-        </div>
-      </section>
-      <!-- End modal Agregar -->
-      </main>
+  <!-- <div class="tabla">
+    <table id="datat">
+        <thead>
+            <th>Nomina</th>
+            <th>Salario Basico</th>
+            <th>AuxsTransporte</th>
+            <th>HrsExtra</th>
+            <th>Comisión</th>
+            <th>Total Devengado</th>
+            <th>Pencion</th>
+            <th>Salud</th>
+            <th>Total Deducido</th>
+        </thead>
+        <tbody>
+            <tr th:each="c:${nomina}">
+            <tr th:each="c:${SalarioB}">
+            <tr th:each="c:${AuxTrans}">
+            <tr th:each="c:${HrsExtra}">
+            <tr th:each="c:${Comision}">
+            <tr th:each="c:${TotalDev}">
+            <tr th:each="c:${Pencion}">
+            <tr th:each="c:${Salud}">
+            <tr th:each="c:${TotalDed}">
+                <td th:text="${nomina}"></td>
+                <td th:text="${SalarioB}"></td>
+                <td th:text="${AuxTrans}"></td>
+                <td th:text="${HrsExtra}"></td>
+                <td th:text="${Comision}"></td>
+                <td th:text="${TotalDev}"></td>
+                <td th:text="${Pencion}"></td>
+                <td th:text="${Salud}"></td>
+                <td th:text="${TotalDed}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
+</div>  -->
+
       <!-- Layout Footer Start -->
       <footer>
         <div class="footer-content">
@@ -567,10 +468,129 @@
     <script th:src="@{../../js/cs/datatable.extend.js}"></script>
     <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
     <script th:src="@{../../js/common.js}"></script>
-    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
-    <script th:src="@{../../js/funciona.js}"></script>
-    <script th:src="@{../../js/modal.js}"></script>
-    <script th:src="@{../../js/Validaciones/HE.js}"></script>
+    <script th:src="@{../../js/scripts.js}"></script>
+    <script th:src="@{../../js/verNom.js}"></script>
     <!-- Page Specific Scripts End -->
   </body>
 </html>
+        <!-- contenido
+        <div class="tabla">
+            <table id="datat">
+            <thead>
+                <th>Id Pago</th>
+                <th>Fecha Pago</th>
+                <th>Devengado Fk</th>
+            </thead>
+            <tbody>
+                <tr th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
+                    <td th:text="${c.idPago}"></td>
+                    <td th:text="${c.fechaPago}"></td>
+                    <td th:text="${c.FKdevengado.idDev}"></td>
+                         <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
+                            <i class="bi bi-pencil"></i> 
+
+                        </a> 
+                        <a role="button" class="btn text-danger btn-sm" th:href="@{/Pago/delete/} + ${p.id}" onclick="return confirm('Estás seguro que quieres eliminar este genero?');"> 
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
+    </div> -->
+    
+
+
+
+            <!--
+
+
+
+              <main>
+        <div class="container">
+          <div class="row">
+            <div class="col tables">
+              <div class="page-title-container">
+                <div class="row">
+                  <div class="col-12 col-md-7">
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Nomina Total</b></h1>
+                    <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+                      <ul class="breadcrumb pt-0">
+                        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">NominaTotal</a></li>
+
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="nomina">
+
+                        <div class="selectNom">
+                            <h1 class="nombreEm"> <b>Seleccione el nombre del Empleado</b></h1>
+
+                            <div class="select">
+                                <select name="" id="" class="form-select">
+                                    <option value=""></option>
+                                    <option value="">pepe</option>
+                                    <option value="">asda</option>
+                                    <option value="">sadas</option>
+                                    <option value="">sdfsd</option>
+                                    <option value="">peperwee</option>
+                                    <option value="">wefew</option>
+                                    <option value="">pefewfewpe</option>
+                                    <option value="">pdsfsdfepe</option>
+                                    <option value="">vdsvsd</option>
+                                    <option value="">pepjuyjue</option>
+                                    <option value="">pepexzcczx</option>
+                                    <option value="">pertertepe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="nomi">
+                            <div class="desprendible">
+                                <img src="img/logo/Timmpay-Oscuro-icon.png" class="desprendibleIMG">
+                                <h3>N° 00001</h3>
+                               <div class="netoPago">
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3550415</h1> 
+                                <h4>Valor Devengado</h4>
+                               </div>
+                               <div>
+                                <h1>11515</h1> 
+                                <h4>Valor Debengado</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </main>-->

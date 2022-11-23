@@ -12841,6 +12841,10 @@ tbody{
   padding: 5%;
   border-top: 1px solid #bababa;
 }
+.form1 form{
+  grid-column-start: 2;
+
+}
 
 .form1 label, input{
   grid-column-start: 2;
@@ -12884,6 +12888,7 @@ tbody{
 tbody tr{
   background-color: #fff;
   border: 1px solid #fff;
+  height: 50px;
 }
 tbody tr:hover{
   border: 1px solid #dcdcdc;
@@ -12897,6 +12902,64 @@ tbody{
 .id{
   width: 100px !important;
 } 
+
+.formulario__input-error{
+  font-size: 100%;
+  margin-bottom: 10px;
+  display: none;
+  background-color: #f6000082;
+  color: #fff;
+  padding: 3%;
+  border-radius: 10%;
+  border: solid #bb2929 1px;
+}
+
+
+.formulario__input-error-activo{
+  display: block;
+}
+
+.formulario__validacion-estado{
+  margin-left: -100px;
+  opacity: 0;
+}
+
+.formulario__mensaje{
+  background-color: #f66060;
+  height: 40px;    
+  line-height: 40px;
+  display: none;
+}
+.formulario__mensaje-activo{
+  display: block;
+}
+.formulario__mensaje-exito{
+  color: #49af3c;
+  display: none;
+}
+.formulario__mensaje-exito-activo{
+  display: none;
+}
+/* ----- -----  Estilos para Validacion ----- ----- */
+
+.formulario_grupo-correcto .formulario__validacion-estado{
+  color: #1ed12d;
+  opacity: 1;
+}
+
+.formulario_grupo-incorrecto label{
+  color: #bb2929;
+}
+.formulario_grupo-incorrecto .formulario__validacion-estado{
+  color: #ff0000;
+  opacity: 1;
+}
+
+.formulario_grupo-incorrecto .roltext1{
+  border: 2px solid #bb2929;
+
+
+}
 @media screen and (max-width: 1230px){
   .nomina{
     display: grid;

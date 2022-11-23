@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.nomina.nomina1.services.IDevengadoService;
+import com.nomina.nomina1.services.IEmpleadoService;
 import com.nomina.nomina1.services.IPagoService;
+import com.nomina.nomina1.services.PagoServiceImpl;
 
 
 
@@ -27,18 +28,17 @@ import com.nomina.nomina1.services.IPagoService;
 public class PagoController {
 
     @Autowired
-    private IPagoService Pagof;
+    private PagoServiceImpl Pagof;
     @Autowired
-    private IDevengadoService Devengadof;
+    private IEmpleadoService empleadof;
     
     
     @GetMapping(path={"/listar","","/"})
     public String listar(Model m){
         m.addAttribute("Pagos", Pagof.findAll());
-        m.addAttribute("Devengados", Devengadof.findAll());
+        m.addAttribute("empleados", empleadof.findAll());
         Pago Pago=new Pago();
         m.addAttribute("Pago", Pago);
-        m.addAttribute("Devengados", Devengadof.findAll());
         m.addAttribute("accion", "Agregar Pago");
         return "Pago/listar";    
     }
@@ -46,7 +46,7 @@ public class PagoController {
     public String ver(@PathVariable Integer id,Model m){
         Pago Pago=null;
         if(id>0){
-            m.addAttribute("Devengados", Devengadof.findAll());
+            m.addAttribute("Devengados", empleadof.findAll());
             Pagof.findOne(id);
         }else{
             return "redirect:listar";
@@ -56,21 +56,12 @@ public class PagoController {
         return "Pago/form";
     }
 
-    @GetMapping("/form")     
-    public String form(Model m){
-        Pago Pago=new Pago();
-        m.addAttribute("Pago", Pago);
-        m.addAttribute("Devengados", Devengadof.findAll());
-        m.addAttribute("accion", "Agregar Pago");
-        return "Pago/form"; 
-    }
-
 
     @PostMapping("/add")
     public String add(@Valid Pago Pago,BindingResult res, Model m,SessionStatus status){
         if(res.hasErrors()){
-            m.addAttribute("Devengados", Devengadof.findAll());
-            return "Pago/form";
+            m.addAttribute("Devengados", empleadof.findAll());
+            return "Pago/listar";
         }
         Pagof.save(Pago);
         status.setComplete();

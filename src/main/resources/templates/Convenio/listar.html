@@ -54,7 +54,7 @@
             <div class="nav-content d-flex">
               <!-- Logo Start -->
               <div class="logo position-relative">
-                <a href="Dashboards.Default.html">
+                <a th:href="Home">
                   <!-- Logo can be added directly -->
                   <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
     
@@ -201,13 +201,8 @@
                     </a>
                     <ul id="apps">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Nomina - Empleado</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="Apps.Calendar.html">
-                          <span class="label">Nomina - Devengado</span>
                         </a>
                       </li>
                     </ul>
@@ -247,7 +242,7 @@
                     </a>
                     <ul id="blocks">
                       <li>
-                        <a th:href="@{../nomina/nominaTotal}">
+                        <a th:href="@{../nomina/nominaTotal1}">
                           <span class="label">Aval Nominal</span>
                         </a>
                       </li>
@@ -294,11 +289,11 @@
                 <div class="row">
                   <!-- Title Start -->
                   <div class="col-12 col-md-7">
-                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Horas Extras</b></h1>
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Convenio</b></h1>
                     <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
                       <ul class="breadcrumb pt-0">
                         <li class="breadcrumb-item"><a th:href="@{../index}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="Interface.html">HorasExtras</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">Convenio</a></li>
                         <!-- <li class="breadcrumb-item"><a href="Interface.Plugins.html">Plugins</a></li>
                         <li class="breadcrumb-item"><a href="Interface.Plugins.Datatables.html">Datatables</a></li> -->
                       </ul>
@@ -419,14 +414,14 @@
 
                 <!-- Table Start -->
                 <div class="data-table-responsive-wrapper">
-                  <table id="datatableRowsServerSide" class="data-table nowrap hover">
+                  <table id="datatableRowsServerSide" class="data-table nowrap hover" id="datat">
                     <thead>
                       <tr>
                           <th class="text-muted text-small text-uppercase id">Id</th>
                           <th class="text-muted text-small text-uppercase">Empleado  del contrato</th>
                         <th class="text-muted text-small text-uppercase">Dias Laboriados</th>
                         <th class="text-muted text-small text-uppercase">Costo de la Hora de Trabajo</th>
-                        <th class="text-muted text-small text-uppercase">Cantidad de Horas</th>
+                        <th class="text-muted text-small text-uppercase">Horas Trabajadas</th>
                         <th class="text-muted text-small text-uppercase check"></th>
                     </tr>
                 </thead>
@@ -449,8 +444,66 @@
           </div>
         </div>
             <!-- Satart modal Agregar -->
+            <section class="fondoMol" id="ModalFondo">
+              <div class="modall">
+                  <div class="cabe">
+                    <h1>Agregar</h1>
+                    <button class="btn-close" onclick="cerrar()"></button>
+                  </div>
+                  <div class="form1">
+                    <form th:action="@{/Convenio/add}" method="post" th:object="${Convenio}" id="formulario">
 
-      <!-- End modal Agregar -->
+                      <!-- Hora Convenio -->
+                      <div class="formulario_grupo" id="grupo_horaConvenio">
+                          <label class="rol">Horas Trabajadas por dia</label><br>
+                      <div id="cargo_input">
+                          <input class="roltext1 form-control" type="number" name="horaConvenio" id="horaConvenio" th:field="*{horaConvenio}" placeholder="Horas Diarias">
+                          <div th:if="${#fields.hasErrors('horaConvenio')}" th:errors="*{horaConvenio}"></div>
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                      </div>
+                          <p class="formulario__input-error">La Cantidad de las Horas tiene que estar ingresada, solo puede contener Numeros.</p>
+                      </div>
+                                              <!-- Disas Convenio -->
+                                              <div class="formulario_grupo" id="grupo_horaAlDia">
+                                                  <label class="rol">Costo de Hrs </label><br>
+                                              <div id="cargo_input">
+                                                  <input class="roltext1 form-control" type="number" name="horaAlDia" id="horaAlDia" th:field="*{horaAlDia}"  placeholder="Costo de Hrs">
+                                                  <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                              </div>
+                                                  <p class="formulario__input-error">El Costo de las Horas tiene que estar ingresado, solo puede contener Numeros.</p>
+                                          </div>
+
+
+                      <!-- Disas Convenio -->
+                      <div class="formulario_grupo" id="grupo_diasConvenio">
+                          <label class="rol">Días Trabajados</label><br>
+                      <div id="cargo_input">
+                          <input class="roltext1 form-control" type="number" name="diasConvenio" id="diasConvenio" th:field="*{diasConvenio}"  placeholder="Dias Mensauales">
+                          <div class="form-text text-danger" th:if="${#fields.hasErrors('diasConvenio')}"
+                          th:errors="*{diasConvenio}"></div>
+                          <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                      </div>
+                          <p class="formulario__input-error">Los dias Trabajados tiene que estar ingresado, solo puede contener Numeros.</p>
+                    </div>                  
+                    <!-- FK empleado -->
+                        <div class="form-group">
+                            <label class="rol"> Empleado FK</label><br>
+                            <select class="form-control" th:field="*{FKempleado}">
+                                <option value="">Seleccione </option>
+                                <th:block th:each="c:${empleado}">
+                                    <option th:text="${c.nombreEmpleado}" th:value="${c.idEmpleado}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="bootom">
+                        <button class="btn btn-outline-primary" onclick="cerrar()">Cancelar</button>
+                        <a href=""><button class="btn btn-primary enviar" type="submit" value="form" name="accion" >Agregar</button></a>
+                      </div>
+                  </form>
+                  </div>
+            </section>
+            <!-- End modal Agregar -->
       </main>
       <!-- Layout Footer Start -->
       <footer>
@@ -521,34 +574,8 @@
     <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
+    <script th:src="@{../../js/Validaciones/Convenio.js}"></script>
+
     <!-- Page Specific Scripts End -->
   </body>
 </html>
-<!-- contenido -->
-<!-- <table id="datat">
-    <thead>
-        <th>Id Convenio</th>
-        <th>Hora Convenio</th>
-        <th>Días Convenio</th>
-        <th>Salario Convenio</th>
-        <th>Fk Empleado<th>
-    </thead>
-    <tbody>
-        <tr th:if="${Convenios.size()>0}" th:each="c:${Convenios}">
-            <td th:text="${c.idConvenio}"></td>
-            <td th:text="${c.horaConvenio}"></td>
-            <td th:text="${c.diasConvenio}"></td>
-            <td th:text="${c.salarioConvenio}"></td>
-            <td th:text="${c.FKempleado.NombreEmpleado}"></td>
-            <td> 
-                <a role="button" class="btn text-warning btn-sm" th:href="@{/Convenio/ver/} + ${Convenio.id}"> 
-                    <i class="bi bi-pencil"></i>
-                </a> 
-                <a role="button" class="btn btn-danger btn-sm"th:href="@{/Convenio/delete/}+${c.idConvenio}" > 
-                    <button onclick="conf();"><i class="fa fa-trash"></i></button>
-                    </a>
-            </td>
-
-        </tr>
-    </tbody>
-</table> -->
