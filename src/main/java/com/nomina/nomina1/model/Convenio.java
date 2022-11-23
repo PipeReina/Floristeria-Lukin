@@ -31,10 +31,6 @@ public class Convenio {
     @Range(min=1,max=10)
     @Column(length = 4,nullable=false)
     private Integer diasConvenio;
-    @NotEmpty
-    @Range(min=2,max=15)
-    @Column(length = 4,nullable=false)
-    private Integer salarioConvenio;
     @ManyToOne(fetch = FetchType.LAZY)
     private Empleado FKempleado;
     
@@ -45,12 +41,11 @@ public class Convenio {
 
     public Convenio(Integer idConvenio, @NotEmpty @Size(min = 1, max = 10) Integer horaConvenio,
             @Size(min = 1, max = 10) Integer horaAlDia, @NotEmpty @Size(min = 1, max = 10) Integer diasConvenio,
-            @NotEmpty @Size(min = 2, max = 15) Integer salarioConvenio, Empleado fKempleado) {
+             Empleado fKempleado) {
         this.idConvenio = idConvenio;
         this.horaConvenio = horaConvenio;
         this.horaAlDia = horaAlDia;
         this.diasConvenio = diasConvenio;
-        this.salarioConvenio = salarioConvenio;
         FKempleado = fKempleado;
     }
 
@@ -84,14 +79,6 @@ public class Convenio {
 
     public void setDiasConvenio(Integer diasConvenio) {
         this.diasConvenio = diasConvenio;
-    }
-
-    public Integer getSalarioConvenio() {
-        return salarioConvenio;
-    }
-
-    public void setSalarioConvenio(Integer salarioConvenio) {
-        this.salarioConvenio = salarioConvenio;
     }
 
     public Empleado getFKempleado() {

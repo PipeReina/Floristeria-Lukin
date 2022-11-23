@@ -33,6 +33,10 @@ public class ConvenioController {
     public String listar(Model m){
         m.addAttribute("Convenios", Conveniof.findAll());
         m.addAttribute("empleado", empleadod.findAll());
+        Convenio Convenio=new Convenio();
+        m.addAttribute("empleado", empleadod.findAll());
+       m.addAttribute("Convenio", Convenio);
+       m.addAttribute("accion", "Agregar Convenio");
         return "Convenio/listar";    
     }
 

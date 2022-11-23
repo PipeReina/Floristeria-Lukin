@@ -12875,6 +12875,28 @@ tbody{
   font-weight: 900;
   font-size: 130%;
 }
+ table{
+  width: 100% !important;
+  height: 100px !important;
+  overflow: scroll !important;
+
+}
+tbody tr{
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+tbody tr:hover{
+  border: 1px solid #dcdcdc;
+}
+tbody{
+  overflow: scroll !important;
+}
+.check{
+  width: 200px !important;
+}
+.id{
+  width: 100px !important;
+} 
 @media screen and (max-width: 1230px){
   .nomina{
     display: grid;
@@ -12890,4 +12912,5 @@ tbody{
     font-weight: 400;
     font-size: 23px;
   }
+  
 }

@@ -422,17 +422,19 @@
                   <table id="datatableRowsServerSide" class="data-table nowrap hover">
                     <thead>
                       <tr>
-                        <th class="text-muted text-small text-uppercase">Id</th>
+                        <th class="text-muted text-small text-uppercase id">Id</th>
                         <th class="text-muted text-small text-uppercase">Cantidad de Hrs</th>
                         <th class="text-muted text-small text-uppercase">Tipo de Hrs</th>
                         <th class="text-muted text-small text-uppercase">Fehca de Hrs</th>
                         <th class="text-muted text-small text-uppercase">FK empleado</th>
+                        <th class="text-muted text-small text-uppercase check"></th>
                     </tr>
                 </thead>
                 <tbody>
                             <tr th:if="${hse.size()>0}" th:each="c:${hse}">
                                 <td th:text="${c.idHorasExtra}"></td>
                                 <td th:text="${c.CantidadHrs}"></td>
+                                <td th:text="${c.EstadoHE}"></td>
                                 <td th:text="${c.fechaHE}"></td>
                                 <td th:text="${c.idEmpleadoFK.NombreEmpleado}+' '+${c.idEmpleadoFK.ApellidoEmpleado}"></td>
                             <td> <input type="checkbox" class="form-check-input" id="check"></td>
@@ -577,7 +579,7 @@
     <script th:src="@{../../js/cs/datatable.extend.js}"></script>
     <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
     <script th:src="@{../../js/common.js}"></script>
-    <script th:src="@{../../js/scripts.js}"></script>
+    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
     <!-- Page Specific Scripts End -->
