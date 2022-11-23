@@ -1,13 +1,13 @@
 package com.nomina.nomina1.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+// import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+// import javax.persistence.ManyToOne;
 
 @Entity
 @Table(name="comisiones")
@@ -27,8 +27,8 @@ public class comision {
     @Column (length = 50, nullable=true)
     private Boolean EstadoCom;
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    private Empleado IdEmpleadoFK;
+    // @ManyToOne (fetch = FetchType.LAZY)
+    // private Empleado IdEmpleadoFK;
 
 
     //constructores
@@ -37,12 +37,12 @@ public class comision {
     }
 
 
-    public comision(Integer idComision, Integer costoVenta, String fechaCom, Boolean estadoCom, Empleado idEmpleadoFK) {
+    public comision(Integer idComision, Integer costoVenta, String fechaCom, Boolean estadoCom) {
         IdComision = idComision;
         CostoVenta = costoVenta;
         FechaCom = fechaCom;
         EstadoCom = estadoCom;
-       IdEmpleadoFK = idEmpleadoFK;
+    //    IdEmpleadoFK = idEmpleadoFK;
     }
 
 
@@ -85,14 +85,14 @@ public class comision {
     }
 
 
-    public Empleado getIdEmpleadoFK() {
-        return IdEmpleadoFK;
-    }
+    // public Empleado getIdEmpleadoFK() {
+    //     return IdEmpleadoFK;
+    // }
 
 
-    public void setIdEmpleadoFK(Empleado idEmpleadoFK) {
-        IdEmpleadoFK = idEmpleadoFK;
-    }
+    // public void setIdEmpleadoFK(Empleado idEmpleadoFK) {
+    //     IdEmpleadoFK = idEmpleadoFK;
+    // }
 
 }
 

@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.ui.Model;
 
 import com.nomina.nomina1.model.Empleado;
-import com.nomina.nomina1.services.ICargoService;
 import com.nomina.nomina1.services.IEmpleadoService;
+
+import org.springframework.ui.Model;
 
 
 @Controller
@@ -32,12 +32,12 @@ public class EmpleadoController {
     @Autowired
     private IEmpleadoService empleadod;
 
-    @Autowired
-    private ICargoService cargod;
+    // @Autowired
+    // private ICargoService cargod;
 
     @GetMapping(path = {"/","empleado"})
     public String listar(Model m){
-        m.addAttribute("cargos", cargod.findAll());
+        // m.addAttribute("cargos", cargod.findAll());
         m.addAttribute("empleado", empleadod.findAll());
         return "empleado/empleado";
     }
@@ -47,12 +47,12 @@ public class EmpleadoController {
      public String ver(@PathVariable Integer idEmpleado,Model m){
          Empleado empleado=null;
          if(idEmpleado>0){
-            m.addAttribute("cargos", cargod.findAll());
+            // m.addAttribute("cargos", cargod.findAll());
             empleado=empleadod.findOne(idEmpleado);
          }else{
              return "redirect:empleado";
          }
-         m.addAttribute("cargos", cargod.findAll());
+        //  m.addAttribute("cargos", cargod.findAll());
          m.addAttribute("empleado",empleado);
          return "empleado/edit";
      }
@@ -60,7 +60,7 @@ public class EmpleadoController {
      @GetMapping("/crear")     
     public String creacion(Model m){
         Empleado empleado=new Empleado();
-        m.addAttribute("cargos", cargod.findAll());
+        // m.addAttribute("cargos", cargod.findAll());
         m.addAttribute("empleado", empleado);
         m.addAttribute("accion", "Agregar empleado");
         return "empleado/creacion"; 
@@ -69,7 +69,7 @@ public class EmpleadoController {
         public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
             if(!res.hasErrors()){
                 System.out.println(res.hasErrors());
-                m.addAttribute("cargos", cargod.findAll());
+                //  m.addAttribute("cargos", cargod.findAll());
                 m.addAttribute("empleado", empleado);
                 return "empleado/creacion";
             }
@@ -82,7 +82,7 @@ public class EmpleadoController {
                     Path rutaCompleta=Paths.get(rutaAbs + "//"+ imagen.getOriginalFilename());
                     Files.write(rutaCompleta, bytesImg);
 
-                    empleado.setFotoEmpleado(imagen.getOriginalFilename());
+                // empleado.setFotoEmpleado(imagen.getOriginalFilename());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

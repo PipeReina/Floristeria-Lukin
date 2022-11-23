@@ -2,19 +2,6 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
-
-let fecha = document.getElementById('fechaInicio');
-let fechaFin = document.getElementById('fechaFinal');
-
-fecha.addEventListener("change", function() {
-    let input = this.value;
-    let dateEntered = new Date(input);
-    let fechaDefinitiva = dateEntered.getFullYear()+"-"+(dateEntered.getMonth()+1)+"-"+(dateEntered.getDate()+4)
-    fechaFin.min = input; 
-    fechaFin.max = fechaDefinitiva; 
-});
-
-
 const expresiones = {
     soporte:/^[a-zA-ZÀ-ÿ0-9\_\-\.\,\(\)\/\;\:\s]+.[pdf]{1,60}$/,
     fecha: /^[0-9\/\-\s]{1,100}$/ // Letras, numeros, signos de puntuacion (,\.\:\;)

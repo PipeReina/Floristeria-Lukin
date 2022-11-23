@@ -1,16 +1,16 @@
 package com.nomina.nomina1.model;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+// import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+// import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 @Entity
@@ -23,25 +23,29 @@ public class Cargo {
     @NotEmpty    
     @Column(name="nombreCargo", length=20)
     private String nombreCargo;
+    @NotEmpty
+    @Column(name="rolCargo", length=20)
+    private String rolCargo;
     @NotEmpty    
     @Column(name="DescripcionCargo", length=100)
     private String DescripcionCargo;
     @Column(name="estadoCargo") 
-    private Boolean estadoCargo;
-    @OneToMany(mappedBy = "FKcargo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Empleado> FKempleado;
+     private Boolean estadoCargo;
+    // @OneToMany(mappedBy = "FKcargo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    // private List<Empleado> FKempleado;
 
     public Cargo(){
-        FKempleado=new ArrayList<Empleado>();
+        // FKempleado=new ArrayList<Empleado>();
     }
 
-    public Cargo(Integer idCargo, @NotEmpty String nombreCargo, @NotEmpty String descripcionCargo, Boolean estadoCargo,
+    public Cargo(Integer idCargo, @NotEmpty String nombreCargo, @NotEmpty String rolCargo,@NotEmpty String descripcionCargo, Boolean estadoCargo,
             List<Empleado> fKempleado) {
         this.idCargo = idCargo;
         this.nombreCargo = nombreCargo;
+        this.rolCargo = rolCargo;
         DescripcionCargo = descripcionCargo;
         this.estadoCargo = estadoCargo;
-        FKempleado = fKempleado;
+        // FKempleado = fKempleado;
     }
 
     public Integer getIdCargo() {
@@ -60,6 +64,14 @@ public class Cargo {
         this.nombreCargo = nombreCargo;
     }
 
+    public String getRolCargo() {
+        return rolCargo;
+    }
+
+    public void setRolCargo(String rolCargo) {
+        this.rolCargo = rolCargo;
+    }
+
     public String getDescripcionCargo() {
         return DescripcionCargo;
     }
@@ -76,15 +88,12 @@ public class Cargo {
         this.estadoCargo = estadoCargo;
     }
 
-    public List<Empleado> getFKempleado() {
-        return FKempleado;
-    }
+    // public List<Empleado> getFKempleado() {
+    //     return FKempleado;
+    // }
 
-    public void setFKempleado(List<Empleado> fKempleado) {
-        FKempleado = fKempleado;
-    }
+    // public void setFKempleado(List<Empleado> fKempleado) {
+    //     FKempleado = fKempleado;
+    // }
 
-
-
-    
 }

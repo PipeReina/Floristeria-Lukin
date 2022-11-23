@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.ui.Model;
 
 import com.nomina.nomina1.model.Cargo;
 import com.nomina.nomina1.services.ICargoService;
+
+import org.springframework.ui.Model;
 
 
 @Controller

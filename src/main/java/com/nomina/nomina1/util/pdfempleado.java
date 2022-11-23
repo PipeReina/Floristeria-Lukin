@@ -1,5 +1,4 @@
 
-
 package com.nomina.nomina1.util;
 
 import java.awt.Color;
