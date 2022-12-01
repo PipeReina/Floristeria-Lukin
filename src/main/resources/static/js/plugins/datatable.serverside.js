@@ -48,12 +48,12 @@ class RowsServerSide {
       scrollX: true,
       buttons: ['copy', 'excel', 'csv', 'print'],
       info: false,
-      processing: true,
+      processing: false,
       serverSide: true,
       ajax: this._apiPath + '/products',
       sDom: '<"row"<"col-sm-12"<"table-container"t>r>><"row"<"col-12"p>>', // Hiding all other dom elements except table and pagination
       pageLength: 10,
-      columns: [{data: 'Name'}, {data: 'Sales'}, {data: 'Stock'}, {data: 'Category'}, {data: 'Tag'}, {data: 'Check'}],
+      columns: [{data: 'Name'}, {data: 'Sales'}, {data: 'Stock'}, {data: 'Check'}],
       language: {
         paginate: {
           previous: '<i class="cs-chevron-left"></i>',
@@ -71,21 +71,18 @@ class RowsServerSide {
         {
           targets: 0,
           render: function (data, type, row, meta) {
-            return '<a class="list-item-heading body" href="#">' + data + '</a>';
           },
         },
         // Adding Tag content as a span with a badge class
         {
           targets: 4,
           render: function (data, type, row, meta) {
-            return '<span class="badge bg-outline-primary">' + data + '</span>';
           },
         },
         // Adding checkbox for Check column
         {
           targets: 5,
           render: function (data, type, row, meta) {
-            return '<div class="form-check float-end mt-1"><input type="checkbox" class="form-check-input"></div>';
           },
         },
       ],
@@ -260,7 +257,7 @@ class RowsServerSide {
 
   // + Add New or just + button from top side click
   _onAddRowClick() {
-    this._showModal('add', 'Agregar Nuevo', 'Agregar');
+    this._showModal('add', 'Add New', 'Add');
   }
 
   // Showing modal for an objective, add or edit

@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+}
+
+.body{
+    background-image: url(../img/fondo1.jpg);
+    background-size: cover;
+}
+
+
+.ol{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.bill1{
+    fill: #eb911a;
+    animation-name: mover1;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction:alternate;
+    animation-delay: 3s;
+}
+.bill2{
+    fill: #eb911a;
+    animation-name: mover2;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction:alternate;
+    animation-delay: 3s;
+}
+@keyframes mover1 {
+    0%{
+        fill:#eb911a;
+        transform: translateX(0%) translateY(0);
+    }
+    25%{
+        fill: #319cab;
+        transform: translateX(100%) translateY(0%);
+    }
+    50%{
+        fill: #319cab;
+        transform: translateX(0%) translateY(-100%);
+    }
+    100%{
+        fill:#eb911a;
+        transform: translateX(0%) translateY(0);
+    }
+
+} 
+@keyframes mover2 {
+    0%{
+        fill:#eb911a;
+        transform: translateX(0%) translateY(0);
+    }
+    25%{
+        fill: #319cab;
+        transform: translateX(-100%) translateY(0%);
+    }
+    50%{
+        fill: #319cab;
+        transform: translateX(0%) translateY(100%);
+    }
+    100%{
+        fill:#eb911a;
+        transform: translateX(0%) translateY(0%);
+    }
+
+} 
+
+@font-face {
+    font-family:Russo;
+    src: url(../font/Russo_One.ttf);
+}
+
+.text{
+    z-index: 100;
+    position: relative;
+    text-align: center;
+    margin-top: -25%;
+    font-size: 180%;
+    font-family: Russo;
+    color:  rgb(59, 59, 59);;
+}
+
+

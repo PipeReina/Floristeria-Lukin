@@ -54,7 +54,7 @@ class Lists {
         },
         {
           name: 'Samoon',
-          image: 'img/product/small/.jpg',
+          image: 'img/product/small/barmbrack.jpg',
         },
         {
           name: 'Rieska',

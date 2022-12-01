@@ -272,7 +272,7 @@ class DatatableExtend {
         console.log('Trigger button is not found');
       }
     }
-    if (event.currentTarget.classList.contains('export-pdf')) {
+    if (event.currentTarget.classList.contains('export-cvs')) {
       try {
         this._getDatatable(event.currentTarget.closest('.datatable-export')).buttons(2).trigger();
       } catch (error) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-footer="true">
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
   <head>
-    <link rel="icon" href="../src/img/logo/ICONO (1).png">
+    <link rel="icon" th:href="@{/img/logo/ICONO (1).png}">
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -41,11 +41,11 @@
     <link rel="stylesheet" href="css/vendor/plyr.css" />
     <!-- Vendor Styles End -->
     <!-- Template Base Styles Start -->
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" th:href="@{css/styles.css}" />
     <!-- Template Base Styles End -->
 
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="js/base/loader.js"></script>
+    <link rel="stylesheet" th:href="@{css/main.css}" />
+    <script th:src="@{js/base/loader.js}"></script>
   </head>
 
   <body class="fondo">
@@ -54,7 +54,7 @@
         <div class="nav-content d-flex">
           <!-- Logo Start -->
           <div class="logo position-relative">
-            <a href="Dashboards.Default.html">
+            <a th:href="@{../}">
               <!-- Logo can be added directly -->
               <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
 
@@ -178,17 +178,17 @@
                 </a>
                 <ul id="dashboards">
                   <li>
-                    <a href="Dashboards.Default.html">
+                    <a th:href="@{he/listarhe}">
                       <span class="label">Horas Extra</span>
                     </a>
                   </li>
                   <li>
-                    <a href="Dashboards.Visual.html">
+                    <a th:href="@{comision/listarcom}">
                       <span class="label">Comisión</span>
                     </a>
                   </li>
                   <li>
-                    <a href="Dashboards.Analytic.html">
+                    <a th:href="@{Incapacidad/listar}">
                       <span class="label">Incapacidad</span>
                     </a>
                   </li>
@@ -201,7 +201,7 @@
                 </a>
                 <ul id="apps">
                   <li>
-                    <a href="Apps.Calendar.html">
+                    <a th:href="@{nomina/nominaTotal}">
                       <span class="label">Nomina - Empleado</span>
                     </a>
                   </li>
@@ -219,18 +219,23 @@
                 </a>
                 <ul id="pages">
                   <li>
-                    <a href="#authentication" data-href="Pages.Authentication.html">
+                    <a th:href="@{Incapacidad/listar}">
                       <span class="label">Incapacidad</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#blog" data-href="Pages.Blog.html">
+                    <a th:href="@{Convenio/listar}">
                       <span class="label">Convenio</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#miscellaneous" data-href="Pages.Miscellaneous.html">
+                    <a th:href="@{cargo/cargo}">
                       <span class="label">Cargo</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a th:href="@{empleado/empleado}">
+                      <span class="label">Empleado</span>
                     </a>
                   </li>
                 </ul>
@@ -242,12 +247,12 @@
                 </a>
                 <ul id="blocks">
                   <li>
-                    <a href="Blocks.Images.html">
+                    <a th:href="@{nomina/nominaTotal}">
                       <span class="label">Aval Nominal</span>
                     </a>
                   </li>
                   <li>
-                    <a href="Blocks.List.html">
+                    <a th:href="@{Pago/listar}">
                       <span class="label">Pago</span>
                     </a>
                   </li>
@@ -260,7 +265,7 @@
           <!-- Mobile Buttons Start -->
           <div class="mobile-buttons-container">
             <!-- Scrollspy Mobile Button Start -->
-            <a href="#" id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+            <a id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
               <i data-cs-icon="menu-dropdown"></i>
             </a>
             <!-- Scrollspy Mobile Button End -->
@@ -270,7 +275,7 @@
             <!-- Scrollspy Mobile Dropdown End -->
 
             <!-- Menu Button Start -->
-            <a href="#" id="mobileMenuButton" class="menu-button">
+            <a id="mobileMenuButton" class="menu-button">
               <i data-cs-icon="menu"></i>
             </a>
             <!-- Menu Button End -->
@@ -387,267 +392,6 @@
       </footer>
       <!-- Layout Footer End -->
     </div>
-
-    <!-- Theme Settings Modal Start -->
-    <div
-      class="modal fade modal-right scroll-out-negative"
-      id="settings"
-      data-bs-backdrop="true"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="settings"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-scrollable full" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Theme Settings</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="scroll-track-visible">
-              <div class="mb-5" id="color">
-                <label class="mb-3 d-inline-block form-label">Color</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="light-blue" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="blue-light"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT BLUE</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-blue" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="blue-dark"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK BLUE</span>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="light-red" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="red-light"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT RED</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-red" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="red-dark"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK RED</span>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="light-green" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="green-light"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT GREEN</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-green" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="green-dark"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK GREEN</span>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="light-purple" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="purple-light"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT PURPLE</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-purple" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="purple-dark"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK PURPLE</span>
-                    </div>
-                  </a>
-                </div>
-
-                <div class="row d-flex g-3 justify-content-between flex-wrap mb-3">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="light-pink" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="pink-light"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT PINK</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="dark-pink" data-parent="color">
-                    <div class="card rounded-md p-3 mb-1 no-shadow color">
-                      <div class="pink-dark"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK PINK</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mb-5" id="navcolor">
-                <label class="mb-3 d-inline-block form-label">Override Nav Palette</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap">
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="default" data-parent="navcolor">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DEFAULT</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="light" data-parent="navcolor">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-secondary figure-light top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">LIGHT</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="dark" data-parent="navcolor">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-muted figure-dark top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">DARK</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mb-5" id="placement">
-                <label class="mb-3 d-inline-block form-label">Menu Placement</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="horizontal" data-parent="placement">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">HORIZONTAL</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="vertical" data-parent="placement">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary left"></div>
-                      <div class="figure figure-secondary right"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">VERTICAL</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mb-5" id="behaviour">
-                <label class="mb-3 d-inline-block form-label">Menu Behaviour</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="pinned" data-parent="behaviour">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary left large"></div>
-                      <div class="figure figure-secondary right small"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">PINNED</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="unpinned" data-parent="behaviour">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary left"></div>
-                      <div class="figure figure-secondary right"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">UNPINNED</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mb-5" id="layout">
-                <label class="mb-3 d-inline-block form-label">Layout</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap">
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="fluid" data-parent="layout">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">FLUID</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-50 option col" data-value="boxed" data-parent="layout">
-                    <div class="card rounded-md p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom small"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">BOXED</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-              <div class="mb-5" id="radius">
-                <label class="mb-3 d-inline-block form-label">Radius</label>
-                <div class="row d-flex g-3 justify-content-between flex-wrap">
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="rounded" data-parent="radius">
-                    <div class="card rounded-md radius-rounded p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">ROUNDED</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="standard" data-parent="radius">
-                    <div class="card rounded-md radius-regular p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">STANDARD</span>
-                    </div>
-                  </a>
-                  <a href="#" class="flex-grow-1 w-33 option col" data-value="flat" data-parent="radius">
-                    <div class="card rounded-md radius-flat p-3 mb-1 no-shadow">
-                      <div class="figure figure-primary top"></div>
-                      <div class="figure figure-secondary bottom"></div>
-                    </div>
-                    <div class="text-muted text-part">
-                      <span class="text-extra-small align-middle">FLAT</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Theme Settings Modal End -->
 
     <!-- Search Modal Start -->
     <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">

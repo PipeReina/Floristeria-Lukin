@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://wwww.thymeleaf.org" lang="en">
+    <head>
+        <link rel="icon" th:href="@{/img/logo/ICONO (1).png}">
+    
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <title>Timmpay</title>
+        <meta name="description" content="Home screen that contains stats, charts, call to action buttons and various listing elements." />
+        <!-- Favicon Tags Start -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/favicon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="img/favicon/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/favicon/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/favicon/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/favicon/apple-touch-icon-152x152.png" />
+        <meta name="application-name" content="&nbsp;" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="img/favicon/mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="img/favicon/mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="img/favicon/mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="img/favicon/mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="img/favicon/mstile-310x310.png" />
+        <!-- Favicon Tags End -->
+        <!-- Font Tags Start -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="font/CS-Interface/style.css" />
+        <!-- Font Tags End -->
+        <!-- Vendor Styles Start -->
+        <link rel="stylesheet" th:href="@{../css/vendor/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/OverlayScrollbars.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/glide.core.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/glide.core.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/introjs.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/select2.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/select2-bootstrap4.min.css}" />
+        <link rel="stylesheet" th:href="@{../css/vendor/plyr.css}" />
+        <!-- Vendor Styles End -->
+        <!-- Template Base Styles Start -->
+        <link rel="stylesheet" th:href="@{../css/styles.css}" />
+        <!-- Template Base Styles End -->
+    
+        <link rel="stylesheet" th:href="@{../css/main.css}" />
+        <script th:src="@{../js/base/loader.js}"></script>
+      </head>
+
+      <body class="fondo">
+        <div id="root">
+          <div id="nav" class="nav-container d-flex">
+            <div class="nav-content d-flex">
+              <!-- Logo Start -->
+              <div class="logo position-relative">
+                <a th:href="@{../}">
+                  <!-- Logo can be added directly -->
+                  <!-- <img src="img/logo/logo-white.svg" alt="logo" /> -->
+    
+                  <!-- Or added via css to provide different ones for different color themes -->
+                  <div class="img" style="width: 190px !important;">
+                  <img th:src="@{../img/logo/Timmpay-Blanco-icon.png}" alt=""></div>
+                </a>
+              </div>
+              <!-- Logo End -->
+    
+    
+    
+              <!-- User Menu Start -->
+              <div class="user-container d-flex">
+                <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img class="profile" alt="profile" th:src="@{../img/profile/profile-9.jpg}" />
+                  <div class="name">Lisa Jackson</div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end user-menu wide">
+                  <div class="row mb-3 ms-0 me-0">
+                    <div class="col-12 ps-1 mb-2">
+                      <div class="text-extra-small text-primary">ACCOUNT</div>
+                    </div>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">User Info</a>
+                        </li>
+                        <li>
+                          <a href="#">Preferences</a>
+                        </li>
+                        <li>
+                          <a href="#">Calendar</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Security</a>
+                        </li>
+                        <li>
+                          <a href="#">Billing</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row mb-1 ms-0 me-0">
+                    <div class="col-12 p-1 mb-2 pt-2">
+                      <div class="text-extra-small text-primary">APPLICATION</div>
+                    </div>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Themes</a>
+                        </li>
+                        <li>
+                          <a href="#">Language</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">Devices</a>
+                        </li>
+                        <li>
+                          <a href="#">Storage</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row mb-1 ms-0 me-0">
+                    <div class="col-12 p-1 mb-3 pt-3">
+                      <div class="separator-light"></div>
+                    </div>
+                    <div class="col-6 ps-1 pe-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="help" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Help</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="document-full" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Docs</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-6 pe-1 ps-1">
+                      <ul class="list-unstyled">
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="gear" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Settings</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <i data-cs-icon="logout" class="me-2" data-cs-size="17"></i>
+                            <span class="align-middle">Logout</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- User Menu End -->
+    
+              <!-- Menu Start -->
+              <div class="menu-container flex-grow-1">
+                <ul id="menu" class="menu">
+                  <li>
+                    <a href="#dashboards" data-href="Dashboards.html">
+                      <i data-cs-icon="home" class="icon" data-cs-size="18"></i>
+                      <span class="label">Empleado</span>
+                    </a>
+                    <ul id="dashboards">
+                      <li>
+                        <a th:href="@{../he/listarhe}">
+                          <span class="label">Horas Extra</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../comision/listarcom}">
+                          <span class="label">Comisión</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Incapacidad/listar}">
+                          <span class="label">Incapacidad</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#apps" data-href="Apps.html">
+                      <i data-cs-icon="screen" class="icon" data-cs-size="18"></i>
+                      <span class="label">Tesorero</span>
+                    </a>
+                    <ul id="apps">
+                      <li>
+                        <a th:href="@{../nomina/nominaTotal1}">
+                          <span class="label">Nomina - Empleado</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#pages" data-href="Pages.html">
+                      <i data-cs-icon="notebook-1" class="icon" data-cs-size="18"></i>
+                      <span class="label">Administrador</span>
+                    </a>
+                    <ul id="pages">
+                      <li>
+                        <a th:href="@{../Incapacidad/listar}">
+                          <span class="label">Incapacidad</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Convenio/listar}">
+                          <span class="label">Convenio</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../cargo/cargo}">
+                          <span class="label">Cargo</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../empleado/empleado}">
+                          <span class="label">Empleado</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#blocks" data-href="Blocks.html">
+                      <i data-cs-icon="grid-5" class="icon" data-cs-size="18"></i>
+                      <span class="label">Contador</span>
+                    </a>
+                    <ul id="blocks">
+                      <li>
+                        <a th:href="@{../nomina/nominaTotal1}">
+                          <span class="label">Aval Nominal</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a th:href="@{../Pago/listar}">
+                          <span class="label">Pago</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <!-- Menu End -->
+    
+              <!-- Mobile Buttons Start -->
+              <div class="mobile-buttons-container">
+                <!-- Scrollspy Mobile Button Start -->
+                <a id="scrollSpyButton" class="spy-button" data-bs-toggle="dropdown">
+                  <i data-cs-icon="menu-dropdown"></i>
+                </a>
+                <!-- Scrollspy Mobile Button End -->
+    
+                <!-- Scrollspy Mobile Dropdown Start -->
+                <div class="dropdown-menu dropdown-menu-end" id="scrollSpyDropdown"></div>
+                <!-- Scrollspy Mobile Dropdown End -->
+    
+                <!-- Menu Button Start -->
+                <a id="mobileMenuButton" class="menu-button">
+                  <i data-cs-icon="menu"></i>
+                </a>
+                <!-- Menu Button End -->
+              </div>
+              <!-- Mobile Buttons End -->
+            </div>
+            <div class="nav-shadow"></div>
+          </div>
+<!-- comienzo -->
+<main>
+    <div class="container">
+      <div class="row">
+        <div class="col tables">
+          <div class="page-title-container">
+            <div class="row">
+              <div class="col-12 col-md-7">
+                <h1 class="mb-0 pb-0 display-4" id="title"><b>Nomina Total</b></h1>
+                <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+                  <ul class="breadcrumb pt-0">
+                    <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="Interface.html">NominaTotal</a></li>
+
+                  </ul>
+                </nav>
+              </div>
+              <div class="nomina">
+
+                    <div class="selectNom">
+                        <h1 class="nombreEm"> <b>Seleccione el nombre del Empleado</b></h1>
+
+                        <div class="select" th:field="*{empleado}">
+                            <select name="" id="IdNom"  class="form-select">
+                                <option value="">Seleccione</option>
+                                <th:block th:each="c:${empleado}">
+                                    <option th:text="${c.idEmpleado}+' '+ ${c.nombreEmpleado} +' '+ ${c.apellidoEmpleado}" th:value="${c.idEmpleado}" name="IdNom"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="calcular" style="text-align: center;">
+                            <button class="btn btn-outline-primary" type="submit" onclick="calcular()">Calcular</button>
+                        </div>
+                    </div>
+                    <div class="nomi">
+                        <div class="desprendible">
+                            <img th:src="@{../img/logo/Timmpay-Oscuro-icon.png}" class="desprendibleIMG">
+                            <h3>N° 000</h3>
+                           <div class="netoPago">
+                            <h1></h1> 
+                            <h1>0</h1> 
+                            <h4>Pago Neto</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Valor Devengado</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Valor Debengado</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Salario B</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Aux trnasporte</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Hrs Extra</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Comisión</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Pension</h4>
+                           </div>
+                           <div>
+                            <h1>0</h1> 
+                            <h4>Salud</h4>
+                           </div>
+                           </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- <div class="tabla">
+    <table id="datat">
+        <thead>
+            <th>Nomina</th>
+            <th>Salario Basico</th>
+            <th>AuxsTransporte</th>
+            <th>HrsExtra</th>
+            <th>Comisión</th>
+            <th>Total Devengado</th>
+            <th>Pencion</th>
+            <th>Salud</th>
+            <th>Total Deducido</th>
+        </thead>
+        <tbody>
+            <tr th:each="c:${nomina}">
+            <tr th:each="c:${SalarioB}">
+            <tr th:each="c:${AuxTrans}">
+            <tr th:each="c:${HrsExtra}">
+            <tr th:each="c:${Comision}">
+            <tr th:each="c:${TotalDev}">
+            <tr th:each="c:${Pencion}">
+            <tr th:each="c:${Salud}">
+            <tr th:each="c:${TotalDed}">
+                <td th:text="${nomina}"></td>
+                <td th:text="${SalarioB}"></td>
+                <td th:text="${AuxTrans}"></td>
+                <td th:text="${HrsExtra}"></td>
+                <td th:text="${Comision}"></td>
+                <td th:text="${TotalDev}"></td>
+                <td th:text="${Pencion}"></td>
+                <td th:text="${Salud}"></td>
+                <td th:text="${TotalDed}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
+</div>  -->
+
+      <!-- Layout Footer Start -->
+      <footer>
+        <div class="footer-content">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <p class="mb-0 text-muted text-medium">Colored Strategies 2021</p>
+              </div>
+              <div class="col-sm-6 d-none d-sm-block">
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- Layout Footer End -->
+    </div>
+
+    <!-- Search Modal Start -->
+    <div class="modal fade modal-under-nav modal-search modal-close-out" id="searchPagesModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0 p-0">
+            <button type="button" class="btn-close btn btn-icon btn-icon-only btn-foreground" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body ps-5 pe-5 pb-0 border-0">
+            <input id="searchPagesInput" class="form-control form-control-xl borderless ps-0 pe-0 mb-1 auto-complete" type="text" autocomplete="off" />
+          </div>
+          <div class="modal-footer border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0">
+            <span class="text-alternate d-inline-block m-0 me-3">
+              <i data-cs-icon="arrow-bottom" data-cs-size="15" class="text-alternate align-middle me-1"></i>
+              <span class="align-middle text-medium">Navigate</span>
+            </span>
+            <span class="text-alternate d-inline-block m-0 me-3">
+              <i data-cs-icon="arrow-bottom-left" data-cs-size="15" class="text-alternate align-middle me-1"></i>
+              <span class="align-middle text-medium">Select</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Modal End -->
+
+    <!-- Vendor Scripts Start -->
+    <script th:src="@{../../js/vendor/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{../../js/vendor/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{../../js/vendor/OverlayScrollbars.min.js}"></script>
+    <script th:src="@{../../js/vendor/autoComplete.min.js}"></script>
+    <script th:src="@{../../js/vendor/clamp.min.js}"></script>
+    <script th:src="@{../../js/vendor/bootstrap-submenu.js}"></script>
+    <script th:src="@{../../js/vendor/datatables.min.js}"></script>
+    <script th:src="@{../../js/vendor/mousetrap.min.js}"></script>
+    <!-- Vendor Scripts End -->
+
+    <!-- Template Base Scripts Start -->
+    <script th:src="@{../../font/CS-Line/csicons.min.js}"></script>
+    <script th:src="@{../../js/base/helpers.js}"></script>
+    <script th:src="@{../../js/base/globals.js}"></script>
+    <script th:src="@{../../js/base/nav.js}"></script>
+    <script th:src="@{../../js/base/search.js}"></script>
+    <script th:src="@{../../js/base/settings.js}"></script>
+    <script th:src="@{../../js/base/init.js}"></script>
+    <!-- Template Base Scripts End -->
+    <!-- Page Specific Scripts Start -->
+    <script th:src="@{../../js/cs/datatable.extend.js}"></script>
+    <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
+    <script th:src="@{../../js/common.js}"></script>
+    <script th:src="@{../../js/scripts.js}"></script>
+    <script th:src="@{../../js/verNom.js}"></script>
+    <!-- Page Specific Scripts End -->
+  </body>
+</html>
+        <!-- contenido
+        <div class="tabla">
+            <table id="datat">
+            <thead>
+                <th>Id Pago</th>
+                <th>Fecha Pago</th>
+                <th>Devengado Fk</th>
+            </thead>
+            <tbody>
+                <tr th:if="${Pagos.size()>0}" th:each="c:${Pagos}">
+                    <td th:text="${c.idPago}"></td>
+                    <td th:text="${c.fechaPago}"></td>
+                    <td th:text="${c.FKdevengado.idDev}"></td>
+                         <a role="button" class="btn text-warning btn-sm" th:href="@{/Pago/ver/} + ${p.id}"> 
+                            <i class="bi bi-pencil"></i> 
+
+                        </a> 
+                        <a role="button" class="btn text-danger btn-sm" th:href="@{/Pago/delete/} + ${p.id}" onclick="return confirm('Estás seguro que quieres eliminar este genero?');"> 
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="btncrearpdf"><i class="fi fi-br-folder-download"></i><a> Generar pdf</button></a>
+    </div> -->
+    
+
+
+
+            <!--
+
+
+
+              <main>
+        <div class="container">
+          <div class="row">
+            <div class="col tables">
+              <div class="page-title-container">
+                <div class="row">
+                  <div class="col-12 col-md-7">
+                    <h1 class="mb-0 pb-0 display-4" id="title"><b>Nomina Total</b></h1>
+                    <nav class="breadcrumb-container d-inline-block" aria-label="breadcrumb">
+                      <ul class="breadcrumb pt-0">
+                        <li class="breadcrumb-item"><a href="Dashboards.Default.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="Interface.html">NominaTotal</a></li>
+
+                      </ul>
+                    </nav>
+                  </div>
+                  <div class="nomina">
+
+                        <div class="selectNom">
+                            <h1 class="nombreEm"> <b>Seleccione el nombre del Empleado</b></h1>
+
+                            <div class="select">
+                                <select name="" id="" class="form-select">
+                                    <option value=""></option>
+                                    <option value="">pepe</option>
+                                    <option value="">asda</option>
+                                    <option value="">sadas</option>
+                                    <option value="">sdfsd</option>
+                                    <option value="">peperwee</option>
+                                    <option value="">wefew</option>
+                                    <option value="">pefewfewpe</option>
+                                    <option value="">pdsfsdfepe</option>
+                                    <option value="">vdsvsd</option>
+                                    <option value="">pepjuyjue</option>
+                                    <option value="">pepexzcczx</option>
+                                    <option value="">pertertepe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="nomi">
+                            <div class="desprendible">
+                                <img src="img/logo/Timmpay-Oscuro-icon.png" class="desprendibleIMG">
+                                <h3>N° 00001</h3>
+                               <div class="netoPago">
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3550415</h1> 
+                                <h4>Valor Devengado</h4>
+                               </div>
+                               <div>
+                                <h1>11515</h1> 
+                                <h4>Valor Debengado</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                               <div>
+                                <h1>3151515</h1> 
+                                <h4>Pago Neto</h4>
+                               </div>
+                            </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </main>-->

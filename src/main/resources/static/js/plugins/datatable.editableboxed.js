@@ -187,7 +187,7 @@ class EditableBoxed {
 
   // + Add New or just + button from top side click
   _onAddRowClick() {
-    this._showModal('add', 'Agregar Nuevo', 'Agregar');
+    this._showModal('add', 'Add New', 'Add');
   }
 
   // Showing modal for an objective, add or edit

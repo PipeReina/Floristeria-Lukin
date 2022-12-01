@@ -188,7 +188,7 @@ class RowsAjax {
 
   // + Add New or just + button from top side click
   _onAddRowClick() {
-    this._showModal('add', 'Agregar nuevo', 'Agregar');
+    this._showModal('add', 'Add New', 'Add');
   }
 
   // Showing modal for an objective, add or edit

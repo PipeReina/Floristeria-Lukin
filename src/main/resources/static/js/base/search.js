@@ -87,7 +87,7 @@ class Search {
       onSelection: (feedback) => {
         window.location.href = Helpers.UrlFix(feedback.selection.value['url']);
         searchInput.value = '';
-        searchInput.setAttribute('placeholder', 'Buscar');
+        searchInput.setAttribute('placeholder', 'Search');
       },
     });
   }
