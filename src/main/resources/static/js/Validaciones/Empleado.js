@@ -208,10 +208,39 @@ inputs.forEach((input)=>{
 function guar(){
     confirm("Se guardaron los cambios");
   }
-function eli(){
-    confirm("Se Eliminara");
-  }
 
+  //eliminar
+  function eliminar(idEmpleado){
+    console.log(idEmpleado);
+    swal({
+        title: "Esta seguro que desea eliminar?",
+        text: "Una vez eliminado no se prodra restablecer!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((OK) => {
+        if (OK) {
+            $.ajax({
+               url:"eliminar/"+idEmpleado,
+               success: function(res) {
+                  console.log(res);
+              },			
+            });
+          swal("Exito! Campo eliminado correctamente!", {
+            icon: "success",
+          }).then((ok)=>{
+            if(ok){
+                location.href="empleado";
+            }
+          });
+        } else {
+          swal("Cancelado!");
+        }
+      });
+  }
+  //fin eliminar
+  
 formulario.addEventListener('submit', (e) => {
     if(campos.nombre && campos.descrip){
         // bien

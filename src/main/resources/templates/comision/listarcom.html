@@ -387,20 +387,19 @@
                         <td th:if="${c.estadoCom==true}" id="activo">
                           <span class="badge bg-success active">Activo</span>
                           </td>
-                          <td th:if="${c..estadoCom==false}" id="inactivo">
+                          <td th:if="${c.estadoCom==false}" id="inactivo">
                           <span class="badge bg-danger active">Inactivo</span>
                           </td>
                           <td th:if="${c.estadoCom==true}" id="estadoboton">
                             <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/comision/estado/}+${c.idComision}">Inactivar</a>
                             </td>
-                            <td th:if="${c..estadoCom==false}" id="estadoboton">
+                            <td th:if="${c.estadoCom==false}" id="estadoboton">
                             <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/comision/estado/}+${c.idComision}">Activar</a>
                             </td>
                           <td> 
                             <!-- Boton Borrar-->
-                            <a th:href="@/comision/delete/v}+${c.idComision}"> 
+                            <a th:onclick="eliminar([[${c.idComision}]])"> 
                             <button
-                              onclick="conf()"
                               class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
                               data-bs-delay="0"
                               data-bs-toggle="tooltip"
@@ -555,6 +554,12 @@
     <script th:src="@{../../js/modal.js}"></script>
     <script th:src="@{../../js/Validaciones/Comision.js}"></script>
     <!-- Page Specific Scripts End -->
+    <!-- CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   <!-- sweetalert -->
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   </body>
 </html>
 

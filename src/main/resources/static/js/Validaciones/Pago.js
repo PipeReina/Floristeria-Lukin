@@ -46,6 +46,38 @@ formulario.addEventListener('submit', (e) => {
     }
 });
 
+ //eliminar
+ function eliminar(idPago){
+    console.log(idPago);
+    swal({
+        title: "Esta seguro que desea eliminar?",
+        text: "Una vez eliminado no se prodra restablecer!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((OK) => {
+        if (OK) {
+            $.ajax({
+               url:"delete/"+idPago,
+               success: function(res) {
+                  console.log(res);
+              },			
+            });
+          swal("Exito! Campo eliminado correctamente!", {
+            icon: "success",
+          }).then((ok)=>{
+            if(ok){
+                location.href="listar";
+            }
+          });
+        } else {
+          swal("Cancelado!");
+        }
+      });
+  }
+  //fin eliminar
+
 function guar(){
     alert("Se guardaron los cambios")
   }

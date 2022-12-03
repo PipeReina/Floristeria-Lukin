@@ -407,9 +407,8 @@
                                 <td th:text="${c.horaConvenio}"></td>
                                 <td> 
                                   <!-- Boton Borrar-->
-                                  <a th:href="@{/Convenio/delete/}+${c.idConvenio}"> 
+                                  <a th:onclick="eliminar([[${c.idConvenio}]])"> 
                                   <button
-                                    onclick="eli()"
                                     class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
                                     data-bs-delay="0"
                                     data-bs-toggle="tooltip"
@@ -576,5 +575,11 @@
     <script th:src="@{../../js/Validaciones/Convenio.js}"></script>
 
     <!-- Page Specific Scripts End -->
+    <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
   </body>
 </html>
