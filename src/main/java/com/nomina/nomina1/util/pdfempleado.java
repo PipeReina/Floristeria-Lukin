@@ -24,7 +24,7 @@ import com.nomina.nomina1.model.Empleado;
 
 
 @Component("empleado/empleado")
-public class pdfempleado extends AbstractPdfView{
+public class pdfempleado extends AbstractPdfView {
 
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
@@ -32,9 +32,11 @@ public class pdfempleado extends AbstractPdfView{
                 @SuppressWarnings("unchecked")
                 List<Empleado> empleado=(List<Empleado>) model.get("empleado");
 
+
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
                 Font fuentedataceldas = FontFactory.getFont(FontFactory.COURIER,10,Color.BLACK);
+            
 
                 document.setPageSize(PageSize.LETTER.rotate());
                 document.setMargins(-50, -50,50,20);
@@ -229,7 +231,6 @@ public class pdfempleado extends AbstractPdfView{
                     tablaempleado.addCell(celda);
 
                 }
-
                 /*Anexar las tablas al documento */
                 document.add(tablatitulo);
                 document.add(tablaempleado);

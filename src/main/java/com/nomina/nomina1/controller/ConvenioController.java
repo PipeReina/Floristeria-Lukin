@@ -71,7 +71,7 @@ public class ConvenioController {
 
     @PostMapping("/add")
     public String add(@Valid Convenio Convenio,BindingResult res, Model m,SessionStatus status){
-        System.out.print("Informacion❤️"+Convenio);
+        System.out.print("Informacion"+Convenio);
 
         if(res.hasErrors()){
              m.addAttribute("empleado", empleadod.findAll());

@@ -29,7 +29,7 @@ public class pdfhe  extends AbstractPdfView{
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
                 @SuppressWarnings("unchecked")
-                List<he> he=(List<he>) model.get("hse");
+                List<he> hse=(List<he>) model.get("hse");
 
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
@@ -52,17 +52,10 @@ public class pdfhe  extends AbstractPdfView{
                 tablatitulo.addCell(celda);
                 tablatitulo.setSpacingAfter(20);
                 
-                PdfPTable tablahe = new PdfPTable(3);
-                tablahe.setWidths(new float[]{3f,5f,5f});
+                PdfPTable tablahe = new PdfPTable(4);
+                tablahe.setWidths(new float[]{3f,5f,5f,5f});
 
                 celda = new PdfPCell(new Phrase("Id",fuentetitulocolumnas));
-                celda.setBackgroundColor(Color.white);
-                celda.setHorizontalAlignment(Element.ALIGN_CENTER);
-                celda.setVerticalAlignment(Element.ALIGN_CENTER);
-                celda.setPadding(3);
-                tablahe.addCell(celda);
-
-                celda = new PdfPCell(new Phrase("Fecha Comisión",fuentetitulocolumnas));
                 celda.setBackgroundColor(Color.white);
                 celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                 celda.setVerticalAlignment(Element.ALIGN_CENTER);
@@ -76,27 +69,49 @@ public class pdfhe  extends AbstractPdfView{
                 celda.setPadding(3);
                 tablahe.addCell(celda);
 
+                celda = new PdfPCell(new Phrase("Fecha Comisión",fuentetitulocolumnas));
+                celda.setBackgroundColor(Color.white);
+                celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda.setVerticalAlignment(Element.ALIGN_CENTER);
+                celda.setPadding(3);
+                tablahe.addCell(celda);
+
+                celda = new PdfPCell(new Phrase("Cantidad Horas",fuentetitulocolumnas));
+                celda.setBackgroundColor(Color.white);
+                celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+                celda.setVerticalAlignment(Element.ALIGN_CENTER);
+                celda.setPadding(3);
+                tablahe.addCell(celda);
+
+
 
                 /*bucle for muestra todos los hes */
 
-                for(he hep: he){
+                for(he hep: hse){
                     celda= new PdfPCell(new Phrase(hep.getIdHorasExtra().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
                     celda.setPadding(3);
                     tablahe.addCell(celda);
-
-                    celda= new PdfPCell(new Phrase(hep.getFechaHE(),fuentedataceldas));
-                    celda.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    celda.setVerticalAlignment(Element.ALIGN_CENTER);
-                    celda.setPadding(3);
-                    tablahe.addCell(celda);
-
+                    
                     celda= new PdfPCell(new Phrase(hep.getIdEmpleadoFK().getNombreEmpleado(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
                     celda.setPadding(3);
                     tablahe.addCell(celda);
+                    
+                    celda= new PdfPCell(new Phrase(hep.getFechaHE().toString(),fuentedataceldas));
+                    celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    celda.setVerticalAlignment(Element.ALIGN_CENTER);
+                    celda.setPadding(3);
+                    tablahe.addCell(celda);
+
+                    celda= new PdfPCell(new Phrase(hep.getCantidadHrs().toString(),fuentedataceldas));
+                    celda.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    celda.setVerticalAlignment(Element.ALIGN_CENTER);
+                    celda.setPadding(3);
+                    tablahe.addCell(celda);
+
                     
                 }
 

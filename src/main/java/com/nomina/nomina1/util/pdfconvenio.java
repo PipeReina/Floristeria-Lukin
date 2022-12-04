@@ -30,7 +30,7 @@ public class pdfconvenio  extends AbstractPdfView{
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
                 @SuppressWarnings("unchecked")
-                List<Convenio> convenio=(List<Convenio>) model.get("convenio");
+                List<Convenio> Convenios=(List<Convenio>) model.get("Convenios");
 
                 Font fuentetitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Color.BLACK);
                 Font fuentetitulocolumnas = FontFactory.getFont(FontFactory.HELVETICA_BOLD,10,Color.BLACK);
@@ -91,12 +91,11 @@ public class pdfconvenio  extends AbstractPdfView{
                 celda.setPadding(3);
                 tablaConvenio.addCell(celda);
 
-               
-
+                
 
                 /*bucle for muestra todos los Convenios */
 
-                for(Convenio Conveniosp: convenio){
+                for(Convenio Conveniosp: Convenios){
                     celda= new PdfPCell(new Phrase(Conveniosp.getIdConvenio().toString(),fuentedataceldas));
                     celda.setHorizontalAlignment(Element.ALIGN_CENTER);
                     celda.setVerticalAlignment(Element.ALIGN_CENTER);
