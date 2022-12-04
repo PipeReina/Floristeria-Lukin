@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.nomina.nomina1.services.IEmpleadoService;
-import com.nomina.nomina1.services.IPagoService;
 import com.nomina.nomina1.services.PagoServiceImpl;
 
 

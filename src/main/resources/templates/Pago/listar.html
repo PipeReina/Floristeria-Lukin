@@ -323,13 +323,11 @@
                   <!-- Search Start -->
                   <div class="col-sm-12 col-md-5 col-lg-3 col-xxl-2 mb-1">
                     <div class="d-inline-block float-md-start me-1 mb-1 search-input-container w-100 shadow bg-foreground">
-                      <input class="form-control datatable-search" placeholder="Search" data-datatable="#datatableRowsServerSide" />
-                      <span class="search-magnifier-icon">
+                      <input class="form-control datatable-search" name="PalabraClave" id="PalabraClave" th:value="${PalabraClave}" required placeholder="Search" data-datatable="#datatableRowsServerSide" type="text" />
+                      <span class="search-magnifier-icon" value="Buscar">
                         <i data-cs-icon="search"></i>
                       </span>
-                      <span class="search-delete-icon d-none">
-                        <i data-cs-icon="close"></i>
-                      </span>
+                      
                     </div>
                   </div>
                   <!-- Search End -->
@@ -437,69 +435,6 @@
                 <!-- Table End -->
               </div>
               <!-- Content End -->
-
-           <!-- Add Edit Modal Start -->
-           <div class="modal modal-right fade" id="addEditModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="modalTitle">Add New</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <label class="form-label">Name</label>
-                      <input name="Name" type="text" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Sales</label>
-                      <input name="Sales" type="number" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Stock</label>
-                      <input name="Stock" type="number" class="form-control" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Category</label>
-                      <div class="form-check">
-                        <input type="radio" id="category1" name="Category" value="Whole Wheat" class="form-check-input" />
-                        <label class="form-check-label" for="category1">Whole Wheat</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" id="category2" name="Category" value="Sourdough" class="form-check-input" />
-                        <label class="form-check-label" for="category2">Sourdough</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" id="category3" name="Category" value="Multigrain" class="form-check-input" />
-                        <label class="form-check-label" for="category3">Multigrain</label>
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Tag</label>
-                      <div class="form-check">
-                        <input type="radio" id="tag1" name="Tag" value="New" class="form-check-input" />
-                        <label class="form-check-label" for="tag1">New</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" id="tag2" name="Tag" value="Sale" class="form-check-input" />
-                        <label class="form-check-label" for="tag2">Sale</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="radio" id="tag3" name="Tag" value="Done" class="form-check-input" />
-                        <label class="form-check-label" for="tag3">Done</label>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary" id="addEditConfirmButton">Add</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Add Edit Modal End -->
             </div>
           </div>
         </div>

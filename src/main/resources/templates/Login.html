@@ -87,16 +87,25 @@
                   <p class="h6" style=" font-size: 80%;" > Si no es tiene sus credenciales solicitelas a la empreza.
                 </div>
                 <div>
-                  <form id="loginForm" class="tooltip-end-bottom" novalidate>
+                  <form class="tooltip-end-bottom" novalidate th:action="@{/logear}" th:object="${empleado}" method="post">
+                  
+                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                      Usuario y contraseña invalida
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                      Has cerrado sesión
+                    </div>
+                    
                     <div class="mb-3 filled form-group tooltip-end-top">
-                      <i data-cs-icon="email"></i>
-                      <input class="form-control" placeholder="Email" name="email" style="background: #ededed"/>
+                      <input class="form-control" placeholder="Usuario" name="username" id="username" th:field="*{docEmpleado}" style="background: #ededed" />
                     </div>
                     <div class="mb-3 filled form-group tooltip-end-top">
                       <i data-cs-icon="lock-off"></i>
-                      <input class="form-control pe-7" name="password" type="password" placeholder="Password"  style="background: #ededed"/>
+                      <input class="form-control pe-7" name="password" type="password" th:field="*{password}" placeholder="Password"
+                        style="background: #ededed" />
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary"><a href="Home.html" style="color: #fff;">Ingrezar</a></button>
+  
+                    <button type="submit" class="btn btn-lg btn-primary">Ingresar</button>
                   </form>
                 </div>
               </div>

@@ -56,6 +56,8 @@ public class Empleado {
     private String especialidadEmpleado;
     @Column(name="fotoEmpleado", length=100000000)
     private String fotoEmpleado;
+    @Column(name="passaword")
+    private String passaword;
     @Column(name="estadoEmpleado") 
     private Boolean estadoEmpleado;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -77,17 +79,15 @@ public class Empleado {
     
 
     public Empleado(){
-        FKincapacidad=new ArrayList<Incapacidad>();
-        convenio=new ArrayList<Convenio>();
-        hrExtraFK=new ArrayList<he>();
-        comisionFK=new ArrayList<comision>();
+
     }
 
+    
 
     public Empleado(Integer idEmpleado, @NotEmpty String nombreEmpleado, @NotEmpty String apellidoEmpleado,
             @NotEmpty String docEmpleado, @NotEmpty String epsEmpleado, @NotEmpty String direccEmpleado,
             @NotEmpty String generoEmpleado, @NotEmpty String telEmpleado, @NotEmpty String emailEmpleado,
-            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, String fotoEmpleado,
+            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, String fotoEmpleado, String passaword,
             Boolean estadoEmpleado, Cargo fKcargo, List<Incapacidad> fKincapacidad, List<Convenio> convenio,
             List<he> hrExtraFK, List<comision> comisionFK) {
         this.idEmpleado = idEmpleado;
@@ -102,6 +102,7 @@ public class Empleado {
         this.rhEmpleado = rhEmpleado;
         this.especialidadEmpleado = especialidadEmpleado;
         this.fotoEmpleado = fotoEmpleado;
+        this.passaword = passaword;
         this.estadoEmpleado = estadoEmpleado;
         FKcargo = fKcargo;
         FKincapacidad = fKincapacidad;
@@ -109,6 +110,7 @@ public class Empleado {
         this.hrExtraFK = hrExtraFK;
         this.comisionFK = comisionFK;
     }
+
 
 
     public Integer getIdEmpleado() {
@@ -231,6 +233,16 @@ public class Empleado {
     }
 
 
+    public String getPassaword() {
+        return passaword;
+    }
+
+
+    public void setPassaword(String passaword) {
+        this.passaword = passaword;
+    }
+
+
     public Boolean getEstadoEmpleado() {
         return estadoEmpleado;
     }
@@ -291,5 +303,6 @@ public class Empleado {
     }
 
 
+    
     
 }
