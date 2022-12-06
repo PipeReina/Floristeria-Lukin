@@ -3,9 +3,6 @@ package com.nomina.nomina1.model;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
-
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

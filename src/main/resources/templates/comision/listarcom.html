@@ -316,35 +316,7 @@
                   <!-- Search End -->
 
                   <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
-                    <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
 
-
-                      <!-- Edit Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Edit"
-                        type="button"
-                      >
-                        <i data-cs-icon="edit"></i>
-                      </button>
-                      <!-- Edit Button End -->
-
-                      <!-- Delete Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Delete"
-                        type="button"
-                      >
-                        <i data-cs-icon="bin"></i>
-                      </button>
-                      <!-- Delete Button End -->
-                    </div>
                     <div class="d-inline-block">
 
                       <!-- Export Dropdown Start -->
@@ -406,14 +378,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:if="${comisiones.size()>0}" th:each="c:${comisiones}">
-                        <td th:text="${c.idComision}"></td>
-                        <td th:text="${c.idEmpleadoFK.NombreEmpleado}+' '+${c.idEmpleadoFK.ApellidoEmpleado}"></td>
-                        <td th:text="${c.costoVenta}"></td>
-                        <td th:text="${c.fechaCom}"></td>
-                            <td> <input type="checkbox" class="form-check-input" id="check"></td>
+                  <tr th:if="${comisiones.size()>0}" th:each="c:${comisiones}">
+                      <td th:text="${c.idComision}"></td>
+                      <td th:text="${c.idEmpleadoFK.NombreEmpleado}+' '+${c.idEmpleadoFK.ApellidoEmpleado}"></td>
+                      <td th:text="${c.costoVenta}"></td>
+                      <td th:text="${c.fechaCom}"></td>
+                      <td th:if="${c.estadoCom==true}" id="activo">
+                        <span class="badge bg-success active">Activo</span>
+                        </td>
+                        <td th:if="${c.estadoCom==false}" id="inactivo">
+                        <span class="badge bg-danger active">Inactivo</span>
+                        </td>
+                        <td th:if="${c.estadoCom==true}" id="estadoboton">
+                          <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/comision/estado/}+${c.idComision}">Inactivar</a>
+                          </td>
+                          <td th:if="${c.estadoCom==false}" id="estadoboton">
+                          <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/comision/estado/}+${c.idComision}">Activar</a>
+                          </td>
+                        <td> 
+                          <!-- Boton Borrar-->
+                          <a th:onclick="eliminar([[${c.idComision}]])"> 
+                          <button
+                            class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                            data-bs-delay="0"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Eliminar"
+                            type="button">
+                            <i data-cs-icon="bin"></i>
+                          </button>
+                        </a>
+                          <!--Boton Editar -->
+                          <a th:href="@{/comision/edit/}+${c.idComision}"> 
+                          <button
+                            class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+                            data-bs-delay="0"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Editar"
+                            type="button">
+                          <i data-cs-icon="edit"></i>
+                        </button></a>
+                      </td>
+                       </td>
                         </tr>
-                    </tbody>
+                        </tbody>
                   </table>
                 </div>
                 <!-- Table End -->
@@ -534,15 +543,13 @@
     <script th:src="@{../../js/base/search.js}"></script>
     <script th:src="@{../../js/base/settings.js}"></script>
     <script th:src="@{../../js/base/init.js}"></script>
-    <!-- Template Base Scripts End -->
-    <!-- Page Specific Scripts Start -->
-    <!-- <script th:src="@{../../js/cs/datatable.extend.js}"></script>
-    <script th:src="@{../../js/plugins/datatable.serverside.js}"></script>
-    <script th:src="@{../../js/common.js}"></script> -->
-    <!-- <script th:src="@{../../js/scripts.js}"></script> -->
-    <!-- <script th:src="@{../../js/funciona.js}"></script>-->
     <script th:src="@{../../js/modal.js}"></script>
     <script th:src="@{../../js/Validaciones/Comision.js}"></script>
+        <!-- CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   <!-- sweetalert -->
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Page Specific Scripts End -->
   </body>
 </html>

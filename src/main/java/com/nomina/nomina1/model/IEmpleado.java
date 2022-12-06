@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 public interface IEmpleado extends CrudRepository<Empleado,Integer>{
-    public Empleado findByEmailEmpleado(String emailEmpleado);
+    public Empleado findByDocEmpleado(String docEmpleado);
     public Optional <Empleado> findByTelEmpleado(String telEmpleado );
 
 }

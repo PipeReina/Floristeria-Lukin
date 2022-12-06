@@ -13,7 +13,7 @@ import com.nomina.nomina1.model.Convenio;
 import com.nomina.nomina1.model.Empleado;
 import com.nomina.nomina1.model.comision;
 import com.nomina.nomina1.model.he;
-import com.nomina.nomina1.services.EmpleadoServicelmps;
+import com.nomina.nomina1.services.EmpleadoServiceImpl;
 import com.nomina.nomina1.services.NominaServicelmps;
 
 
@@ -27,7 +27,7 @@ public class NominaController {
     @Autowired
     public NominaServicelmps empleadoservicio;
     @Autowired
-    public EmpleadoServicelmps Empleado;
+    public EmpleadoServiceImpl Empleado;
 
      @GetMapping(path={"/nominaTotal","","/"})
      public String NominaTotal(Model mo, @RequestParam (value="IdNom") Integer IdNom){

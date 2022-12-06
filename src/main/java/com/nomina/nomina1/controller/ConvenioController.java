@@ -3,7 +3,6 @@ package com.nomina.nomina1.controller;
 import javax.validation.Valid;
 
 import com.nomina.nomina1.model.Convenio;
-import com.nomina.nomina1.model.IConvenio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

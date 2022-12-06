@@ -366,26 +366,30 @@
                     </div>
                     <div class="d-inline-block">
 
-                      <!-- Export Dropdown Start -->
-                      <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
-                        <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
-                          <span
-                            class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown"
-                            data-bs-delay="0"
-                            data-bs-placement="top"
-                            data-bs-toggle="tooltip"
-                            title="Export"
-                          >
-                            <i data-cs-icon="download"></i>
-                          </span>
-                        </button>
-                        <div class="dropdown-menu shadow dropdown-menu-end">
-                          <button class="dropdown-item export-copy" type="button">Copy</button>
-                          <button class="dropdown-item export-excel" type="button">Excel</button>
-                          <button class="dropdown-item export-cvs" type="button">Cvs</button>
-                        </div>
+                     <!--Inicio Exportar-->
+                     <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
+                      <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
+                        <span
+                          class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown"
+                          data-bs-delay="0"
+                          data-bs-placement="top"
+                          data-bs-toggle="tooltip"
+                          title="Exportar" >
+                          <i data-cs-icon="download"></i>
+                        </span>
+                      </button>
+                      <div class="dropdown-menu shadow dropdown-menu-end">
+                        <a th:href="@{/Incapacidad/listar/(format=pdf)}" download="Lista_de_Incapacidades" >
+                          <button class="dropdown-item export-pdf"
+
+
+                          target="_blank" title="Exportar lista comision a pdf">Pdf</button> 
+                             </a>
+                       </a>
                       </div>
-                      <!-- Export Dropdown End -->
+                    </div>
+                    <!--Fin Exportar-->
+
 
                       <!-- Length Start -->
                       <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableRowsServerSide" data-childSelector="span">
@@ -412,32 +416,68 @@
                 </div>
                 <!-- Controls End -->
 
-                <!-- Table Start -->
-                <div class="data-table-responsive-wrapper">
-                  <table id="datatableRowsServerSide" class="data-table nowrap hover">
-                    <thead>
-                      <tr>
-                        <th class="text-muted text-small text-uppercase id">Id</th>
-                        <th class="text-muted text-small text-uppercase">FK empleado</th>
-                        <th class="text-muted text-small text-uppercase">Fecha Inicio </th>
-                        <th class="text-muted text-small text-uppercase">Fecha Final</th>
-                        <th class="text-muted text-small text-uppercase">Soporte</th>
-                        <th class="text-muted text-small text-uppercase check"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
-                      <td th:text="${c.idIncapacidad}"></td>
-                      <td th:text="${c.FKempleado.nombreEmpleado}+' '+${c.FKempleado.apellidoEmpleado}"></td>
-                        <td th:text="${c.fechaInicio}"></td>
-                        <td th:text="${c.fechaFinal}"></td>
-                        <td th:text="${c.soporteIncapacidad}"></td>
-                        <td> <input type="checkbox" class="form-check-input" id="check"></td>
-                    </tr>
-                 </tbody>
-            </table>
-        </div>
-                <!-- Table End -->
+<!-- Table Start -->
+<div class="data-table-responsive-wrapper">
+  <table id="datatableRowsServerSide" class="data-table nowrap hover">
+    <thead>
+      <tr>
+        <th class="text-muted text-small text-uppercase id">Id</th>
+        <th class="text-muted text-small text-uppercase">FK empleado</th>
+        <th class="text-muted text-small text-uppercase">Fecha Inicio </th>
+        <th class="text-muted text-small text-uppercase">Fecha Final</th>
+        <th class="text-muted text-small text-uppercase">Soporte</th>
+        <th class="text-muted text-small text-uppercase check"></th>
+    </tr>
+</thead>
+<tbody>
+    <tr th:if="${Incapacidads.size()>0}" th:each="c:${Incapacidads}">
+      <td th:text="${c.idIncapacidad}"></td>
+      <td th:text="${c.FKempleado.nombreEmpleado}+' '+${c.FKempleado.apellidoEmpleado}"></td>
+        <td th:text="${c.fechaInicio}"></td>
+        <td th:text="${c.fechaFinal}"></td>
+        <td th:text="${c.soporteIncapacidad}"></td>
+        <td th:if="${c.estadoIncapacidad==true}" id="activo">
+          <span class="badge bg-success active">Activo</span>
+          </td>
+          <td th:if="${c.estadoIncapacidad==false}" id="inactivo">
+          <span class="badge bg-danger active">Inactivo</span>
+          </td>
+          <td th:if="${c.estadoIncapacidad==true}" id="estadoboton">
+            <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}">Inactivar</a>
+            </td>
+            <td th:if="${c.estadoIncapacidad==false}" id="estadoboton">
+            <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/Incapacidad/estado/}+${c.idIncapacidad}">Activar</a>
+            </td>
+          <td> 
+            <!-- Boton Borrar-->
+            <a th:onclick="eliminar([[${c.idIncapacidad}]])"> 
+            <button
+              class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+              data-bs-delay="0"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Eliminar"
+              type="button">
+              <i data-cs-icon="bin"></i>
+            </button>
+          </a>
+            <!--Boton Editar -->
+            <a th:href="@{/Incapacidad/edit/}+${c.idIncapacidad}"> 
+            <button
+              class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+              data-bs-delay="0"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Editar"
+              type="button">
+            <i data-cs-icon="edit"></i>
+          </button></a>
+        </td>
+        </tr>
+   </tbody>
+</table>
+</div>
+<!-- Table End -->
               </div>
               <!-- Content End -->
 
@@ -559,7 +599,12 @@
     <!-- <script th:src="@{../../js/scripts.js}"></script> -->
     <script th:src="@{../../js/funciona.js}"></script>
     <script th:src="@{../../js/modal.js}"></script>
-    <script th:src="@{../../js/Validaciones/Incapacidad.js}"></script>
+    <script th:src="@{../../js/Validaciones/Incapacidad.js}"></script>                <!-- CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <!-- Page Specific Scripts End -->
   </body>

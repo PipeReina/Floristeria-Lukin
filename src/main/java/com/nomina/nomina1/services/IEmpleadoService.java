@@ -9,4 +9,6 @@ public interface IEmpleadoService {
     public void save (Empleado empleado);
     public Empleado findOne (Integer idEmpleado);
     public void delete (Integer idEmpleado);
+    public Empleado createEmpleado(Empleado empleado) throws Exception;
+    public Empleado findByDocEmpleado(String docEmpleado);
 }

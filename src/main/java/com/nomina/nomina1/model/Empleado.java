@@ -1,7 +1,5 @@
 package com.nomina.nomina1.model;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -56,8 +54,8 @@ public class Empleado {
     private String especialidadEmpleado;
     @Column(name="fotoEmpleado", length=100000000)
     private String fotoEmpleado;
-    @Column(name="passaword")
-    private String passaword;
+    @Column(name="password")
+    private String password;
     @Column(name="estadoEmpleado") 
     private Boolean estadoEmpleado;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -82,12 +80,11 @@ public class Empleado {
 
     }
 
-    
 
     public Empleado(Integer idEmpleado, @NotEmpty String nombreEmpleado, @NotEmpty String apellidoEmpleado,
             @NotEmpty String docEmpleado, @NotEmpty String epsEmpleado, @NotEmpty String direccEmpleado,
             @NotEmpty String generoEmpleado, @NotEmpty String telEmpleado, @NotEmpty String emailEmpleado,
-            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, String fotoEmpleado, String passaword,
+            @NotEmpty String rhEmpleado, @NotEmpty String especialidadEmpleado, String fotoEmpleado, String password,
             Boolean estadoEmpleado, Cargo fKcargo, List<Incapacidad> fKincapacidad, List<Convenio> convenio,
             List<he> hrExtraFK, List<comision> comisionFK) {
         this.idEmpleado = idEmpleado;
@@ -102,7 +99,7 @@ public class Empleado {
         this.rhEmpleado = rhEmpleado;
         this.especialidadEmpleado = especialidadEmpleado;
         this.fotoEmpleado = fotoEmpleado;
-        this.passaword = passaword;
+        this.password = password;
         this.estadoEmpleado = estadoEmpleado;
         FKcargo = fKcargo;
         FKincapacidad = fKincapacidad;
@@ -110,7 +107,6 @@ public class Empleado {
         this.hrExtraFK = hrExtraFK;
         this.comisionFK = comisionFK;
     }
-
 
 
     public Integer getIdEmpleado() {
@@ -233,13 +229,13 @@ public class Empleado {
     }
 
 
-    public String getPassaword() {
-        return passaword;
+    public String getPassword(String string) {
+        return password;
     }
 
 
-    public void setPassaword(String passaword) {
-        this.passaword = passaword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 
@@ -303,6 +299,8 @@ public class Empleado {
     }
 
 
-    
-    
+    public String getPassword() {
+        return null;
+    }
+   
 }

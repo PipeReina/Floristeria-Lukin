@@ -334,57 +334,27 @@
                   <!-- Search End -->
 
                   <div class="col-sm-12 col-md-7 col-lg-9 col-xxl-10 text-end mb-1">
-                    <div class="d-inline-block me-0 me-sm-3 float-start float-md-none">
 
-
-                      <!-- Edit Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow edit-datatable disabled"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Edit"
-                        type="button"
-                      >
-                        <i data-cs-icon="edit"></i>
-                      </button>
-                      <!-- Edit Button End -->
-
-                      <!-- Delete Button Start -->
-                      <button
-                        class="btn btn-icon btn-icon-only btn-foreground-alternate shadow disabled delete-datatable"
-                        data-bs-delay="0"
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Delete"
-                        type="button"
-                      >
-                        <i data-cs-icon="bin"></i>
-                      </button>
-                      <!-- Delete Button End -->
-                    </div>
                     <div class="d-inline-block">
 
-                      <!-- Export Dropdown Start -->
-                      <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
+                       <!-- Inicio exportar -->
+                       <div class="d-inline-block datatable-export" data-datatable="#datatableRowsServerSide">
                         <button class="btn p-0" data-bs-toggle="dropdown" type="button" data-bs-offset="0,3">
                           <span
                             class="btn btn-icon btn-icon-only btn-foreground-alternate shadow dropdown"
                             data-bs-delay="0"
                             data-bs-placement="top"
                             data-bs-toggle="tooltip"
-                            title="Export"
-                          >
+                            title="Exportar" >
                             <i data-cs-icon="download"></i>
                           </span>
                         </button>
                         <div class="dropdown-menu shadow dropdown-menu-end">
-                          <button class="dropdown-item export-copy" type="button">Copy</button>
-                          <button class="dropdown-item export-excel" type="button">Excel</button>
-                          <button class="dropdown-item export-cvs" type="button">Cvs</button>
+                          <a th:href="@{/empleado/empleado/(format=pdf)}" download="Lista_de_Empleados" > PDF
+                          </a>
                         </div>
                       </div>
-                      <!-- Export Dropdown End -->
+                      <!-- Fin Exportar -->
 
                       <!-- Length Start -->
                       <div class="dropdown-as-select d-inline-block datatable-length" data-datatable="#datatableRowsServerSide" data-childSelector="span">
@@ -411,89 +381,86 @@
                 </div>
                 <!-- Controls End -->
 
-                <!-- Table Start -->
-                <div class="data-table-responsive-wrapper">
-                    <table id="datatableRowsServerSide" class="data-table nowrap hover">
-                        <thead>
-                          <tr>
-                            <th class="text-muted text-uppercase">Id</th>
-                            <th class="text-muted text-uppercase">Foto</th>
-                            <th class="text-muted text-uppercase">Nombre</th>
-                            <th class="text-muted text-uppercase">Apellido</th>
-                            <th class="text-muted text-uppercase">Documento</th>
-                            <th class="text-muted text-uppercase">Eps</th>
-                            <th class="text-muted text-uppercase">Direccion</th>
-                            <th class="text-muted text-uppercase">Genero</th>
-                            <th class="text-muted text-uppercase">Telefono</th>
-                            <th class="text-muted text-uppercase">Email</th>
-                            <th class="text-muted text-uppercase">Rh</th>
-                            <th class="text-muted text-uppercase">Especilidad</th>
-                            <th class="text-muted text-uppercase">Cargo</th>
-                            <th class="text-muted text-uppercase">Estado</th>
-                            <th class="text-muted text-uppercase">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <tr th:if="${empleado.size>0}" class="odd"  th:each="c:${empleado}">
-                        <td th:text="${c.idEmpleado}"></td>
-                        <td><img th:src="@{/img/} + ${c.fotoEmpleado}" style="height: 100px; border-radius: 50px;"></td>
-                        <td th:text="${c.nombreEmpleado}"></td>
-                        <td th:text="${c.apellidoEmpleado}"></td>
-                        <td th:text="${c.docEmpleado}"></td>
-                        <td th:text="${c.epsEmpleado}"></td>
-                        <td th:text="${c.direccEmpleado}"></td>
-                        <td th:text="${c.generoEmpleado}"></td>
-                        <td th:text="${c.telEmpleado}"></td>
-                        <td th:text="${c.emailEmpleado}"></td>
-                        <td th:text="${c.rhEmpleado}"></td>
-                        <td th:text="${c.FKcargo.NombreCargo}"></td>
-                        <td th:text="${c.especialidadEmpleado}"></td>
-                        <td th:if="${c.estadoEmpleado==true}" id="activo">
-                        <span class="badge bg-success active">Activo</span>
-                        </td>
-                        <td th:if="${c.estadoEmpleado==false}" id="inactivo">
-                        <span class="badge bg-danger active">Inactivo</span>
-                        </td>
-                        <td th:if="${c.estadoEmpleado==true}" id="estadoboton">
-                        <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/empleado/estado/}+${c.idEmpleado}">Inactivar</a>
-                        </td>
-                        <td th:if="${c.estadoEmpleado==false}" id="estadoboton">
-                        <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/empleado/estado/}+${c.idEmpleado}">Activar</a>
-                        </td>
-
-      
-                        <td> 
-                          <!-- Boton Borrar-->
-                          <a th:href="@{/empleado/eliminar/}+${c.idEmpleado}"> 
-                          <button
-                            onclick="eli()"
-                            class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
-                            data-bs-delay="0"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title="Eliminar"
-                            type="button">
-                            <i data-cs-icon="bin"></i>
-                          </button>
-                        </a>
-                          <!--Boton Editar -->
-                          <a th:href="@{/empleado/edit/}+${c.idEmpleado}"> 
-                          <button
-                            class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
-                            data-bs-delay="0"
-                            data-bs-toggle="tooltip"
-                            data-bs-placement="top"
-                            title="Editar"
-                            type="button">
-                          <i data-cs-icon="edit"></i>
-                        </button></a>
-                      </td>
-                        </td>
-                      </tr>
-                    </tbody>
-                    </table>
-                </div>
-                <!-- Table End -->
+<!-- Table Start -->
+<div class="data-table-responsive-wrapper">
+  <table id="datatableRowsServerSide" class="data-table nowrap hover">
+      <thead>
+        <tr>
+          <th class="text-muted text-uppercase">Id</th>
+          <th class="text-muted text-uppercase">Foto</th>
+          <th class="text-muted text-uppercase">Nombre</th>
+          <th class="text-muted text-uppercase">Apellido</th>
+          <th class="text-muted text-uppercase">Documento</th>
+          <th class="text-muted text-uppercase">Eps</th>
+          <th class="text-muted text-uppercase">Direccion</th>
+          <th class="text-muted text-uppercase">Genero</th>
+          <th class="text-muted text-uppercase">Telefono</th>
+          <th class="text-muted text-uppercase">Email</th>
+          <th class="text-muted text-uppercase">Rh</th>
+          <th class="text-muted text-uppercase">Especilidad</th>
+          <th class="text-muted text-uppercase">Cargo</th>
+          <th class="text-muted text-uppercase">Estado</th>
+          <th class="text-muted text-uppercase">Acciones</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr th:if="${empleado.size>0}" class="odd"  th:each="c:${empleado}">
+      <td th:text="${c.idEmpleado}"></td>
+      <td><img th:src="@{/img/} + ${c.fotoEmpleado}" style="height: 100px; border-radius: 50px;"></td>
+      <td th:text="${c.nombreEmpleado}"></td>
+      <td th:text="${c.apellidoEmpleado}"></td>
+      <td th:text="${c.docEmpleado}"></td>
+      <td th:text="${c.epsEmpleado}"></td>
+      <td th:text="${c.direccEmpleado}"></td>
+      <td th:text="${c.generoEmpleado}"></td>
+      <td th:text="${c.telEmpleado}"></td>
+      <td th:text="${c.emailEmpleado}"></td>
+      <td th:text="${c.rhEmpleado}"></td>
+      <td th:text="${c.FKcargo.NombreCargo}"></td>
+      <td th:text="${c.especialidadEmpleado}"></td>
+      <td th:if="${c.estadoEmpleado==true}" id="activo">
+      <span class="badge bg-success active">Activo</span>
+      </td>
+      <td th:if="${c.estadoEmpleado==false}" id="inactivo">
+      <span class="badge bg-danger active">Inactivo</span>
+      </td>
+      <td th:if="${c.estadoEmpleado==true}" id="estadoboton">
+      <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();" th:href="@{/empleado/estado/}+${c.idEmpleado}">Inactivar</a>
+      </td>
+      <td th:if="${c.estadoEmpleado==false}" id="estadoboton">
+      <a rol="button" class="btn btn-primary" style="width: 90%;" onclick="guar();"  th:href="@{/empleado/estado/}+${c.idEmpleado}">Activar</a>
+      </td>
+      <td> 
+        <!-- Boton Borrar-->
+        <a th:onclick="eliminar([[${c.idEmpleado}]])"> 
+        <button
+          class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+          data-bs-delay="0"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Eliminar"
+          type="button">
+          <i data-cs-icon="bin"></i>
+        </button>
+      </a>
+        <!--Boton Editar -->
+        <a th:href="@{/empleado/edit/}+${c.idEmpleado}"> 
+        <button
+          class="btn btn-icon btn-danger btn-icon-only btn-foreground-alternate shadow delete-datatable btn-danger btn-sm"
+          data-bs-delay="0"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Editar"
+          type="button">
+        <i data-cs-icon="edit"></i>
+      </button></a>
+    </td>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+<!-- Table End -->
               </div>
               <!-- Content End -->
             </div>
@@ -614,6 +581,15 @@
                 </div>
                     <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
                 </div>
+                <!-- especialidadEmpleado -->
+                <div class="formulario_grupo" id="grupo_especial">
+                    <label class="rol">Password</label><br>
+                <div id="cargo_input">
+                    <input class="roltext1 form-control" type="password" name="password" id="password" th:field="*{password}">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                    <p class="formulario__input-error">La Especialidad tiene que estar ingresada, solo puede contener Letras.</p>
+                </div>
                 <!-- Cargofk -->
                 <div class="form-group">
                     <label class="rol"> Cargo FK</label><br>
@@ -723,5 +699,10 @@
     <script th:src="@{../../js/modal.js}"></script>
     <script th:src="@{../../js/Validaciones/Empleado.js}"></script>
     <!-- Page Specific Scripts End -->
+            <!-- CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+   <!-- sweetalert -->
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>

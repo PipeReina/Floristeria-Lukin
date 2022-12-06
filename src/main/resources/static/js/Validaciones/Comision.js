@@ -68,3 +68,35 @@ formulario.addEventListener('submit', (e) => {
 function guar(){
     alert("Se guardaron los cambios")
   }
+
+   //eliminar
+   function eliminar(idComision){
+    console.log(idComision);
+    swal({
+        title: "Esta seguro que desea eliminar?",
+        text: "Una vez eliminado no se prodra restablecer!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((OK) => {
+        if (OK) {
+            $.ajax({
+               url:"delete/"+idComision,
+               success: function(res) {
+                  console.log(res);
+              },            
+            });
+          swal("Exito! Campo eliminado correctamente!", {
+            icon: "success",
+          }).then((ok)=>{
+            if(ok){
+                location.href="listarcom";
+            }
+          });
+        } else {
+          swal("Cancelado!");
+        }
+      });
+  }
+  //fin eliminar

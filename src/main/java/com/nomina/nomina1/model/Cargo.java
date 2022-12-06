@@ -21,13 +21,13 @@ public class Cargo {
     @Column(name="idCargo")
     private Integer idCargo;
     @NotEmpty    
-    @Column(name="nombreCargo", length=20)
+    @Column(name="nombreCargo")
     private String nombreCargo;
     @NotEmpty
-    @Column(name="rolCargo", length=20)
+    @Column(name="rolCargo")
     private String rolCargo;
     @NotEmpty    
-    @Column(name="DescripcionCargo", length=100)
+    @Column(name="DescripcionCargo")
     private String DescripcionCargo;
     @Column(name="estadoCargo") 
     private Boolean estadoCargo;
@@ -94,6 +94,10 @@ public class Cargo {
 
     public void setFKempleado(List<Empleado> fKempleado) {
         FKempleado = fKempleado;
+    }
+
+    public boolean equalsIgnoreCase(String string) {
+        return false;
     }
 
    

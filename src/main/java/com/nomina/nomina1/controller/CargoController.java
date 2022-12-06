@@ -54,7 +54,7 @@ public class CargoController {
             }
             cargod.save(cargo);
             status.setComplete();
-            return "redirect:./";
+            return "redirect:../";
         }
 
      @GetMapping("/estado/{idCargo}")

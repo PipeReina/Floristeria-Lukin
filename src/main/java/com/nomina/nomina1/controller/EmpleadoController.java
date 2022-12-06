@@ -60,33 +60,34 @@ public class EmpleadoController {
          return "empleado/edit";
      }
 
-    @PostMapping("/add")
-        public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
-            if(!res.hasErrors()){
-                System.out.println(res.hasErrors());
-                m.addAttribute("cargos", cargod.findAll());
-                m.addAttribute("empleado", empleado);
-                return "empleado/empleado";
-            }
-            if(!imagen.isEmpty()){
-                Path director=Paths.get("src//main//resources//static//img");
-                String rutaAbs=director.toFile().getAbsolutePath();
+     @PostMapping("/add")
+     public String add(@Valid Empleado empleado,BindingResult res, Model m,@RequestParam("fotoEmpleado") MultipartFile imagen, SessionStatus status){
+         if(!res.hasErrors()){
+             System.out.println(res.hasErrors());
+             m.addAttribute("cargos", cargod.findAll());
+             m.addAttribute("empleado", empleado);
+             return "empleado/empleado";
+         }
+         if(!imagen.isEmpty()){
+             Path director=Paths.get("src//main//resources//static//img");
+             String rutaAbs=director.toFile().getAbsolutePath();
 
-                try {
-                    byte[] bytesImg = imagen.getBytes();
-                    Path rutaCompleta=Paths.get(rutaAbs + "//"+ imagen.getOriginalFilename());
-                    Files.write(rutaCompleta, bytesImg);
+             try {
+                 byte[] bytesImg = imagen.getBytes();
+                 Path rutaCompleta=Paths.get(rutaAbs + "//"+ imagen.getOriginalFilename());
+                 Files.write(rutaCompleta, bytesImg);
 
-                    empleado.setFotoEmpleado(imagen.getOriginalFilename());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                
-            }
-            empleadod.save(empleado);
-            status.setComplete();
-            return "redirect:empleado";
-        }
+                 empleado.setFotoEmpleado(imagen.getOriginalFilename());
+             } catch (IOException e) {
+                 e.printStackTrace();
+             }
+             
+         }
+         empleadod.save(empleado);
+         status.setComplete();
+         return "redirect:empleado";
+     }
+
 
      @GetMapping("/estado/{idEmpleado}")
      public String estado(@PathVariable Integer idEmpleado,Model m){

@@ -14,7 +14,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.ui.Model;
 
 import com.nomina.nomina1.services.IEmpleadoService;
-import com.nomina.nomina1.services.IIncapacidadService;
 import com.nomina.nomina1.services.IncapacidadServiceImpl;
 import com.nomina.nomina1.model.Incapacidad;
 
